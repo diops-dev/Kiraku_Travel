@@ -17,7 +17,7 @@ npm run build
 echo "→ Publication sur la branche deploy"
 TMP="$(mktemp -d)"
 git worktree add "$TMP" deploy 2>/dev/null || git worktree add -b deploy "$TMP"
-rsync -a --delete --exclude '.git' dist/ "$TMP/"
+rsync -a --delete --exclude '.git' --exclude '.vite' dist/ "$TMP/"
 cd "$TMP"
 git add -A
 git commit -m "Déploiement du $(date '+%d/%m/%Y à %H:%M')" || echo "Rien de nouveau à déployer"
