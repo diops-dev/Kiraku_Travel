@@ -1,0 +1,454 @@
+import React, { useState } from 'react'
+import { DetailPlus, InclusionsVisuelles } from './DetailParts.jsx'
+
+// Compris et non compris dans le prix · une fiche par circuit long
+
+const INCL_BASE = [
+  "L'accueil personnalisé à l'aéroport et l'assistance de votre conseiller francophone pendant tout le séjour",
+  "Tous les transferts entre aéroports, gares et hébergements",
+  "Les transports intérieurs prévus au programme, Shinkansen, lignes locales, bus et bateaux, taxes comprises",
+  "Les droits d'entrée de tous les temples, sanctuaires, musées et jardins inscrits au programme",
+  "L'assistance de notre équipe au Japon, joignable vingt-quatre heures sur vingt-quatre pendant le séjour",
+  "Le carnet de voyage Kiraku remis avant le départ, cartes, lexique et adresses vérifiées",
+];
+
+const EXCL_BASE = [
+  "Les vols internationaux depuis et vers la France, les taxes aériennes et les frais de bagages",
+  "L'assurance voyage · annulation, bagages, frais médicaux et rapatriement, vivement recommandée",
+  "Les repas non mentionnés au programme et les boissons servies en dehors des repas inclus",
+  "Le supplément chambre individuelle, selon disponibilité",
+  "Les activités optionnelles et le temps libre laissé à votre initiative",
+  "Les dépenses personnelles · blanchisserie, communications, artisanat et souvenirs",
+  "Les frais de délivrance ou de renouvellement du passeport",
+];
+
+const NOTE_POURBOIRE = "Les pourboires ne sont pas d'usage au Japon · aucun n'est prévu, aucun n'est attendu";
+
+export const INCLUSIONS = {
+  'CL-01': {
+    titre: 'Du Néon au Silence · quatorze jours',
+    inclus: [
+      "13 nuits en chambre double · hôtel de quartier à Tokyo, ryokan familial en campagne, deux nuits en temple shukubo",
+      "Les petits-déjeuners chaque matin, huit déjeuners et dix dîners, dont deux repas shojin ryori préparés par les moines",
+      "Un guide francophone permanent de Tokyo à la vallée, et des intervenants locaux sur les journées d'atelier",
+      "Le Japan Rail Pass quatorze jours en classe ordinaire, activé à votre arrivée",
+      "La visite guidée du marché de Toyosu au petit matin, entrée et dégustation comprises",
+      "L'atelier de calligraphie shodo, matériel fourni, et votre première œuvre à emporter",
+      "La cérémonie du thé chez une famille de Kanazawa, en petit comité",
+      "Le portage des bagages entre Tokyo et la campagne, vous ne gardez qu'un sac léger",
+    ],
+    exclus: [
+      "Les trajets en taxi pendant vos demi-journées libres à Tokyo",
+      "Le supplément ryokan avec bain privatif, sur demande",
+    ],
+    options: [
+      "Chambre individuelle sur l'ensemble du séjour : 690 € par personne",
+      "Nuit supplémentaire à Tokyo avant ou après le circuit : 145 € par personne en chambre double, petit-déjeuner inclus",
+      "Surclassement en Green Car sur les trajets Shinkansen : 320 € par personne",
+    ],
+  },
+  'CL-02': {
+    titre: 'Mille Marches vers le Nord · quatorze jours',
+    inclus: [
+      "13 nuits en chambre double · trois nuits en temple shukubo au mont Koya, ryokan de montagne, minshuku de village",
+      "La pension complète du dîner du jour 1 au petit-déjeuner du jour 14, hors deux dîners libres",
+      "Un guide francophone spécialisé sur le shintoïsme et le bouddhisme japonais, présent chaque jour",
+      "Les offices du matin dans les temples, en présence des moines",
+      "Les étapes marchées du Kumano Kodo, avec transfert des bagages d'étape en étape",
+      "Le rituel de purification à Ise, accompagné par un prêtre du sanctuaire",
+      "Les entrées et les taxes de sentier sur l'ensemble du parcours de pèlerinage",
+      "Le bâton de pèlerin et le carnet de tampons shuin remis au départ",
+    ],
+    exclus: [
+      "Les tampons shuin supplémentaires collectés hors programme, environ 300 yens l'unité",
+      "Les offrandes personnelles dans les temples et sanctuaires",
+      "La location de chaussures de marche, sur place",
+    ],
+    options: [
+      "Chambre individuelle, hors temples où le couchage est partagé : 540 € par personne",
+      "Étape supplémentaire sur le Kumano Kodo, une nuit et un guide : 260 € par personne",
+      "Massage shiatsu après les étapes marchées : 70 € la séance",
+    ],
+  },
+  'CL-03': {
+    titre: 'Des Temples aux Coraux · quatorze jours',
+    inclus: [
+      "13 nuits en chambre double · ryokan à Kyoto, hôtel de bord de mer à Okinawa, deux nuits en maison d'hôtes à Ishigaki",
+      "Les petits-déjeuners, six déjeuners et neuf dîners, dont un repas de la cuisine ryukyu chez une famille",
+      "Le vol intérieur Osaka vers Naha et le vol Naha vers Ishigaki, taxes comprises",
+      "Un guide francophone à Kyoto, puis un accompagnateur okinawaïen sur les îles",
+      "Deux sorties palmes, masque et tuba sur les récifs, matériel et bateau compris",
+      "Les accès aux onsen et aux bains de vos hébergements, serviette fournie",
+      "Deux séances de yoga au lever du jour, face à la mer",
+      "Les transferts en bateau entre les îles Yaeyama",
+    ],
+    exclus: [
+      "Les baptêmes et les sorties de plongée bouteille, sur réservation à l'arrivée",
+      "La location de combinaison intégrale hors saison chaude",
+      "Les excursions en mer optionnelles proposées sur place",
+    ],
+    options: [
+      "Chambre individuelle sur l'ensemble du séjour : 620 € par personne",
+      "Baptême de plongée encadré, deux immersions : 180 € par personne",
+      "Nuit supplémentaire à Ishigaki : 130 € par personne en chambre double, petit-déjeuner inclus",
+    ],
+  },
+  'CL-04': {
+    titre: 'Le Premier Souffle · sept jours',
+    inclus: [
+      "6 nuits en chambre double · hôtel équivalent 3 étoiles à Tokyo et Kyoto, une nuit en ryokan traditionnel",
+      "Les petits-déjeuners chaque matin, trois déjeuners et quatre dîners",
+      "Un guide francophone sur les cinq journées de visite",
+      "Le Japan Rail Pass sept jours en classe ordinaire",
+      "La location d'un kimono pour une journée à Kyoto, habillage et coiffure compris",
+      "L'initiation à la cérémonie du thé dans une maison de Gion",
+      "Les entrées du château de Nijo, du Kinkakuji et du sanctuaire de Fushimi Inari",
+      "Le transfert de vos bagages entre Tokyo et Kyoto",
+    ],
+    exclus: [
+      "Les deux demi-journées libres, transports et entrées sur place",
+      "Le supplément dîner kaiseki au ryokan, sur demande",
+    ],
+    options: [
+      "Chambre individuelle sur l'ensemble du séjour : 380 € par personne",
+      "Dîner kaiseki au ryokan, neuf services : 120 € par personne",
+      "Nuit supplémentaire à Tokyo ou Kyoto : 135 € par personne en chambre double, petit-déjeuner inclus",
+    ],
+  },
+  'CL-05': {
+    titre: 'Au Cœur du Vieux Japon · sept jours',
+    inclus: [
+      "6 nuits en chambre double · deux nuits en machiya de Kyoto, ryokan à Nara, minshuku dans la vallée d'Iga",
+      "Les petits-déjeuners, quatre déjeuners et cinq dîners, dont un repas de dojo partagé avec les pratiquants",
+      "Un guide francophone pratiquant les arts martiaux, présent chaque jour",
+      "Deux séances d'initiation en dojo · kendo et kyudo, prêt de l'équipement compris",
+      "La démonstration privée de iaido par un maître de Kyoto",
+      "La visite de l'atelier d'un forgeron de sabres, avec démonstration de polissage",
+      "Les transports intérieurs en train et en bus sur l'ensemble du parcours",
+      "Le keikogi de pratique remis au départ",
+    ],
+    exclus: [
+      "Les cours de pratique supplémentaires en dehors des deux séances prévues",
+      "L'achat d'un bokken ou de tout équipement personnel",
+    ],
+    options: [
+      "Chambre individuelle sur l'ensemble du séjour : 410 € par personne",
+      "Séance de pratique supplémentaire en dojo, deux heures : 95 € par personne",
+      "Journée supplémentaire dans la vallée d'Iga : 240 € par personne, hébergement et guide compris",
+    ],
+  },
+  'CL-06': {
+    titre: 'La Traversée sans Hâte · vingt et un jours',
+    inclus: [
+      "20 nuits en chambre double · hôtels de ville, ryokan de province, deux nuits en ferme d'exploitation à Hokkaido",
+      "La pension complète du dîner du jour 1 au petit-déjeuner du jour 21, hors trois dîners libres",
+      "Un guide francophone permanent sur les vingt et un jours",
+      "Le Japan Rail Pass vingt et un jours en classe ordinaire, plus le ferry pour Hokkaido",
+      "Cinq ateliers de cuisine · soba, ramen, poisson, fermentation et pâtisserie wagashi",
+      "Deux visites guidées de marchés aux poissons, dégustation comprise",
+      "La visite d'une brasserie de saké avec dégustation commentée par le maître brasseur",
+      "Deux dîners chez des chefs, menu de saison en petit comité",
+      "Le portage des bagages entre chaque grande étape",
+    ],
+    exclus: [
+      "Les dégustations de saké et de whisky japonais hors programme",
+      "Les réservations de restaurants gastronomiques pendant vos soirées libres",
+      "Le supplément ryokan avec bain privatif, sur demande",
+    ],
+    options: [
+      "Chambre individuelle sur l'ensemble du séjour : 1 090 € par personne",
+      "Menu dégustation dans un restaurant étoilé de Tokyo, réservation comprise : 280 € par personne",
+      "Surclassement en Green Car sur les trajets Shinkansen : 480 € par personne",
+    ],
+  },
+  'CL-07': {
+    titre: 'Des Tours aux Toits de Chaume · vingt et un jours',
+    inclus: [
+      "20 nuits en chambre double · hôtels à Tokyo, Nagoya et Kanazawa, deux nuits en gassho-zukuri à Shirakawa-go",
+      "Les petits-déjeuners chaque matin, dix déjeuners et treize dîners",
+      "Un guide francophone permanent, et un accompagnateur spécialisé sur les journées animation",
+      "Le Japan Rail Pass vingt et un jours en classe ordinaire",
+      "Les entrées réservées du musée Ghibli et du parc Ghibli, créneaux confirmés avant le départ",
+      "Deux journées consacrées aux quartiers de l'animation et du jeu, Akihabara et Nakano",
+      "La visite d'un studio d'animation avec rencontre d'un animateur, sous réserve du calendrier de production",
+      "L'atelier de dessin manga avec un auteur, matériel fourni",
+      "Le portage des bagages entre chaque grande étape",
+    ],
+    exclus: [
+      "Les achats en boutique, figurines, éditions et goodies",
+      "Les parties de jeu dans les salles d'arcade et les karaokés",
+      "Les événements ponctuels et conventions dont les dates ne sont pas connues à la réservation",
+    ],
+    options: [
+      "Chambre individuelle sur l'ensemble du séjour : 1 040 € par personne",
+      "Journée supplémentaire à Tokyo avec votre guide : 290 € par personne",
+      "Séance photo en cosplay, costume et retouches comprises : 180 € par personne",
+    ],
+  },
+  'CL-08': {
+    titre: "Jusqu'aux Cèdres Millénaires · vingt-deux jours",
+    inclus: [
+      "21 nuits en chambre double · hôtels de ville, ryokan de montagne, trois nuits sur l'île de Yakushima",
+      "La pension complète du dîner du jour 1 au petit-déjeuner du jour 22, hors quatre dîners libres",
+      "Un guide francophone permanent, et un guide naturaliste sur Yakushima",
+      "Le Japan Rail Pass vingt et un jours, plus le vol intérieur pour Kagoshima et le ferry pour Yakushima",
+      "Les deux jours de marche en forêt primaire jusqu'au cèdre Jomon Sugi, permis de sentier compris",
+      "Les entrées du musée Ghibli et des lieux qui ont inspiré les films",
+      "Les accès aux onsen de bord de mer et de montagne, serviette fournie",
+      "La location du matériel de pluie sur Yakushima, cape et sur-sac",
+      "Le portage des bagages entre chaque grande étape",
+    ],
+    exclus: [
+      "Les sorties en forêt supplémentaires avec guide naturaliste",
+      "La location de chaussures de marche et de bâtons",
+      "Les repas emportés lors des journées de randonnée libre",
+    ],
+    options: [
+      "Chambre individuelle, hors nuits en refuge : 1 120 € par personne",
+      "Journée de marche supplémentaire à Yakushima avec guide naturaliste : 210 € par personne",
+      "Nuit supplémentaire à Kagoshima : 130 € par personne en chambre double, petit-déjeuner inclus",
+    ],
+  },
+  'CL-09': {
+    titre: 'Tokyo, Kyoto et traversée des Alpes · douze jours',
+    inclus: [
+      "5 nuits en hôtel équivalent 3 étoiles, chambre à deux lits jumeaux, à Tokyo et à Kyoto",
+      "5 nuits en refuge de montagne pendant le trek, couchage en chambres et dortoirs collectifs, dont la dernière au ryokan Yarimikan avec accès aux onsen",
+      "La pension complète du jour 3 au jour 11, petit-déjeuner, déjeuner et dîner, paniers de course compris sur les étapes",
+      "Un guide francophone de haute montagne sur l'ensemble du séjour, et un guide tokyoïte sur la journée à Tokyo",
+      "Les transferts en train et en car du jour 2 au jour 12, dont Tokyo vers Matsumoto et Kamikochi vers Kyoto",
+      "L'entrée du château de Matsumoto et les accès de sentier sur la voie Omote Ginza",
+      "Le portage de vos bagages de Tokyo jusqu'à Kyoto pendant les six jours de trek",
+      "Les taxes de refuge et les nuitées de montagne réservées à l'avance",
+    ],
+    exclus: [
+      "Le matériel personnel de montagne · chaussures, sac de couchage léger, bâtons et vêtements techniques",
+      "La variante du jour 6 vers un sommet supplémentaire, encadrement compris mais soumise à la météo",
+      "Les boissons prises en refuge en dehors des repas",
+    ],
+    options: [
+      "Chambre individuelle en hôtel, selon disponibilité : 425 € pour les 5 nuits du séjour, puis 75 € par nuit supplémentaire",
+      "Nuit supplémentaire à Tokyo ou Kyoto : 125 € par personne en chambre double, petit-déjeuner inclus",
+      "Nuit supplémentaire en chambre individuelle : 200 €",
+      "Location du sac de couchage léger de refuge : 45 € pour le séjour",
+    ],
+  },
+  KUNISAKI: {
+    titre: 'Le sentier de Kunisaki · sept jours',
+    inclus: [
+      "6 nuits en minshuku familiaux et en ryokan, en chambre double",
+      "La pension complète du dîner du jour 1 au petit-déjeuner du jour 7, dont tous les dîners de famille",
+      "Un guide francophone permanent sur les sept jours",
+      "Tous les transports locaux, trains de ligne, bus de vallée et transferts",
+      "La journée entière de teinture aizome avec Tanaka-san, matériel et tissu compris",
+      "Le déjeuner chez le moine de Futagoji, sur la journée de sentier",
+      "Le petit matin au marché de Saiki, achat du déjeuner et préparation en sashimi compris",
+      "Le dîner kaiseki de neuf services au ryokan du mont Tsurumi",
+    ],
+    exclus: [
+      "Les bains de quartier pris hors programme, quelques centaines de yens l'entrée",
+      "Les après-midi libres et les activités que vous y ajoutez",
+    ],
+    options: [
+      "Chambre individuelle, selon disponibilité : 350 € par personne",
+      "Journée de sentier supplémentaire sur la péninsule : 190 € par personne",
+      "Nuit supplémentaire à Fukuoka : 120 € par personne en chambre double, petit-déjeuner inclus",
+    ],
+  },
+};
+
+export function PriceInclusions({ circuit }) {
+  const data = INCLUSIONS[circuit] || INCLUSIONS.KUNISAKI;
+  const inclus = [...data.inclus, ...INCL_BASE];
+  const exclus = [...(data.exclus || []), ...EXCL_BASE];
+  const li = { fontFamily:'var(--font-serif)', fontSize:16, lineHeight:1.65, color:'var(--fg-2)', paddingLeft:22, position:'relative', textWrap:'pretty' };
+  const mark = { position:'absolute', left:0, top:1, fontFamily:'var(--font-sans)', fontSize:13, fontWeight:600 };
+  const colHead = { fontFamily:'var(--font-display)', fontSize:20, fontWeight:600, letterSpacing:'-0.01em', color:'var(--fg)', margin:'0 0 16px', paddingBottom:12, borderBottom:'1px solid var(--border-strong)' };
+  return (
+    <div style={{marginTop:72}}>
+      <div className="section-head" style={{marginBottom:24}}>
+        <div className="left">
+          <div className="section-eyebrow">CE QUI EST INCLUS</div>
+          <h2>Compris et non compris dans le prix.</h2>
+          <div className="kicker">· {data.titre}</div>
+        </div>
+      </div>
+      <div style={{display:'grid', gridTemplateColumns:'repeat(auto-fit, minmax(300px, 1fr))', gap:'40px 56px'}}>
+        <div>
+          <h3 style={colHead}>Inclus</h3>
+          <ul style={{display:'flex', flexDirection:'column', gap:12, margin:0, padding:0, listStyle:'none'}}>
+            {inclus.map(t => <li key={t} style={li}><span style={{...mark, color:'var(--kiraku-shu)'}}>✦</span>{t}</li>)}
+          </ul>
+        </div>
+        <div>
+          <h3 style={colHead}>Non inclus</h3>
+          <ul style={{display:'flex', flexDirection:'column', gap:12, margin:0, padding:0, listStyle:'none'}}>
+            {exclus.map(t => <li key={t} style={li}><span style={{...mark, color:'var(--fg-muted)'}}>·</span>{t}</li>)}
+          </ul>
+          <p style={{fontFamily:'var(--font-serif)', fontSize:15, lineHeight:1.6, color:'var(--fg-muted)', margin:'18px 0 0'}}>{NOTE_POURBOIRE}.</p>
+        </div>
+      </div>
+      <div style={{background:'var(--kiraku-paper)', border:'1px solid var(--hairline)', borderRadius:14, padding:'24px 26px', marginTop:40}}>
+        <div className="section-eyebrow" style={{marginBottom:12}}>SUPPLÉMENTS ET OPTIONS</div>
+        <ul style={{display:'flex', flexDirection:'column', gap:10, margin:0, paddingLeft:20}}>
+          {(data.options || []).map(o => <li key={o} style={{fontFamily:'var(--font-serif)', fontSize:16, lineHeight:1.65, color:'var(--fg-2)'}}>{o}</li>)}
+        </ul>
+      </div>
+    </div>
+  );
+}
+
+export const FICHES = {
+  'CL-09': {
+    hebergements: [
+      "5 nuits en hôtel équivalent 3 étoiles à Tokyo et à Kyoto, chambre à deux lits jumeaux",
+      "5 nuits en refuge de montagne pendant le trek, couchage en chambres et dortoirs collectifs",
+      "La dernière nuit de trek au ryokan Yarimikan, avec accès aux onsen",
+      "Chambre individuelle en hôtel possible, selon disponibilité et avec supplément",
+      "Nuit supplémentaire à Tokyo ou à Kyoto en option, avant ou après le circuit",
+    ],
+    transports: [
+      "Tous les transferts entre aéroports, gares et hébergements",
+      "Train de Tokyo à Matsumoto, 2 h 30, puis route jusqu'à Nakabusa onsen",
+      "Car de Kamikōchi jusqu'à Kyoto le jour 10",
+      "Portage de vos bagages de Tokyo à Kyoto pendant les six jours de trek",
+      "Vols internationaux non inclus, nous vous aidons à choisir les horaires",
+    ],
+    guide: [
+      "Un guide francophone de haute montagne sur l'ensemble du séjour",
+      "Un guide tokyoïte sur la journée de visite à Tokyo",
+      "Petit groupe de 4 à 8 personnes",
+      "Assistance de notre équipe au Japon, joignable vingt-quatre heures sur vingt-quatre",
+    ],
+    equipement: [
+      "Chaussures de randonnée montantes, rodées, à semelle crantée",
+      "Sac de couchage léger de refuge, en location auprès de nous pour 45 € le séjour",
+      "Bâtons de marche, veste imperméable et coupe-vent",
+      "Gants et bonnet léger, les nuits d'altitude restent froides en été",
+      "Sac à dos de 30 à 40 litres, le reste de vos bagages voyage jusqu'à Kyoto",
+      "Lampe frontale et gourde d'un litre et demi",
+    ],
+  },
+  KUNISAKI: {
+    hebergements: [
+      "6 nuits en minshuku familiaux et en ryokan, en chambre double",
+      "La nuit du jour 6 au ryokan du mont Tsurumi, avec bains et dîner kaiseki",
+      "Salles de bain partagées dans la plupart des minshuku, en dehors de la chambre",
+      "Chambre individuelle selon disponibilité : 350 € par personne",
+      "Nuit supplémentaire à Fukuoka en option : 120 € par personne",
+    ],
+    transports: [
+      "Accueil à la gare d'Oita et tous les transferts du séjour",
+      "Trains de ligne locale et bus de vallée sur l'ensemble de la péninsule",
+      "Retour vers Fukuoka le dernier jour",
+      "Vols internationaux non inclus, nous vous aidons à choisir les horaires",
+    ],
+    guide: [
+      "Un guide francophone permanent sur les sept jours",
+      "Des intervenants locaux : Tanaka-san pour l'aizome, le moine de Futagoji",
+      "De un à huit voyageurs, sans autre groupe",
+      "Assistance de notre équipe au Japon, joignable vingt-quatre heures sur vingt-quatre",
+    ],
+    equipement: [
+      "Chaussures de marche souples, une journée de trente kilomètres est prévue",
+      "Vêtement de pluie léger, la saison va d'avril à juin",
+      "Une serviette de toilette pour les bains de quartier",
+      "Un petit sac de journée pour les sentiers de temples",
+      "Une tenue que vous ne craignez pas de tacher pour l'atelier de teinture",
+    ],
+  },
+};
+
+export const VISUELS = {
+  'CL-09': [
+    { ico: 'bed', lbl: 'Hôtels 3★ et refuges de montagne' },
+    { ico: 'meal', lbl: 'Pension complète, jours 3 à 11' },
+    { ico: 'guide', lbl: 'Guide francophone de haute montagne' },
+    { ico: 'train', lbl: 'Trains et cars intérieurs' },
+    { ico: 'luggage', lbl: 'Portage des bagages de Tokyo à Kyoto' },
+    { ico: 'mountain', lbl: 'Accès de sentier, voie Omote Ginza' },
+    { ico: 'ticket', lbl: 'Château de Matsumoto' },
+    { ico: 'onsen', lbl: 'Onsen du ryokan Yarimikan' },
+    { ico: 'flag', lbl: 'Carnet de voyage Kiraku' },
+  ],
+  KUNISAKI: [
+    { ico: 'bed', lbl: "Minshuku et ryokan, 6 nuits" },
+    { ico: 'meal', lbl: 'Pension complète, tous les dîners de famille' },
+    { ico: 'guide', lbl: 'Guide francophone permanent' },
+    { ico: 'train', lbl: 'Transports locaux et transferts' },
+    { ico: 'flag', lbl: 'Atelier aizome, une journée entière' },
+    { ico: 'temple', lbl: 'Déjeuner chez le moine de Futagoji' },
+    { ico: 'market', lbl: 'Marché de Saiki au petit matin' },
+    { ico: 'onsen', lbl: 'Bains du ryokan du mont Tsurumi' },
+    { ico: 'ticket', lbl: 'Carnet de voyage Kiraku' },
+  ],
+};
+
+// « Votre séjour en détails » · les mêmes informations, en onglets, pour gagner de la place
+export function SejourTabs({ circuit, departs, note, plus }) {
+  const data = INCLUSIONS[circuit] || INCLUSIONS.KUNISAKI;
+  const fiche = FICHES[circuit] || {};
+  const inclus = [...data.inclus, ...INCL_BASE];
+  const exclus = [...(data.exclus || []), ...EXCL_BASE];
+  const th = { textAlign:'left', fontFamily:'var(--font-sans)', fontSize:11, letterSpacing:'0.2em', textTransform:'uppercase', color:'var(--fg-muted)', fontWeight:500, padding:'0 16px 12px 0', borderBottom:'1px solid var(--border-strong)' };
+  const td = { fontFamily:'var(--font-serif)', fontSize:17, color:'var(--fg-2)', padding:'14px 16px 14px 0', borderBottom:'1px solid var(--hairline)' };
+  const list = (items) => <ul>{items.map(t => <li key={t}>{t}</li>)}</ul>;
+
+  const tabs = [];
+  if (plus && plus.length) tabs.push({ id: 'forts', lbl: 'Points forts', render: () => <DetailPlus items={plus} /> });
+  if (fiche.hebergements) tabs.push({ id: 'heb', lbl: 'Vos hébergements', render: () => list(fiche.hebergements) });
+  if (fiche.transports) tabs.push({ id: 'tr', lbl: 'Vos transports', render: () => list(fiche.transports) });
+  if (fiche.guide) tabs.push({ id: 'guide', lbl: 'Guide', render: () => list(fiche.guide) });
+  if (fiche.equipement) tabs.push({ id: 'equip', lbl: "L'équipement", render: () => list(fiche.equipement) });
+  tabs.push({ id: 'options', lbl: 'Options et suppléments', render: () => list(data.options || []) });
+  if (note) tabs.push({ id: 'savoir', lbl: 'Bon à savoir', render: () => (
+    <p style={{fontFamily:'var(--font-serif)', fontSize:17, lineHeight:1.7, color:'var(--fg-2)', margin:0, maxWidth:760, textWrap:'pretty'}}>{note}</p>
+  ) });
+  tabs.push({ id: 'inclus', lbl: 'Inclus', render: () => (
+    <>
+      {VISUELS[circuit] ? <InclusionsVisuelles items={VISUELS[circuit]} /> : null}
+      <div style={{margin:'26px 0 0', paddingTop:26, borderTop:'1px solid var(--hairline)'}}>{list(inclus)}</div>
+    </>
+  ) });
+  tabs.push({ id: 'exclus', lbl: 'Non inclus', render: () => (
+    <>
+      {list(exclus)}
+      <p style={{fontFamily:'var(--font-serif)', fontSize:15, lineHeight:1.6, color:'var(--fg-muted)', margin:'18px 0 0'}}>{NOTE_POURBOIRE}.</p>
+    </>
+  ) });
+  if (departs && departs.length) tabs.splice(tabs.length - 2, 0, { id: 'departs', lbl: 'Départs et prix', render: () => (
+    <table style={{width:'100%', borderCollapse:'collapse', maxWidth:720}}>
+      <thead><tr><th style={th}>Départ</th><th style={th}>Retour</th><th style={{...th, width:160}}>Adulte</th></tr></thead>
+      <tbody>
+        {departs.map(d => (
+          <tr key={d.du}>
+            <td style={td}>{d.du}</td>
+            <td style={td}>{d.au}</td>
+            <td style={{...td, fontFamily:'var(--font-display)', fontWeight:600, color:'var(--fg)'}}>{d.prix}</td>
+          </tr>
+        ))}
+      </tbody>
+    </table>
+  ) });
+
+  const [active, setActive] = useState(tabs[0].id);
+  const cur = tabs.find(t => t.id === active) || tabs[0];
+  return (
+    <div className="tabs">
+      <div className="section-head" style={{marginBottom:20}}>
+        <div className="left">
+          <div className="section-eyebrow">VOTRE SÉJOUR EN DÉTAILS</div>
+          <h2>Les points importants.</h2>
+          <div className="kicker">· {data.titre}</div>
+        </div>
+      </div>
+      <div className="tabbar">
+        {tabs.map(t => (
+          <button key={t.id} className={t.id === active ? 'active' : ''} onClick={()=>setActive(t.id)}>{t.lbl}</button>
+        ))}
+      </div>
+      <div className="panel">{cur.render()}</div>
+    </div>
+  );
+}
+

@@ -1,0 +1,182 @@
+import React, { useEffect, useState } from 'react'
+import { photoSet } from './photos.js'
+import { RailBooking } from './booking.jsx'
+import { GRADIENTS, ImageSlot } from './components.jsx'
+
+// Carrousel photo des pages itinéraire, plus le bloc « L'essentiel »
+
+export const CAROUSELS = {
+  'CL-09': [
+    { id: 'alpes-1', photo: '/photos/fuji-city.jpg', grad: 'snow', legende: 'Tokyo et le Fuji, au départ' },
+    { id: 'alpes-2', grad: 'snow', legende: 'La crête, au-delà de 2 500 mètres' },
+    { id: 'alpes-3', grad: 'forest', legende: 'La montée en forêt vers Enzanso' },
+    { id: 'alpes-4', photo: '/photos/kiyomizu-street.jpg', grad: 'paper', legende: "Kyoto, à l'arrivée" },
+  ],
+  KUNISAKI: [
+    { id: 'kunisaki-1', grad: 'forest', legende: 'Le sentier de Futagoji' },
+    { id: 'kunisaki-2', photo: '/photos/hands.jpg', grad: 'ember', legende: 'Teinture aizome avec Tanaka-san' },
+    { id: 'kunisaki-3', grad: 'dusk', legende: 'Un onsen de quartier à Beppu' },
+    { id: 'kunisaki-4', grad: 'rice', legende: 'Le marché de poissons de Saiki' },
+  ],
+};
+
+export function DetailCarousel({ slides }) {
+  const [i, setI] = useState(0);
+  const n = slides.length;
+  useEffect(() => {
+    const t = setInterval(() => setI(p => (p + 1) % n), 6000);
+    return () => clearInterval(t);
+  }, [n]);
+  return (
+    <>
+      <div className="detail-carousel">
+        {slides.map((s, idx) => (
+          <div key={s.id} className={`slide${idx === i ? ' active' : ''}`}>
+            <ImageSlot id={s.id} placeholder={s.legende} gradient={GRADIENTS[s.grad]} src={s.photo} />
+          </div>
+        ))}
+        <div className="veil"></div>
+        <button className="arrow prev" aria-label="Photo précédente" onClick={() => setI((i - 1 + n) % n)}>‹</button>
+        <button className="arrow next" aria-label="Photo suivante" onClick={() => setI((i + 1) % n)}>›</button>
+        <div className="caption">{String(i + 1).padStart(2, '0')} / {String(n).padStart(2, '0')} · {slides[i].legende}</div>
+        <div className="dots">
+          {slides.map((_, idx) => (
+            <button key={idx} className={idx === i ? 'active' : ''} onClick={() => setI(idx)} aria-label={`Photo ${idx + 1}`}></button>
+          ))}
+        </div>
+      </div>
+      <div className="detail-thumbs">
+        {slides.map((s, idx) => (
+          <button key={s.id} className={idx === i ? 'active' : ''} onClick={() => setI(idx)} aria-label={s.legende}>
+            {photoSet(s.photo) ? <img src={photoSet(s.photo).src} srcSet={photoSet(s.photo).srcSet} sizes="120px" alt="" loading="lazy" decoding="async" /> : <span style={{display:'block', width:'100%', height:'100%', background:'var(--kiraku-paper)'}}></span>}
+          </button>
+        ))}
+      </div>
+    </>
+  );
+}
+
+// Pictos de ligne pour « ce qui est inclus »
+const ICONS = {
+  bed: 'M3 17v-4h18v4M3 13V8m18 5V9a2 2 0 0 0-2-2h-6v6M3 17v2m18-2v2M6 10.5h3',
+  meal: 'M4 4v6a3 3 0 0 0 6 0V4M7 10v10M14 20V4c3 1 5 3 5 7 0 3-2 4-3 4h-2',
+  guide: 'M12 5.5a2 2 0 1 0 0-4 2 2 0 0 0 0 4zM12 6v7m0 0-3 8m3-8 3 8M8 9l8-1.5',
+  train: 'M6 3h12v11H6zM6 14l-2 5m14-5 2 5M9 7h6M9 10.5h.5m5 0h.5M9 19h6',
+  luggage: 'M6 7h12v13H6zM9 7V4h6v3M6 20v1m12-1v1M10 11v5m4-5v5',
+  ticket: 'M3 8h18v3a2 2 0 0 0 0 4v3H3v-3a2 2 0 0 0 0-4V8zM9 8v12',
+  wifi: 'M4 10a12 12 0 0 1 16 0M7 13.5a7.5 7.5 0 0 1 10 0M10.5 17a3 3 0 0 1 3 0',
+  mountain: 'M2 19h20L14 5l-3.5 6-2-3L2 19zM10.5 11l1.5 2.5',
+  onsen: 'M4 13h16v3a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4v-3zM8 9c0-2 2-2 2-4m4 4c0-2 2-2 2-4',
+  flag: 'M6 3v18M6 4h11l-2 4 2 4H6',
+  temple: 'M3 8h18L12 3 3 8zM5 8v11m14-11v11M9 19v-6h6v6M3 21h18',
+  market: 'M4 8h16l-1 12H5L4 8zM8 8V5a4 4 0 0 1 8 0v3',
+};
+
+export function Ico({ name }) {
+  return (
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" style={{color:'var(--kiraku-shu)'}} aria-hidden="true"><path d={ICONS[name] || ICONS.flag}></path></svg>
+  );
+}
+
+export function InclusionsVisuelles({ items }) {
+  return (
+    <div className="incl-grid">
+      {items.map(it => (
+        <div className="row" key={it.lbl}><Ico name={it.ico} /><span>{it.lbl}</span></div>
+      ))}
+    </div>
+  );
+}
+
+// Les + de cet itinéraire, rendus dans l'onglet « Points forts »
+export function DetailPlus({ items }) {
+  return (
+    <div className="plus-grid">
+      {items.map((t, i) => (
+        <div className="item" key={t}><span className="n">{String(i+1).padStart(2,'0')}</span><p>{t}</p></div>
+      ))}
+    </div>
+  );
+}
+
+// Faits essentiels · panneau compact placé à côté du carrousel
+export function DetailFacts({ price, priceSub, cells, recap, formule, go, circuitRef }) {
+  return (
+    <div className="facts">
+      <div className="head">
+        {formule ? <span className="badge" style={{flexBasis:'100%', marginBottom:6}}>{formule}</span> : null}
+        <span className="from">À partir de</span>
+        <span className="price">{price}</span>
+        <span className="sub">{priceSub}</span>
+      </div>
+      <div className="grid">
+        {recap ? (
+          <div className="cell span">
+            <div className="lbl">Le circuit en bref</div>
+            <div className="val">{recap}</div>
+          </div>
+        ) : null}
+        {cells.map(c => (
+          <div className="cell" key={c.lbl}>
+            <div className="lbl">{c.lbl}</div>
+            <div className="val">{c.val}</div>
+          </div>
+        ))}
+      </div>
+      <div className="foot">
+        {circuitRef ? <RailBooking circuitRef={circuitRef} go={go} /> : (
+          <>
+            <button className="btn btn-primary" style={{width:'100%', justifyContent:'center'}} onClick={()=>go('contact')}>Réserver un appel</button>
+            <div className="note">Trente minutes au téléphone. Sans engagement.</div>
+          </>
+        )}
+      </div>
+    </div>
+  );
+}
+
+// Bloc « L'essentiel » · les informations décisives, avant le détail du séjour
+export function DetailEssentials({ items, note }) {
+  const cell = { padding: '20px 24px', borderRight: '1px solid var(--hairline)', borderBottom: '1px solid var(--hairline)' };
+  return (
+    <div style={{marginBottom: 56}}>
+      <div className="section-head" style={{marginBottom: 20}}>
+        <div className="left">
+          <div className="section-eyebrow">L'ESSENTIEL</div>
+          <h2>Ce qu'il faut savoir avant de choisir.</h2>
+        </div>
+      </div>
+      <div style={{border: '1px solid var(--hairline)', borderRadius: 14, overflow: 'hidden', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(220px, 1fr))', background: 'var(--kiraku-paper)'}}>
+        {items.map(it => (
+          <div key={it.lbl} style={cell}>
+            <div style={{fontFamily: 'var(--font-sans)', fontSize: 11, letterSpacing: '0.2em', textTransform: 'uppercase', color: 'var(--fg-muted)'}}>{it.lbl}</div>
+            <div style={{fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 20, color: 'var(--fg)', marginTop: 6, lineHeight: 1.25}}>{it.val}</div>
+            {it.sub ? <div style={{fontFamily: 'var(--font-serif)', fontSize: 15, color: 'var(--fg-2)', marginTop: 6, lineHeight: 1.5}}>{it.sub}</div> : null}
+          </div>
+        ))}
+      </div>
+      {note ? <p style={{fontFamily: 'var(--font-serif)', fontSize: 16, lineHeight: 1.65, color: 'var(--fg-2)', margin: '18px 0 0', maxWidth: 720, textWrap: 'pretty'}}>{note}</p> : null}
+    </div>
+  );
+}
+
+// Le détail du séjour, jour par jour, en lecture verticale
+export function DetailDays({ days }) {
+  return (
+    <div className="days-flow">
+      {days.map(d => (
+        <div className="day" key={d.n}>
+          <div className="num">{String(d.n).padStart(2,'0')}<small>JOUR</small></div>
+          <div>
+            <h3>{d.title}</h3>
+            <p>{d.body}</p>
+            <div className="tags">
+              {d.tags.map(t => <span key={t} className="tag">{t}</span>)}
+            </div>
+          </div>
+        </div>
+      ))}
+    </div>
+  );
+}
+

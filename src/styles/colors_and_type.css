@@ -1,0 +1,285 @@
+/* ============================================================
+   Kiraku Travel — Design Tokens
+   Colors + Type. Import this anywhere in the system.
+   ============================================================ */
+
+/* ---------- Polices ----------
+   Shippori Mincho, la police de marque, est sous-ensemblée maison : latin
+   complet plus les 200 caractères japonais réellement employés sur le site,
+   soit 85 Ko par graisse au lieu de 8,5 Mo. Les autres familles viennent des
+   paquets @fontsource en sous-ensemble latin, importés dans src/main.jsx.
+   Aucun appel à Google Fonts, pour la performance et le RGPD. */
+
+@font-face {
+  font-family: 'Shippori Mincho';
+  src: url('/fonts/shippori-mincho-400.woff2') format('woff2');
+  font-weight: 400; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  src: url('/fonts/shippori-mincho-500.woff2') format('woff2');
+  font-weight: 500; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  src: url('/fonts/shippori-mincho-600.woff2') format('woff2');
+  font-weight: 600; font-style: normal; font-display: swap;
+}
+@font-face {
+  font-family: 'Shippori Mincho';
+  src: url('/fonts/shippori-mincho-700.woff2') format('woff2');
+  font-weight: 700; font-style: normal; font-display: swap;
+}
+/* Shippori Mincho — provided as brand font files (fonts/). The remaining
+   families (Yuji Mai brush, Noto Sans JP, Noto Serif JP) are still loaded
+   from Google Fonts as documented substitutes — see README. */
+:root {
+  /* ---------- Brand colors ---------- */
+  /* Shuiro (朱色) — seal-stamp vermilion. The primary brand red, sampled from
+     the hanko logo. Use sparingly, like a stamp. */
+  --kiraku-shu:        #C8202B;
+  --kiraku-shu-deep:   #A2161D;     /* darker stamped edge */
+  --kiraku-shu-soft:   #E76A6F;     /* tints, e.g. hover bg */
+  --kiraku-shu-wash:   #FAEDED;     /* lightest pink wash */
+
+  /* Enji (臙脂) — deep wine-crimson, the brush wordmark in red */
+  --kiraku-enji:       #7B0019;
+
+  /* Sumi (墨) — calligraphy ink black, never pure #000 */
+  --kiraku-sumi:       #14110F;
+  --kiraku-sumi-2:     #2A2522;     /* card text on cream */
+  --kiraku-sumi-3:     #57514B;     /* secondary text */
+  --kiraku-sumi-4:     #8B847D;     /* tertiary, captions */
+  --kiraku-sumi-5:     #B8B1A8;     /* hairlines, disabled */
+
+  /* Violet — secondary accent (the violet logo lockup) */
+  --kiraku-murasaki:   #4C1AD6;
+  --kiraku-murasaki-2: #2E0CA0;
+
+  /* Washi (和紙) — warm paper neutrals. The system runs on these. */
+  --kiraku-washi:      #F6F1E8;     /* page background — warm cream */
+  --kiraku-washi-2:    #EFE7D6;     /* card / panel bg */
+  --kiraku-washi-3:    #E6DCC6;     /* darker washi divider */
+  --kiraku-paper:      #FBF8F1;     /* lightest, near-white panel */
+  --kiraku-white:      #FFFFFF;
+
+  /* Indigo accent — Japanese aizome reference, used sparingly for links/info */
+  --kiraku-ai:         #1B3A6B;
+
+  /* Matcha / forest — for nature/itinerary tags */
+  --kiraku-matcha:     #5C7A4A;
+
+  /* ---------- Semantic tokens ---------- */
+  --bg:                var(--kiraku-washi);
+  --bg-elev:           var(--kiraku-paper);
+  --bg-panel:          var(--kiraku-washi-2);
+  --bg-inverse:        var(--kiraku-sumi);
+
+  --fg:                var(--kiraku-sumi);
+  --fg-2:              var(--kiraku-sumi-2);
+  --fg-muted:          var(--kiraku-sumi-3);
+  --fg-subtle:         var(--kiraku-sumi-4);
+  --fg-inverse:        var(--kiraku-washi);
+
+  --accent:            var(--kiraku-shu);
+  --accent-deep:       var(--kiraku-shu-deep);
+  --accent-soft:       var(--kiraku-shu-soft);
+  --accent-wash:       var(--kiraku-shu-wash);
+
+  --link:              var(--kiraku-enji);
+  --link-hover:        var(--kiraku-shu);
+
+  --border:            rgba(20, 17, 15, 0.12);
+  --border-strong:     rgba(20, 17, 15, 0.24);
+  --hairline:          rgba(20, 17, 15, 0.08);
+
+  --success:           var(--kiraku-matcha);
+  --info:              var(--kiraku-ai);
+  --warning:           #C77B2A;
+  --danger:            var(--kiraku-shu-deep);
+
+  /* ---------- Type families ---------- */
+  --font-brush:        "Yuji Mai", "Shippori Mincho", "Brush Script MT", cursive;          /* wordmark / accents */
+  --font-display:      "Shippori Mincho", "Noto Serif JP", "Cormorant Garamond", Georgia, serif;
+  --font-serif:        "Noto Serif JP", "Shippori Mincho", Georgia, serif;
+  --font-sans:         "Noto Sans JP", "Shippori Mincho", ui-sans-serif, system-ui, -apple-system, "Helvetica Neue", sans-serif;
+  --font-mono:         "JetBrains Mono", ui-monospace, "SF Mono", "Consolas", monospace;
+
+  /* ---------- Type scale (1.250 — major third) ---------- */
+  --fs-2xs: 11px;
+  --fs-xs:  12px;
+  --fs-sm:  14px;
+  --fs-md:  16px;        /* body base */
+  --fs-lg:  18px;
+  --fs-xl:  22px;
+  --fs-2xl: 28px;
+  --fs-3xl: 36px;
+  --fs-4xl: 48px;
+  --fs-5xl: 64px;
+  --fs-6xl: 84px;
+  --fs-7xl: 112px;
+
+  --lh-tight:    1.05;   /* @kind other */
+  --lh-snug:     1.2;    /* @kind other */
+  --lh-normal:   1.55;   /* @kind other */
+  --lh-relaxed:  1.7;    /* @kind other */
+
+  --tracking-tight:   -0.02em;
+  --tracking-normal:  0;
+  --tracking-wide:    0.08em;
+  --tracking-widest:  0.22em;     /* small-caps eyebrow style */
+
+  /* ---------- Radii ---------- */
+  --r-xs: 2px;
+  --r-sm: 4px;
+  --r-md: 8px;
+  --r-lg: 14px;
+  --r-xl: 22px;
+  --r-pill: 999px;
+
+  /* ---------- Spacing (4-pt base) ---------- */
+  --sp-1: 4px;
+  --sp-2: 8px;
+  --sp-3: 12px;
+  --sp-4: 16px;
+  --sp-5: 24px;
+  --sp-6: 32px;
+  --sp-7: 48px;
+  --sp-8: 64px;
+  --sp-9: 96px;
+  --sp-10: 128px;
+
+  /* ---------- Shadows — soft, paper-on-paper ---------- */
+  --shadow-sm:  0 1px 2px rgba(20,17,15,0.06);
+  --shadow-md:  0 6px 18px -8px rgba(20,17,15,0.18), 0 2px 4px rgba(20,17,15,0.04);
+  --shadow-lg:  0 24px 48px -20px rgba(20,17,15,0.28), 0 4px 12px rgba(20,17,15,0.06);
+  --shadow-inset: inset 0 0 0 1px rgba(20,17,15,0.06);
+  --shadow-stamp: 0 1px 0 rgba(20,17,15,0.04), 0 0 0 1px rgba(200,32,43,0.18);
+}
+
+/* ============================================================
+   Semantic typography
+   ============================================================ */
+
+html, body { background: var(--bg); color: var(--fg); }
+
+body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-normal);
+  font-feature-settings: "kern", "liga", "calt", "palt";
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Eyebrow — small-cap-style label above headings (e.g. "Une expérience —") */
+.eyebrow,
+.kiraku-eyebrow {
+  font-family: var(--font-sans);
+  font-size: var(--fs-xs);
+  font-weight: 500;
+  letter-spacing: var(--tracking-widest);
+  text-transform: uppercase;
+  color: var(--fg-muted);
+}
+
+/* The "wordmark" style — brush type, for hero/headline accents only.
+   Real usage should use the wordmark PNG asset; this is for inline runs. */
+.brush,
+.kiraku-brush {
+  font-family: var(--font-brush);
+  font-weight: 400;
+  letter-spacing: 0.02em;
+}
+
+h1, .h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(40px, 5.6vw, var(--fs-6xl));
+  line-height: var(--lh-tight);
+  letter-spacing: var(--tracking-tight);
+  color: var(--fg);
+  text-wrap: balance;
+}
+h2, .h2 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(28px, 3.6vw, var(--fs-4xl));
+  line-height: var(--lh-snug);
+  letter-spacing: var(--tracking-tight);
+  text-wrap: balance;
+}
+h3, .h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--fs-2xl);
+  line-height: var(--lh-snug);
+  text-wrap: balance;
+}
+h4, .h4 {
+  font-family: var(--font-serif);
+  font-weight: 500;
+  font-size: var(--fs-xl);
+  line-height: var(--lh-snug);
+}
+h5, .h5 {
+  font-family: var(--font-sans);
+  font-weight: 600;
+  font-size: var(--fs-md);
+  letter-spacing: 0.01em;
+}
+
+p, .body {
+  font-family: var(--font-sans);
+  font-size: var(--fs-md);
+  line-height: var(--lh-relaxed);
+  color: var(--fg-2);
+  text-wrap: pretty;
+}
+
+.lede {
+  font-family: var(--font-serif);
+  font-size: var(--fs-xl);
+  line-height: var(--lh-relaxed);
+  font-weight: 400;
+  color: var(--fg-2);
+}
+
+.caption, small {
+  font-family: var(--font-sans);
+  font-size: var(--fs-sm);
+  color: var(--fg-muted);
+  line-height: var(--lh-normal);
+}
+
+.kicker {
+  font-family: var(--font-serif);
+  font-style: italic;
+  color: var(--accent-deep);
+}
+
+a {
+  color: var(--link);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 1px;
+  transition: color 160ms ease;
+}
+a:hover { color: var(--link-hover); }
+
+/* ============================================================
+   Utility patterns
+   ============================================================ */
+
+/* Hairline rule — used everywhere in editorial layouts */
+.rule { border: 0; height: 1px; background: var(--border); margin: var(--sp-5) 0; }
+
+/* Vertical line for two-column editorial layouts */
+.rule-v { width: 1px; background: var(--border); align-self: stretch; }
+
+/* "Seal" presentation — square mark with a touch of paper grain feel */
+.seal-stamp {
+  display: inline-block;
+  width: 64px; height: 64px;
+  object-fit: contain;
+}
