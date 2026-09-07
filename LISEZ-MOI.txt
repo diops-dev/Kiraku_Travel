@@ -1,0 +1,4 @@
+Cette branche contient le site Kiraku Travel déjà compilé.
+Elle est destinée au déploiement Hostinger : son contenu va tel quel dans
+public_html. Ne pas la modifier à la main, elle est régénérée par
+scripts/deploy.sh depuis la branche main.
