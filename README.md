@@ -7,9 +7,27 @@ React 18 + Vite, routes réelles avec react-router, et **pré-rendu statique** :
 au build, chaque URL devient une page HTML complète, indexable par les moteurs
 et lisible par les IA, puis React prend la main côté navigateur.
 
+## Dépôt GitHub
+
+`https://github.com/diops-dev/Kiraku_Travel`
+
+- `main` : le code source, ce dossier
+- `deploy` : le site compilé, ce que Hostinger clone dans `public_html`
+
+La procédure complète de mise en ligne est dans `DEPLOIEMENT.md`.
+
 ## Où vit le projet
 
-Dossier de référence : **Drive → `Kiraku - 08 Site Web & Outils/Code site (kiraku-site-2026)`**.
+Deux emplacements, deux rôles :
+
+- **Drive**, `Kiraku - 08 Site Web & Outils/Code site (kiraku-site-2026)` :
+  le dossier de référence, sources et `dist/`, consultable depuis n'importe où.
+- **Mac**, `Documents/Claude/Projects/Kiraku Travel/Kiraku_Travel-github` :
+  le clone Git, celui qui pousse vers GitHub. Un dossier `.git` ne doit jamais
+  être synchronisé par Google Drive, la synchro corrompt les dépôts.
+
+`scripts/sync-depuis-drive.sh` recopie les sources du Drive vers le clone,
+`scripts/deploy.sh` renvoie le build vers le Drive après compilation.
 
 `node_modules` n'est volontairement pas sur le Drive : c'est 318 Mo et des
 dizaines de milliers de fichiers que Google Drive n'a aucune raison de
