@@ -1,121 +1,541 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>https://japonautrement.fr/</loc>
+    <loc>https://kirakutravel.com/</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires</loc>
+    <loc>https://kirakutravel.com/itineraires</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/le-japon</loc>
+    <loc>https://kirakutravel.com/le-japon</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/le-japon/histoire</loc>
+    <loc>https://kirakutravel.com/le-japon/histoire</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon/histoire"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan/history"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon/historia"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/le-japon/gastronomie</loc>
+    <loc>https://kirakutravel.com/le-japon/gastronomie</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon/gastronomie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan/food"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon/gastronomia"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/guide-pratique</loc>
+    <loc>https://kirakutravel.com/guide-pratique</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/guide-pratique"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/travel-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/guia-practica"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/notre-approche</loc>
+    <loc>https://kirakutravel.com/notre-approche</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/notre-approche"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/our-approach"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/nuestro-enfoque"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/journal</loc>
+    <loc>https://kirakutravel.com/journal</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/journal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/journal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/diario"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/cse-comites-entreprise</loc>
+    <loc>https://kirakutravel.com/cse-comites-entreprise</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/cse-comites-entreprise"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/works-councils"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/comites-de-empresa"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/contact</loc>
+    <loc>https://kirakutravel.com/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/contacto"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/cgv-mentions-legales</loc>
+    <loc>https://kirakutravel.com/cgv-mentions-legales</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/cgv-mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/terms-and-legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/condiciones-y-aviso-legal"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.6</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/du-neon-au-silence</loc>
+    <loc>https://kirakutravel.com/itineraires/du-neon-au-silence</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/du-neon-au-silence"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-neon-to-silence"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/del-neon-al-silencio"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/mille-marches-vers-le-nord</loc>
+    <loc>https://kirakutravel.com/itineraires/mille-marches-vers-le-nord</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/mille-marches-vers-le-nord"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/a-thousand-steps-north"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/mil-escalones-hacia-el-norte"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/des-temples-aux-coraux</loc>
+    <loc>https://kirakutravel.com/itineraires/des-temples-aux-coraux</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/des-temples-aux-coraux"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-temples-to-coral"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/de-los-templos-a-los-corales"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/le-premier-souffle</loc>
+    <loc>https://kirakutravel.com/itineraires/le-premier-souffle</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/le-premier-souffle"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-first-breath"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/el-primer-aliento"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/au-coeur-du-vieux-japon</loc>
+    <loc>https://kirakutravel.com/itineraires/au-coeur-du-vieux-japon</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/au-coeur-du-vieux-japon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-heart-of-old-japan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/el-corazon-del-viejo-japon"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/la-traversee-sans-hate</loc>
+    <loc>https://kirakutravel.com/itineraires/la-traversee-sans-hate</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/la-traversee-sans-hate"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-unhurried-crossing"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/la-travesia-sin-prisa"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/des-tours-aux-toits-de-chaume</loc>
+    <loc>https://kirakutravel.com/itineraires/des-tours-aux-toits-de-chaume</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/des-tours-aux-toits-de-chaume"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-towers-to-thatched-roofs"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/de-las-torres-a-los-tejados-de-paja"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/jusqu-aux-cedres-millenaires</loc>
+    <loc>https://kirakutravel.com/itineraires/jusqu-aux-cedres-millenaires</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/jusqu-aux-cedres-millenaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/to-the-thousand-year-cedars"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/hasta-los-cedros-milenarios"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://japonautrement.fr/itineraires/traversee-des-alpes-japonaises</loc>
+    <loc>https://kirakutravel.com/itineraires/traversee-des-alpes-japonaises</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/traversee-des-alpes-japonaises"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/japanese-alps-traverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/travesia-de-los-alpes-japoneses"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/japan</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/japan/history</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon/histoire"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan/history"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon/historia"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/japan/food</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon/gastronomie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan/food"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon/gastronomia"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/travel-guide</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/guide-pratique"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/travel-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/guia-practica"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/our-approach</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/notre-approche"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/our-approach"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/nuestro-enfoque"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/journal</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/journal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/journal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/diario"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/works-councils</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/cse-comites-entreprise"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/works-councils"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/comites-de-empresa"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/contact</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/contacto"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/terms-and-legal-notice</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/cgv-mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/terms-and-legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/condiciones-y-aviso-legal"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/from-neon-to-silence</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/du-neon-au-silence"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-neon-to-silence"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/del-neon-al-silencio"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/a-thousand-steps-north</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/mille-marches-vers-le-nord"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/a-thousand-steps-north"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/mil-escalones-hacia-el-norte"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/from-temples-to-coral</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/des-temples-aux-coraux"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-temples-to-coral"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/de-los-templos-a-los-corales"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/the-first-breath</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/le-premier-souffle"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-first-breath"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/el-primer-aliento"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/the-heart-of-old-japan</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/au-coeur-du-vieux-japon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-heart-of-old-japan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/el-corazon-del-viejo-japon"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/the-unhurried-crossing</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/la-traversee-sans-hate"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-unhurried-crossing"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/la-travesia-sin-prisa"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/from-towers-to-thatched-roofs</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/des-tours-aux-toits-de-chaume"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-towers-to-thatched-roofs"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/de-las-torres-a-los-tejados-de-paja"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/to-the-thousand-year-cedars</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/jusqu-aux-cedres-millenaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/to-the-thousand-year-cedars"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/hasta-los-cedros-milenarios"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/en/itineraries/japanese-alps-traverse</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/traversee-des-alpes-japonaises"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/japanese-alps-traverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/travesia-de-los-alpes-japoneses"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/japon</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/japon/historia</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon/histoire"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan/history"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon/historia"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/japon/gastronomia</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/le-japon/gastronomie"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/japan/food"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/japon/gastronomia"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/guia-practica</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/guide-pratique"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/travel-guide"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/guia-practica"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/nuestro-enfoque</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/notre-approche"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/our-approach"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/nuestro-enfoque"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/diario</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/journal"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/journal"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/diario"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/comites-de-empresa</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/cse-comites-entreprise"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/works-councils"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/comites-de-empresa"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/contacto</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/contact"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/contact"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/contacto"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/condiciones-y-aviso-legal</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/cgv-mentions-legales"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/terms-and-legal-notice"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/condiciones-y-aviso-legal"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/del-neon-al-silencio</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/du-neon-au-silence"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-neon-to-silence"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/del-neon-al-silencio"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/mil-escalones-hacia-el-norte</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/mille-marches-vers-le-nord"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/a-thousand-steps-north"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/mil-escalones-hacia-el-norte"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/de-los-templos-a-los-corales</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/des-temples-aux-coraux"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-temples-to-coral"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/de-los-templos-a-los-corales"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/el-primer-aliento</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/le-premier-souffle"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-first-breath"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/el-primer-aliento"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/el-corazon-del-viejo-japon</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/au-coeur-du-vieux-japon"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-heart-of-old-japan"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/el-corazon-del-viejo-japon"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/la-travesia-sin-prisa</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/la-traversee-sans-hate"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/the-unhurried-crossing"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/la-travesia-sin-prisa"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/de-las-torres-a-los-tejados-de-paja</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/des-tours-aux-toits-de-chaume"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/from-towers-to-thatched-roofs"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/de-las-torres-a-los-tejados-de-paja"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/hasta-los-cedros-milenarios</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/jusqu-aux-cedres-millenaires"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/to-the-thousand-year-cedars"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/hasta-los-cedros-milenarios"/>
+    <lastmod>2026-09-08</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://kirakutravel.com/es/itinerarios/travesia-de-los-alpes-japoneses</loc>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://kirakutravel.com/itineraires/traversee-des-alpes-japonaises"/>
+    <xhtml:link rel="alternate" hreflang="en" href="https://kirakutravel.com/en/itineraries/japanese-alps-traverse"/>
+    <xhtml:link rel="alternate" hreflang="es" href="https://kirakutravel.com/es/itinerarios/travesia-de-los-alpes-japoneses"/>
     <lastmod>2026-09-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
