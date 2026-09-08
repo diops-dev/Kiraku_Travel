@@ -10,6 +10,7 @@ header('Content-Type: application/json; charset=utf-8');
 header('X-Content-Type-Options: nosniff');
 
 $cfg = require __DIR__ . '/config.php';
+require __DIR__ . '/validation.php';
 
 function repondre(int $code, array $corps): void {
     http_response_code($code);
@@ -50,15 +51,38 @@ function entete(string $v): string {
     return trim(str_replace(["\r", "\n", "\t"], ' ', $v));
 }
 
-$email  = texte($d['email'] ?? '', 200);
 $prenom = texte($d['prenom'] ?? '', 100);
 $nom    = texte($d['nom'] ?? '', 100);
 
-if ($email === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
-    repondre(422, ['ok' => false, 'erreur' => "L'adresse email n'est pas valide."]);
-}
 if ($prenom === '' && $nom === '') {
     repondre(422, ['ok' => false, 'erreur' => 'Le nom est requis.']);
+}
+
+// L'email et les téléphones sont revalidés ici : le contrôle du navigateur
+// est un confort pour le visiteur, celui-ci est la vraie barrière.
+$vEmail = kiraku_valider_email(texte($d['email'] ?? '', 254));
+if (!$vEmail['ok']) {
+    repondre(422, ['ok' => false, 'champ' => 'email', 'erreur' => $vEmail['erreur']]);
+}
+$email = $vEmail['valeur'];
+$d['email'] = $email;
+
+// 'tel' sur le formulaire de contact, 'mobile' sur le formulaire CSE.
+foreach (['tel', 'mobile'] as $champMobile) {
+    if (!isset($d[$champMobile])) { continue; }
+    $v = kiraku_valider_telephone(texte($d[$champMobile], 40), true, true);
+    if (!$v['ok']) {
+        repondre(422, ['ok' => false, 'champ' => $champMobile, 'erreur' => $v['erreur']]);
+    }
+    $d[$champMobile] = kiraku_formater_telephone($v['valeur']);
+}
+// Le fixe est facultatif, et n'a pas à être un mobile.
+if (isset($d['fixe']) && trim((string)$d['fixe']) !== '') {
+    $v = kiraku_valider_telephone(texte($d['fixe'], 40), false, false);
+    if (!$v['ok']) {
+        repondre(422, ['ok' => false, 'champ' => 'fixe', 'erreur' => $v['erreur']]);
+    }
+    $d['fixe'] = kiraku_formater_telephone($v['valeur']);
 }
 
 /* ---------- Anti-abus, par adresse IP ---------- */
