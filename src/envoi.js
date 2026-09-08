@@ -27,6 +27,8 @@ export async function envoyerFormulaire(donnees) {
   if (!reponse.ok || !corps || corps.ok !== true) {
     const err = new Error((corps && corps.erreur) || MSG_ERREUR_RESEAU);
     err.reseau = !corps;
+    // Le serveur peut désigner le champ fautif, on l'affiche au bon endroit.
+    if (corps && corps.champ) err.champ = corps.champ;
     throw err;
   }
   return corps;

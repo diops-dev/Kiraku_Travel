@@ -709,3 +709,11 @@ main.page-home, main.page-cse { padding-top: 0; }
 /* Boutons d'envoi pendant la requête */
 .btn:disabled,
 .cse-send:disabled { opacity: 0.55; cursor: progress; pointer-events: none; }
+
+/* Correction d'email proposée sous le champ */
+.lien-sugg {
+  background: none; border: 0; padding: 0; cursor: pointer;
+  font: inherit; color: var(--kiraku-enji);
+  text-decoration: underline; text-underline-offset: 2px;
+}
+.lien-sugg:hover { color: var(--kiraku-shu); }

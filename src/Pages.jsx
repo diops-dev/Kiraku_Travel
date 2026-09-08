@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import { LigneCompteur } from './booking.jsx'
 import { GRADIENTS, ImageSlot } from './components.jsx'
 import { envoyerFormulaire, MSG_ERREUR_RESEAU } from './envoi.js'
+import { validerEmail, validerTelephone } from './validation.js'
 
 // About + Contact + Journal pages
 
@@ -70,14 +71,12 @@ export function AboutPage({ go }) {
   );
 }
 
-const RX_EMAIL = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
-const RX_TEL = /^(?:\+\d{8,14}|0\d{9})$/;
-
 export function ContactPage({ go }) {
   const [submitted, setSubmitted] = useState(false);
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
   const [erreurEnvoi, setErreurEnvoi] = useState('');
   const [news, setNews] = useState(false);
+  const [suggEmail, setSuggEmail] = useState('');
   const [f, setF] = useState({ prenom: '', nom: '', email: '', tel: '', mois: '', duree: '', message: '', hp: '' });
   const [adultes, setAdultes] = useState(2);
   const [enfants, setEnfants] = useState(0);
@@ -90,12 +89,28 @@ export function ContactPage({ go }) {
     const e = {};
     if (!f.prenom.trim()) e.prenom = 'Votre prénom est requis.';
     if (!f.nom.trim()) e.nom = 'Votre nom est requis.';
-    if (!f.email.trim()) e.email = 'Votre email est requis.';
-    else if (!RX_EMAIL.test(f.email.trim())) e.email = 'Cet email ne semble pas valide, vérifiez la partie après le @.';
-    const tel = f.tel.replace(/[\s.\-()]/g, '');
-    if (!tel) e.tel = 'Votre téléphone portable est requis.';
-    else if (!RX_TEL.test(tel)) e.tel = 'Indiquez un numéro à dix chiffres (06 12 34 56 78) ou au format international (+33 6 12 34 56 78).';
+    const vMail = validerEmail(f.email);
+    if (!vMail.ok) e.email = vMail.erreur;
+    const vTel = validerTelephone(f.tel);
+    if (!vTel.ok) e.tel = vTel.erreur;
     return e;
+  };
+
+  // À la sortie du champ email, on propose la correction d'une faute de frappe.
+  const verifierEmail = () => {
+    const v = validerEmail(f.email);
+    setSuggEmail(v.ok && v.suggestion ? v.suggestion : '');
+    if (!v.ok && f.email.trim()) setErr(s => ({ ...s, email: v.erreur }));
+  };
+  const accepterSuggestion = () => {
+    setF(s => ({ ...s, email: suggEmail }));
+    setSuggEmail('');
+    setErr(s => { const n = { ...s }; delete n.email; return n; });
+  };
+  const verifierTel = () => {
+    if (!f.tel.trim()) return;
+    const v = validerTelephone(f.tel);
+    if (!v.ok) setErr(s => ({ ...s, tel: v.erreur }));
   };
 
   const envoyer = async (ev) => {
@@ -128,7 +143,13 @@ export function ContactPage({ go }) {
       });
       setSubmitted(true);
     } catch (ex) {
-      setErreurEnvoi(ex.reseau ? MSG_ERREUR_RESEAU : ex.message);
+      if (ex.champ) {
+        setErr(s => ({ ...s, [ex.champ]: ex.message }));
+        const el = document.getElementById('c-' + ex.champ);
+        if (el) el.focus();
+      } else {
+        setErreurEnvoi(ex.reseau ? MSG_ERREUR_RESEAU : ex.message);
+      }
     } finally {
       setEnvoiEnCours(false);
     }
@@ -160,13 +181,15 @@ export function ContactPage({ go }) {
               </div>
               <div className={`field${err.email ? ' err' : ''}`}>
                 <label htmlFor="c-email">Email <em>obligatoire</em></label>
-                <input id="c-email" type="email" inputMode="email" placeholder="camille@exemple.com" value={f.email} onChange={set('email')} aria-invalid={!!err.email} />
-                {err.email ? <div className="field-err">{err.email}</div> : <div className="field-help">On garde votre adresse pour vous. Pas de revente, pas de newsletter sans accord.</div>}
+                <input id="c-email" type="email" inputMode="email" placeholder="camille@exemple.com" value={f.email} onChange={set('email')} onBlur={verifierEmail} aria-invalid={!!err.email} />
+                {err.email ? <div className="field-err">{err.email}</div>
+                  : suggEmail ? <div className="field-help">Vouliez-vous dire <button type="button" className="lien-sugg" onClick={accepterSuggestion}>{suggEmail}</button> ?</div>
+                  : <div className="field-help">On garde votre adresse pour vous. Pas de revente, pas de newsletter sans accord.</div>}
               </div>
               <div className={`field${err.tel ? ' err' : ''}`}>
                 <label htmlFor="c-tel">Téléphone portable <em>obligatoire</em></label>
-                <input id="c-tel" type="tel" inputMode="tel" placeholder="06 12 34 56 78" value={f.tel} onChange={set('tel')} aria-invalid={!!err.tel} />
-                {err.tel ? <div className="field-err">{err.tel}</div> : <div className="field-help">Pour l'appel. Nous ne l'utilisons pas autrement.</div>}
+                <input id="c-tel" type="tel" inputMode="tel" placeholder="06 45 78 21 09" value={f.tel} onChange={set('tel')} onBlur={verifierTel} aria-invalid={!!err.tel} />
+                {err.tel ? <div className="field-err">{err.tel}</div> : <div className="field-help">Un mobile, français ou étranger au format +33 6 45 78 21 09. Pour l'appel, rien d'autre.</div>}
               </div>
 
               <div className="field full">

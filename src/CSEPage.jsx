@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { GRADIENTS, ImageSlot } from './components.jsx'
 import { envoyerFormulaire, MSG_ERREUR_RESEAU } from './envoi.js'
+import { validerEmail, validerTelephone } from './validation.js'
 
 // Page CSE, présentation + formulaire de mise en relation
 const CSE_APPORTS = [
@@ -27,8 +28,6 @@ const CSE_SAISONS = [
   { key: 'ete', label: 'Été', mois: 'juin · juil · août' },
   { key: 'automne', label: 'Automne', mois: 'sept · oct · nov' },
 ];
-const RX_MAIL_CSE = /^[^\s@]+@[^\s@]+\.[a-z]{2,}$/i;
-const RX_TEL_CSE = /^(?:\+\d{8,14}|0\d{9})$/;
 const API_ADRESSE = 'https://api-adresse.data.gouv.fr/search/';
 
 function CseChips({ items, value, onToggle, multi }) {
@@ -61,6 +60,7 @@ export function CSEPage({ go }) {
   const [sent, setSent] = useState(false);
   const [envoiEnCours, setEnvoiEnCours] = useState(false);
   const [erreurEnvoi, setErreurEnvoi] = useState('');
+  const [suggEmail, setSuggEmail] = useState('');
 
   const set = (k) => (e) => {
     const v = e.target.value;
@@ -106,6 +106,22 @@ export function CSEPage({ go }) {
     setSugg([]);
     setErr(s => { const n = { ...s }; delete n.adresse; delete n.cp; delete n.ville; return n; });
   };
+  const verifierEmail = () => {
+    const v = validerEmail(f.email);
+    setSuggEmail(v.ok && v.suggestion ? v.suggestion : '');
+    if (!v.ok && f.email.trim()) setErr(s => ({ ...s, email: v.erreur }));
+  };
+  const accepterSuggestion = () => {
+    setF(s => ({ ...s, email: suggEmail }));
+    setSuggEmail('');
+    setErr(s => { const n = { ...s }; delete n.email; return n; });
+  };
+  const verifierTel = (champ, mobileSeul) => () => {
+    if (!f[champ].trim()) return;
+    const v = validerTelephone(f[champ], { mobileSeul, requis: false });
+    if (!v.ok) setErr(s => ({ ...s, [champ]: v.erreur }));
+  };
+
   const bascule = (setter, list) => (k) => setter(list.indexOf(k) > -1 ? list.filter(x => x !== k) : list.concat([k]));
 
   const valide = () => {
@@ -120,13 +136,12 @@ export function CSEPage({ go }) {
     if (!taille) e.taille = 'Indiquez un effectif sur site.';
     if (!f.prenom.trim()) e.prenom = 'Le prénom est requis.';
     if (!f.nom.trim()) e.nom = 'Le nom est requis.';
-    if (!f.email.trim()) e.email = "L'email est requis.";
-    else if (!RX_MAIL_CSE.test(f.email.trim())) e.email = "Cet email ne semble pas valide.";
-    const mob = f.mobile.replace(/[\s.\-()]/g, '');
-    if (!mob) e.mobile = 'Le téléphone portable est requis.';
-    else if (!RX_TEL_CSE.test(mob)) e.mobile = 'Dix chiffres (06 12 34 56 78) ou format international.';
-    const fx = f.fixe.replace(/[\s.\-()]/g, '');
-    if (fx && !RX_TEL_CSE.test(fx)) e.fixe = 'Ce numéro ne semble pas valide.';
+    const vMail = validerEmail(f.email);
+    if (!vMail.ok) e.email = vMail.erreur;
+    const vMob = validerTelephone(f.mobile);
+    if (!vMob.ok) e.mobile = vMob.erreur;
+    const vFixe = validerTelephone(f.fixe, { mobileSeul: false, requis: false });
+    if (!vFixe.ok) e.fixe = vFixe.erreur;
     if (!pays.length) e.pays = 'Choisissez au moins une destination.';
     return e;
   };
@@ -173,7 +188,13 @@ export function CSEPage({ go }) {
       setSent(true);
       if (typeof window !== 'undefined') window.scrollTo({ top: document.getElementById('cse-form')?.offsetTop || 0, behavior: 'smooth' });
     } catch (ex) {
-      setErreurEnvoi(ex.reseau ? MSG_ERREUR_RESEAU : ex.message);
+      if (ex.champ) {
+        setErr(s => ({ ...s, [ex.champ]: ex.message }));
+        const el = document.getElementById('cse-' + ex.champ);
+        if (el) el.focus();
+      } else {
+        setErreurEnvoi(ex.reseau ? MSG_ERREUR_RESEAU : ex.message);
+      }
     } finally {
       setEnvoiEnCours(false);
     }
@@ -331,8 +352,10 @@ export function CSEPage({ go }) {
               </div>
               <div className={`field${err.email ? ' err' : ''}`}>
                 <label htmlFor="cse-email">Email <em>obligatoire</em></label>
-                <input id="cse-email" type="email" inputMode="email" value={f.email} onChange={set('email')} placeholder="camille@entreprise.fr" autoComplete="email" />
-                {err.email ? <div className="field-err">{err.email}</div> : null}
+                <input id="cse-email" type="email" inputMode="email" value={f.email} onChange={set('email')} onBlur={verifierEmail} placeholder="camille@entreprise.fr" autoComplete="email" />
+                {err.email ? <div className="field-err">{err.email}</div>
+                  : suggEmail ? <div className="field-help">Vouliez-vous dire <button type="button" className="lien-sugg" onClick={accepterSuggestion}>{suggEmail}</button> ?</div>
+                  : null}
               </div>
               <div className={`field${err.poste ? ' err' : ''}`}>
                 <label htmlFor="cse-poste">Poste dans l'entreprise</label>
@@ -340,13 +363,13 @@ export function CSEPage({ go }) {
               </div>
               <div className={`field${err.fixe ? ' err' : ''}`}>
                 <label htmlFor="cse-fixe">Téléphone fixe</label>
-                <input id="cse-fixe" type="tel" inputMode="tel" value={f.fixe} onChange={set('fixe')} placeholder="01 84 60 12 90" />
+                <input id="cse-fixe" type="tel" inputMode="tel" value={f.fixe} onChange={set('fixe')} onBlur={verifierTel('fixe', false)} placeholder="01 42 33 12 90" />
                 {err.fixe ? <div className="field-err">{err.fixe}</div> : null}
               </div>
               <div className={`field${err.mobile ? ' err' : ''}`}>
                 <label htmlFor="cse-mobile">Téléphone portable <em>obligatoire</em></label>
-                <input id="cse-mobile" type="tel" inputMode="tel" value={f.mobile} onChange={set('mobile')} placeholder="06 12 34 56 78" autoComplete="tel" />
-                {err.mobile ? <div className="field-err">{err.mobile}</div> : null}
+                <input id="cse-mobile" type="tel" inputMode="tel" value={f.mobile} onChange={set('mobile')} onBlur={verifierTel('mobile', true)} placeholder="06 45 78 21 09" autoComplete="tel" />
+                {err.mobile ? <div className="field-err">{err.mobile}</div> : <div className="field-help">Un mobile, français ou étranger au format +33 6 45 78 21 09.</div>}
               </div>
             </div>
 
