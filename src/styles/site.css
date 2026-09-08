@@ -705,3 +705,7 @@ img { max-width: 100%; }
 main { padding-top: 84px; }
 main.page-home, main.page-cse { padding-top: 0; }
 @media (max-width: 1024px) { main { padding-top: 72px; } }
+
+/* Boutons d'envoi pendant la requête */
+.btn:disabled,
+.cse-send:disabled { opacity: 0.55; cursor: progress; pointer-events: none; }

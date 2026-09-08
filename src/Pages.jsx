@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { LigneCompteur } from './booking.jsx'
 import { GRADIENTS, ImageSlot } from './components.jsx'
+import { envoyerFormulaire, MSG_ERREUR_RESEAU } from './envoi.js'
 
 // About + Contact + Journal pages
 
@@ -74,6 +75,9 @@ const RX_TEL = /^(?:\+\d{8,14}|0\d{9})$/;
 
 export function ContactPage({ go }) {
   const [submitted, setSubmitted] = useState(false);
+  const [envoiEnCours, setEnvoiEnCours] = useState(false);
+  const [erreurEnvoi, setErreurEnvoi] = useState('');
+  const [news, setNews] = useState(false);
   const [f, setF] = useState({ prenom: '', nom: '', email: '', tel: '', mois: '', duree: '', message: '', hp: '' });
   const [adultes, setAdultes] = useState(2);
   const [enfants, setEnfants] = useState(0);
@@ -94,9 +98,9 @@ export function ContactPage({ go }) {
     return e;
   };
 
-  const envoyer = (ev) => {
+  const envoyer = async (ev) => {
     ev.preventDefault();
-    if (f.hp) return;
+    if (f.hp || envoiEnCours) return;
     const e = valide();
     setErr(e);
     if (Object.keys(e).length) {
@@ -106,7 +110,28 @@ export function ContactPage({ go }) {
       if (el) el.focus();
       return;
     }
-    setSubmitted(true);
+    setErreurEnvoi('');
+    setEnvoiEnCours(true);
+    try {
+      await envoyerFormulaire({
+        type: 'contact',
+        prenom: f.prenom.trim(),
+        nom: f.nom.trim(),
+        email: f.email.trim(),
+        tel: f.tel.trim(),
+        adultes, enfants, chambres,
+        mois: f.mois,
+        duree: f.duree,
+        message: f.message.trim(),
+        news,
+        hp: f.hp,
+      });
+      setSubmitted(true);
+    } catch (ex) {
+      setErreurEnvoi(ex.reseau ? MSG_ERREUR_RESEAU : ex.message);
+    } finally {
+      setEnvoiEnCours(false);
+    }
   };
 
   return (
@@ -184,7 +209,7 @@ export function ContactPage({ go }) {
                 <input id="c-site" tabIndex="-1" autoComplete="off" value={f.hp} onChange={set('hp')} />
               </div>
               <div className="field full" style={{flexDirection:'row', gap:10, alignItems:'flex-start'}}>
-                <input type="checkbox" id="news" style={{width:18, height:18, marginTop:3, accentColor:'var(--kiraku-shu)'}} />
+                <input type="checkbox" id="news" checked={news} onChange={(e)=>setNews(e.target.checked)} style={{width:18, height:18, marginTop:3, accentColor:'var(--kiraku-shu)'}} />
                 <label htmlFor="news" style={{fontWeight:400, color:'var(--fg-muted)', lineHeight:1.5}}>
                   Vous pouvez aussi m'écrire quatre fois par an avec vos carnets de voyage et les nouveaux itinéraires.
                 </label>
@@ -192,8 +217,13 @@ export function ContactPage({ go }) {
               {Object.keys(err).length ? (
                 <div className="field full form-alert">Il manque {Object.keys(err).length === 1 ? 'une information' : Object.keys(err).length + ' informations'} avant l'envoi. Les champs en rouge sont à compléter.</div>
               ) : null}
+              {erreurEnvoi ? (
+                <div className="field full form-alert" role="alert">{erreurEnvoi}</div>
+              ) : null}
               <div className="field full" style={{flexDirection:'row', gap:14, alignItems:'center', marginTop:8}}>
-                <button type="submit" className="btn btn-primary">Envoyer la demande</button>
+                <button type="submit" className="btn btn-primary" disabled={envoiEnCours} aria-busy={envoiEnCours}>
+                  {envoiEnCours ? 'Envoi en cours…' : 'Envoyer la demande'}
+                </button>
                 <span style={{fontSize:13, color:'var(--fg-muted)'}}>Réponse sous 48 h ouvrées.</span>
               </div>
             </form>
@@ -214,19 +244,19 @@ export function ContactPage({ go }) {
           <div className="row">
             <div>
               <b>Par téléphone</b>
-              <span>+33 1 84 60 12 90<br/>Lun–jeu, 10 h – 18 h (Paris)</span>
+              <span><a href="tel:+33670094964" style={{color:'inherit', textDecoration:'none'}}>+33 6 70 09 49 64</a><br/>Lun–sam, 10 h – 18 h (Paris)</span>
             </div>
           </div>
           <div className="row">
             <div>
               <b>Par email</b>
-              <span>bonjour@kiraku.travel</span>
+              <span><a href="mailto:contact@kirakutravel.com" style={{color:'inherit', textDecoration:'none'}}>contact@kirakutravel.com</a></span>
             </div>
           </div>
           <div className="row">
             <div>
               <b>Au bureau</b>
-              <span>14 rue de l'Échiquier<br/>75010 Paris<br/>sur rendez-vous</span>
+              <span>47 rue Vivienne<br/>75002 Paris<br/>sur rendez-vous</span>
             </div>
           </div>
           <div className="row" style={{borderBottom:0}}>

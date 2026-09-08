@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { GRADIENTS, ImageSlot } from './components.jsx'
+import { envoyerFormulaire, MSG_ERREUR_RESEAU } from './envoi.js'
 
 // Page CSE, présentation + formulaire de mise en relation
 const CSE_APPORTS = [
@@ -58,6 +59,8 @@ export function CSEPage({ go }) {
   const [cpEtat, setCpEtat] = useState('');
   const [err, setErr] = useState({});
   const [sent, setSent] = useState(false);
+  const [envoiEnCours, setEnvoiEnCours] = useState(false);
+  const [erreurEnvoi, setErreurEnvoi] = useState('');
 
   const set = (k) => (e) => {
     const v = e.target.value;
@@ -128,9 +131,9 @@ export function CSEPage({ go }) {
     return e;
   };
 
-  const envoyer = (ev) => {
+  const envoyer = async (ev) => {
     ev.preventDefault();
-    if (f.hp) return;
+    if (f.hp || envoiEnCours) return;
     const e = valide();
     setErr(e);
     if (Object.keys(e).length) {
@@ -140,7 +143,40 @@ export function CSEPage({ go }) {
       if (el) el.focus();
       return;
     }
-    setSent(true);
+    setErreurEnvoi('');
+    setEnvoiEnCours(true);
+    try {
+      const libelle = (liste, cle) => {
+        const t = liste.find(x => (x.key || x) === cle);
+        return t ? (t.label || t) : cle;
+      };
+      await envoyerFormulaire({
+        type: 'cse',
+        raison: f.raison.trim(),
+        siret: f.siret.trim(),
+        taille,
+        adresse: f.adresse.trim(),
+        cp: f.cp.trim(),
+        ville: f.ville.trim(),
+        prenom: f.prenom.trim(),
+        nom: f.nom.trim(),
+        email: f.email.trim(),
+        poste: f.poste.trim(),
+        fixe: f.fixe.trim(),
+        mobile: f.mobile.trim(),
+        pays: pays.map(k => libelle(CSE_PAYS, k)),
+        duree,
+        saisons: saisons.map(k => libelle(CSE_SAISONS, k)),
+        message: f.message.trim(),
+        hp: f.hp,
+      });
+      setSent(true);
+      if (typeof window !== 'undefined') window.scrollTo({ top: document.getElementById('cse-form')?.offsetTop || 0, behavior: 'smooth' });
+    } catch (ex) {
+      setErreurEnvoi(ex.reseau ? MSG_ERREUR_RESEAU : ex.message);
+    } finally {
+      setEnvoiEnCours(false);
+    }
   };
 
   const nbErr = Object.keys(err).length;
@@ -344,9 +380,14 @@ export function CSEPage({ go }) {
             {nbErr ? (
               <div className="form-alert" style={{marginTop:20}}>Il manque {nbErr === 1 ? 'une information' : nbErr + ' informations'} avant l'envoi. Les champs en rouge sont à compléter.</div>
             ) : null}
+            {erreurEnvoi ? (
+              <div className="form-alert" style={{marginTop:20}} role="alert">{erreurEnvoi}</div>
+            ) : null}
 
             <div className="cse-submit">
-              <button type="submit" className="btn cse-send">Envoyer la demande</button>
+              <button type="submit" className="btn cse-send" disabled={envoiEnCours} aria-busy={envoiEnCours}>
+                {envoiEnCours ? 'Envoi en cours…' : 'Envoyer la demande'}
+              </button>
               <em className="cse-note">Réponse sous 48 h ouvrées. Vos données servent uniquement à cet échange.</em>
             </div>
           </form>

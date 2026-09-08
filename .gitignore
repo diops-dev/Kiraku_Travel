@@ -4,3 +4,6 @@ dist
 *.local
 .env*
 .vite-react-ssg-temp
+
+# Réglages confidentiels de l'endpoint des formulaires, jamais versionnés
+public/api/config.local.php
