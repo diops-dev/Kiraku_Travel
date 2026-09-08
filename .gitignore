@@ -7,3 +7,5 @@ dist
 
 # Réglages confidentiels de l'endpoint des formulaires, jamais versionnés
 public/api/config.local.php
+_to_delete/
+*.tmp.mjs

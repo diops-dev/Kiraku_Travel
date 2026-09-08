@@ -1,4 +1,8 @@
+import commonFr from './content/common.fr.js'
+
 // Validation des adresses email et des numéros de téléphone.
+// Les messages sont fournis par le dictionnaire de la langue courante
+// (bloc `validation` de common.<lang>.js), le français sert de repli.
 // Ce fichier a un jumeau côté serveur : public/api/validation.php.
 // Toute règle modifiée ici doit l'être là-bas aussi, le serveur fait foi.
 
@@ -64,16 +68,18 @@ export function suggererDomaine(email) {
   return meilleur ? `${locale}@${meilleur}` : null;
 }
 
-export function validerEmail(valeur) {
+const MSG_FR = commonFr.validation;
+
+export function validerEmail(valeur, M = MSG_FR) {
   const email = String(valeur || '').trim();
-  if (!email) return { ok: false, erreur: 'Votre email est requis.' };
-  if (email.length > 254) return { ok: false, erreur: 'Cette adresse est trop longue.' };
+  if (!email) return { ok: false, erreur: M.emailRequis };
+  if (email.length > 254) return { ok: false, erreur: M.emailLong };
   if (!RX_EMAIL.test(email) || email.indexOf('..') > -1) {
-    return { ok: false, erreur: "Cet email ne semble pas valide, vérifiez la partie après le @." };
+    return { ok: false, erreur: M.emailInvalide };
   }
   const domaine = email.slice(email.lastIndexOf('@') + 1).toLowerCase();
   if (DOMAINES_JETABLES.indexOf(domaine) > -1) {
-    return { ok: false, erreur: "Les adresses temporaires ne sont pas acceptées, indiquez une adresse que vous consultez." };
+    return { ok: false, erreur: M.emailJetable };
   }
   const suggestion = suggererDomaine(email);
   return { ok: true, valeur: email, suggestion };
@@ -118,11 +124,11 @@ function motifImprobable(n) {
  * Valide un numéro et le renvoie au format international.
  * mobileSeul : n'accepte que les mobiles français 06 et 07.
  */
-export function validerTelephone(valeur, { mobileSeul = true, requis = true } = {}) {
+export function validerTelephone(valeur, { mobileSeul = true, requis = true, M = MSG_FR } = {}) {
   const brut = chiffres(valeur);
   if (!brut) {
     return requis
-      ? { ok: false, erreur: 'Votre téléphone portable est requis.' }
+      ? { ok: false, erreur: M.telRequis }
       : { ok: true, valeur: '' };
   }
 
@@ -130,21 +136,21 @@ export function validerTelephone(valeur, { mobileSeul = true, requis = true } = 
   if (brut[0] === '+') {
     const n = brut.slice(1);
     if (!/^\d{8,15}$/.test(n)) {
-      return { ok: false, erreur: 'Ce numéro international ne semble pas valide.' };
+      return { ok: false, erreur: M.telIntlInvalide };
     }
     if (motifImprobable(n)) {
-      return { ok: false, erreur: "Ce numéro n'existe pas, vérifiez les chiffres." };
+      return { ok: false, erreur: M.telInexistant };
     }
     if (n.slice(0, 2) === '33') {
       const reste = n.slice(2);
       if (reste[0] === '0') {
-        return { ok: false, erreur: "Après +33, le zéro ne se met pas : +33 6 45 78 21 09." };
+        return { ok: false, erreur: M.telZeroApres33 };
       }
       if (reste.length !== 9) {
-        return { ok: false, erreur: 'Un numéro français compte neuf chiffres après le +33.' };
+        return { ok: false, erreur: M.telNeufChiffres };
       }
       if (mobileSeul && reste[0] !== '6' && reste[0] !== '7') {
-        return { ok: false, erreur: 'Indiquez un mobile, il commence par 6 ou 7 après le +33.' };
+        return { ok: false, erreur: M.telMobile33 };
       }
       return { ok: true, valeur: '+33' + reste };
     }
@@ -152,7 +158,7 @@ export function validerTelephone(valeur, { mobileSeul = true, requis = true } = 
       if (ind !== '33' && n.slice(0, ind.length) === ind) {
         const reste = n.slice(ind.length);
         if (tailles.indexOf(reste.length) === -1) {
-          return { ok: false, erreur: 'Ce numéro ne semble pas complet.' };
+          return { ok: false, erreur: M.telIncomplet };
         }
       }
     }
@@ -161,25 +167,25 @@ export function validerTelephone(valeur, { mobileSeul = true, requis = true } = 
 
   // Format national français
   if (brut[0] !== '0') {
-    return { ok: false, erreur: 'Commencez par 0 pour un numéro français, ou par + pour l\'étranger.' };
+    return { ok: false, erreur: M.telCommencePar };
   }
   if (brut.length !== 10) {
     return {
       ok: false,
       erreur: brut.length < 10
-        ? `Il manque ${10 - brut.length} chiffre${10 - brut.length > 1 ? 's' : ''}, un numéro français en compte dix.`
-        : 'Un numéro français compte dix chiffres.',
+        ? (10 - brut.length === 1 ? M.telManqueUn : M.telManquePlusieurs.replace('{n}', String(10 - brut.length)))
+        : M.telDixChiffres,
     };
   }
   const national = brut.slice(1);
   if (motifImprobable(national)) {
-    return { ok: false, erreur: "Ce numéro n'existe pas, vérifiez les chiffres." };
+    return { ok: false, erreur: M.telInexistant };
   }
   if (national[0] === '0' || national[0] === '8') {
-    return { ok: false, erreur: 'Ce préfixe n\'est pas attribué aux particuliers.' };
+    return { ok: false, erreur: M.telPrefixe };
   }
   if (mobileSeul && national[0] !== '6' && national[0] !== '7') {
-    return { ok: false, erreur: 'Indiquez un mobile, il commence par 06 ou 07.' };
+    return { ok: false, erreur: M.telMobile06 };
   }
   return { ok: true, valeur: '+33' + national };
 }

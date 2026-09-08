@@ -1,8 +1,10 @@
 // Envoi des formulaires vers l'endpoint PHP hébergé avec le site.
 export const ENDPOINT = '/api/envoi.php';
 
-export const MSG_ERREUR_RESEAU =
-  "L'envoi n'a pas abouti. Vérifiez votre connexion et réessayez, ou écrivez-nous à contact@kirakutravel.com.";
+import commonFr from './content/common.fr.js'
+
+// Message de repli, remplace par celui de la langue courante dans les pages.
+export const MSG_ERREUR_RESEAU = commonFr.validation.reseau;
 
 export async function envoyerFormulaire(donnees) {
   let reponse;

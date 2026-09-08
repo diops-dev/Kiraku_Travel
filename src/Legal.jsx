@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react'
-import { CGV_BLOCKS, CGV_FACTS, CGV_PREAMBULE, CGV_TABLES, CGV_TOC, CGV_VERSION } from './cgv-data.js'
+import { useLang, useT, pick } from './i18n.js'
+import { CGV, PAGES } from './content/index.js'
 
-// Page CGV + renseignements légaux · données: cgv-data.js (version 2)
+// Page CGV et renseignements legaux. Les donnees viennent de cgv-data.js
+// pour le francais, de content/cgv.<lang>.js pour les traductions.
 
 export function CGVPage({ go }) {
+  const lang = useLang();
+  const D = pick(CGV, lang);
+  const L = useT(PAGES).cgv;
+  const { CGV_BLOCKS, CGV_FACTS, CGV_PREAMBULE, CGV_TABLES, CGV_TOC, CGV_VERSION } = D;
   const [active, setActive] = useState(CGV_TOC[0][0]);
   useEffect(() => {
     const ids = CGV_TOC.map(t => t[0]);
@@ -18,7 +24,7 @@ export function CGVPage({ go }) {
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();
     return () => window.removeEventListener('scroll', onScroll);
-  }, []);
+  }, [CGV_TOC]);
 
   const jump = (e, id) => {
     e.preventDefault();
@@ -37,7 +43,7 @@ export function CGVPage({ go }) {
       <div key={i} className="cgv-table">
         <div className="cgv-tr cgv-th" style={{ gridTemplateColumns: cols }}>{t.head.map((h, j) => <div key={j}>{h}</div>)}</div>
         {t.rows.map((r, j) => (
-          <div className="cgv-tr" key={j} style={{ gridTemplateColumns: cols }}>{r.map((c, k) => <div key={k}>{c}</div>)}</div>
+          <div className="cgv-tr" key={j} style={{ gridTemplateColumns: cols }}>{r.map((cell, k) => <div key={k}>{cell}</div>)}</div>
         ))}
       </div>
     );
@@ -48,13 +54,18 @@ export function CGVPage({ go }) {
       <section className="wrap" style={{ paddingTop: 140 }}>
         <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', gap: 48, flexWrap: 'wrap' }}>
           <div style={{ maxWidth: 720 }}>
-            <div className="section-eyebrow">Conditions générales de vente · {CGV_VERSION.label}</div>
+            <div className="section-eyebrow">{L.eyebrowVersion} · {CGV_VERSION.label}</div>
             <h1 style={{ fontFamily: 'var(--font-display)', fontWeight: 600, fontSize: 'clamp(38px,5vw,64px)', lineHeight: 1.05, letterSpacing: '-0.025em', margin: '0 0 20px', textWrap: 'balance' }}>
-              Ce que l’on s’engage à faire, et ce que l’on vous demande.
+              {L.titre}
             </h1>
             <p style={{ fontFamily: 'var(--font-serif)', fontSize: 20, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0, maxWidth: 620 }}>
-              Kiraku Travel, la joie de l’aisance (喜楽). En vigueur à compter du {CGV_VERSION.vigueur}. Ce document annule et remplace la version du {CGV_VERSION.remplace}.
+              {L.sousTitre(CGV_VERSION)}
             </p>
+            {L.primaute ? (
+              <p style={{ fontFamily: 'var(--font-sans)', fontSize: 14, lineHeight: 1.6, color: 'var(--fg-muted)', margin: '18px 0 0', maxWidth: 620, paddingLeft: 14, borderLeft: '2px solid var(--kiraku-shu)' }}>
+                {L.primaute}
+              </p>
+            ) : null}
           </div>
           <img src="/assets/seal-red.png" alt="" style={{ width: 96, height: 96, objectFit: 'contain', opacity: 0.9 }} />
         </div>
@@ -62,7 +73,7 @@ export function CGVPage({ go }) {
 
       <section className="wrap" style={{ paddingTop: 56 }}>
         <div style={{ background: 'var(--kiraku-washi-2)', borderRadius: 14, padding: '36px 40px', border: '1px solid var(--hairline)' }}>
-          <div className="section-eyebrow" style={{ marginBottom: 22 }}>Préambule · identification de l’opérateur</div>
+          <div className="section-eyebrow" style={{ marginBottom: 22 }}>{L.preambule}</div>
           <p style={{ ...body, fontSize: 16, maxWidth: 900, margin: '0 0 26px' }}>{CGV_PREAMBULE}</p>
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(280px,1fr))', gap: '2px 56px' }}>
             {CGV_FACTS.map(([k, v], i) => (
@@ -78,7 +89,7 @@ export function CGVPage({ go }) {
       <section className="wrap" style={{ padding: '72px 48px 120px' }}>
         <div className="cgv-layout">
           <nav className="cgv-toc">
-            <div className="section-eyebrow" style={{ marginBottom: 16 }}>Sommaire</div>
+            <div className="section-eyebrow" style={{ marginBottom: 16 }}>{L.sommaire}</div>
             <ul>
               {CGV_TOC.map(([id, label]) => (
                 <li key={id}>
@@ -117,8 +128,8 @@ export function CGVPage({ go }) {
             })}
 
             <div style={{ marginTop: 64, paddingTop: 28, borderTop: '1px solid var(--hairline)', display: 'flex', gap: 18, alignItems: 'center', flexWrap: 'wrap' }}>
-              <button className="btn btn-primary" onClick={() => go('contact')}>Une question ? Écrivez-nous</button>
-              <span style={{ fontSize: 13, color: 'var(--fg-muted)' }}>{CGV_VERSION.label} · en vigueur au {CGV_VERSION.vigueur}.</span>
+              <button className="btn btn-primary" onClick={() => go('contact')}>{L.question}</button>
+              <span style={{ fontSize: 13, color: 'var(--fg-muted)' }}>{L.pied(CGV_VERSION)}</span>
             </div>
           </div>
         </div>
@@ -126,4 +137,3 @@ export function CGVPage({ go }) {
     </>
   );
 }
-

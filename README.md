@@ -123,3 +123,24 @@ sous-ensemblée depuis les fichiers de marque (latin complet plus les
 caractères japonais utilisés), soit 85 Ko par graisse au lieu de 8,5 Mo.
 Les familles Noto Sans JP, Noto Serif JP, Yuji Mai et JetBrains Mono viennent
 des paquets @fontsource en sous-ensemble latin.
+
+## Trois langues
+
+Le site est servi en francais a la racine, en anglais sous `/en` et en espagnol
+sous `/es`, avec des adresses traduites (`/itineraires`, `/en/itineraries`,
+`/es/itinerarios`) et des balises `hreflang` sur chaque page.
+
+- `src/langs.js` : la liste des langues et les fonctions sans dependance React.
+- `src/i18n.js` : le contexte de langue, `useLang()` et `useT(dictionnaire)`.
+- `src/paths.js` : la table des URL des trois langues, `rt(route, param, lang)`,
+  `analyser(pathname)` et `alternatives(cle, ref)` pour les `hreflang`.
+- `src/content/` : un fichier par page et par langue (`home.fr.js`, `home.en.js`,
+  `home.es.js`...), assembles dans `src/content/index.js`. Les composants ne
+  contiennent plus de texte, ils lisent le dictionnaire de la langue courante.
+- Les CGV francaises restent dans `src/cgv-data.js`, leurs traductions dans
+  `src/content/cgv.en.js` et `src/content/cgv.es.js`. Les pages traduites
+  portent la mention que seule la version francaise fait foi.
+
+Pour ajouter une page : sa cle dans `BRUT` de `src/paths.js` pour les trois
+langues, son entree dans `PAGES_SIMPLES` de `src/routes.jsx`, ses metadonnees
+dans le bloc `seo` des trois `common.<lang>.js`. Le build genere 60 pages.

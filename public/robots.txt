@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://japonautrement.fr/sitemap.xml
+Sitemap: https://kirakutravel.com/sitemap.xml
