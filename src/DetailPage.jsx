@@ -1,7 +1,7 @@
 import React from 'react'
 import { rt } from './paths.js'
 import { AlpesDetail } from './AlpesTrip.jsx'
-import { DetailCarousel, DetailFacts } from './DetailParts.jsx'
+import { DetailCarousel, DetailDays, DetailFacts } from './DetailParts.jsx'
 import { CIRCUITS_META, circuitsLong, ItineraryCard, REFS_COURTS } from './HomePage.jsx'
 import { SejourTabs } from './inclusions.jsx'
 import { useLang, useT } from './i18n.js'
@@ -9,11 +9,103 @@ import { COMMON, ITIN } from './content/index.js'
 
 // Fiche itineraire et page d'index des itineraires
 
-// Fiche generique pour les circuits longs dont le jour par jour n'est pas
-// encore redige (tout sauf CL-09, voir AlpesDetail). Utilise uniquement des
-// donnees reelles deja validees (titre, duree, photo, inclus/exclus par
-// circuit) : aucun programme jour par jour n'est invente.
-function CircuitDetailGenerique({ go, param, meta, infos }) {
+// Legende courte par photo, pour le carrousel des fiches signatures.
+const LEGENDE_PHOTO = {
+  'tokyo-night': 'Tokyo de nuit',
+  'chureito-fuji': 'Le mont Fuji depuis la pagode Chureito',
+  'fuji-city': 'Le mont Fuji',
+  'kiyomizu-street': 'Une ruelle de Kyoto',
+  'osaka-castle': "Le château d'Osaka",
+  'chidorigafuchi': 'Chidorigafuchi, Tokyo',
+  'youtei-snow': 'Le mont Yotei sous la neige',
+  'alley': 'Une ruelle japonaise',
+  'fushimi-inari': 'Fushimi Inari Taisha',
+  'kinkakuji': "Le pavillon d'or, Kinkakuji",
+  'torii-walkway': 'Un chemin de torii',
+  'yasaka-kimono': 'Le sanctuaire Yasaka',
+  'miyajima-torii': 'Le torii de Miyajima',
+  'takachiho': 'Les gorges de Takachiho',
+  'hands': 'Artisanat local',
+  'kamakura': 'Kamakura',
+  'koinobori': 'Carpes koinobori',
+};
+
+// Fiche des huit itineraires signatures (CL-01 a CL-08), meme gabarit que
+// la fiche Alpes japonaises (CL-09, voir AlpesTrip.jsx) : carrousel photo,
+// onglets sejour, jour par jour et panneau de reservation. Contenu reel
+// issu des fiches Circuit Test du Drive (voir memoire kiraku-noms-circuits).
+function SignatureDetail({ go, param, meta, sig }) {
+  const lang = useLang();
+  const c = useT(COMMON);
+  const t = useT(ITIN);
+  const slides = (sig.photos || []).map((slug, i) => ({
+    id: `${param}-${i}`, photo: `/photos/${slug}.jpg`, grad: meta.grad,
+  }));
+  const legendes = (sig.photos || []).map(slug => LEGENDE_PHOTO[slug] || sig.titre);
+  return (
+    <>
+      <section className="detail-hero">
+        <div className="wrap wrap-wide">
+          <div className="crumbs">
+            <a href={rt('home', null, lang)} onClick={(e)=>{e.preventDefault();go('home')}}>{c.ui.kiraku}</a>
+            <span>›</span>
+            <a href={rt('itineraries', null, lang)} onClick={(e)=>{e.preventDefault();go('itineraries')}}>{c.ui.fil}</a>
+            <span>›</span>
+            <span style={{color:'var(--fg)'}}>{sig.fil}</span>
+          </div>
+          <div className="section-eyebrow">{sig.eyebrow}</div>
+          <h1>{sig.titre}</h1>
+          <p className="lede">{sig.lede}</p>
+        </div>
+      </section>
+
+      <section className="wrap wrap-wide">
+        <div className="detail-layout">
+          <div>
+            <DetailCarousel slides={slides} legendes={legendes} />
+            <SejourTabs circuit={param} note={sig.note} plus={sig.plus} />
+
+            <div className="section-head" style={{marginTop:72, marginBottom:24}}>
+              <div className="left">
+                <div className="section-eyebrow">{c.detail.detailEyebrow}</div>
+                <h2>{sig.detailTitre}</h2>
+                <div className="kicker">{sig.detailKicker}</div>
+              </div>
+            </div>
+            <DetailDays days={sig.jours} />
+          </div>
+          <aside className="detail-rail">
+            <DetailFacts price={c.booking.surDevis} priceSub={t.finalisation.prixSub} cells={sig.facts} recap={sig.recap} formule={c.detail.formulePrive} go={go} circuitRef={param} />
+          </aside>
+        </div>
+      </section>
+    </>
+  );
+}
+
+export function DetailPage({ go, param }) {
+  const c = useT(COMMON);
+  const t = useT(ITIN);
+  if (param === 'CL-09') return <AlpesDetail go={go} />;
+  const meta = CIRCUITS_META.find(m => m.ref === param);
+  const infos = t.circuitsLong[param];
+  const sig = t.signatures && t.signatures[param];
+  // Filet de securite : reference inconnue, on retombe sur l'index plutot
+  // que sur une fiche au hasard.
+  if (!meta || !infos) return <ItinerariesPage go={go} />;
+  // Fiche complete si le contenu reel existe dans cette langue (voir
+  // itineraires.fr.js) ; sinon fiche honnete avec les vraies infos connues
+  // (titre, duree, photo) en attendant la traduction, jamais un retour
+  // silencieux vers l'index (c'est le bug signale par Frederic le 16/09).
+  return sig
+    ? <SignatureDetail go={go} param={param} meta={meta} sig={sig} />
+    : <SignatureFallback go={go} param={param} meta={meta} infos={infos} />;
+}
+
+// Fiche de repli, tant que la traduction reelle (voir SignatureDetail)
+// n'existe pas dans cette langue. Aucun contenu invente : titre, duree et
+// photo viennent des memes donnees que la carte de l'index.
+function SignatureFallback({ go, param, meta, infos }) {
   const lang = useLang();
   const c = useT(COMMON);
   const t = useT(ITIN);
@@ -35,13 +127,11 @@ function CircuitDetailGenerique({ go, param, meta, infos }) {
           <p className="lede">{f.lede}</p>
         </div>
       </section>
-
       <section className="wrap wrap-wide">
         <div className="detail-layout">
           <div>
             <DetailCarousel slides={slides} legendes={[infos.title]} />
             <SejourTabs circuit={param} />
-
             <div className="section-head" style={{marginTop:72, marginBottom:24}}>
               <div className="left">
                 <div className="section-eyebrow">{c.detail.detailEyebrow}</div>
@@ -72,17 +162,6 @@ function CircuitDetailGenerique({ go, param, meta, infos }) {
       </section>
     </>
   );
-}
-
-export function DetailPage({ go, param }) {
-  const t = useT(ITIN);
-  if (param === 'CL-09') return <AlpesDetail go={go} />;
-  const meta = CIRCUITS_META.find(m => m.ref === param);
-  const infos = t.circuitsLong[param];
-  // Filet de securite : reference inconnue, on retombe sur l'index plutot que
-  // sur une fiche au hasard.
-  if (!meta || !infos) return <ItinerariesPage go={go} />;
-  return <CircuitDetailGenerique go={go} param={param} meta={meta} infos={infos} />;
 }
 
 export function ItinerariesPage({ go }) {
