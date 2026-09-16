@@ -1205,7 +1205,10 @@ export default {
       "Le carrefour de Shibuya vu depuis les hauteurs",
       "Complément naturel : Shibuya Sky au coucher du soleil"
     ],
-    "photo": "alley"
+    "photos": [
+      "alley",
+      "tokyo-night"
+    ]
   },
   "CT-02": {
     "titre": "Le Tokyo d'Edo",
@@ -1221,7 +1224,10 @@ export default {
       "Ameyoko, ancien marché noir devenu marché populaire",
       "Extension possible : atelier de cuisine ou achat d'un couteau japonais"
     ],
-    "photo": "torii-walkway"
+    "photos": [
+      "torii-walkway",
+      "alley"
+    ]
   },
   "CT-03": {
     "titre": "Le Tokyo des Hauteurs et de la Baie",
@@ -1237,7 +1243,10 @@ export default {
       "La statue Gundam grandeur nature de DiverCity",
       "Le module qui plaît le plus aux familles"
     ],
-    "photo": "tokyo-night"
+    "photos": [
+      "tokyo-night",
+      "chidorigafuchi"
+    ]
   },
   "CT-04": {
     "titre": "Le Tokyo Lettré",
@@ -1253,7 +1262,10 @@ export default {
       "Jimbocho, capitale japonaise du livre ancien",
       "Module recommandé pour un client curieux de littérature ou de musique"
     ],
-    "photo": "alley"
+    "photos": [
+      "alley",
+      "torii-walkway"
+    ]
   },
   "CT-05": {
     "titre": "Le Tokyo des Panoramas",
@@ -1269,7 +1281,10 @@ export default {
       "L'escalier de la réussite du sanctuaire Atago Jinja",
       "Module recommandé pour un client sensible au design et à l'architecture"
     ],
-    "photo": "tokyo-night"
+    "photos": [
+      "tokyo-night",
+      "alley"
+    ]
   },
   "CT-06": {
     "titre": "Le Tokyo de l'Imaginaire",
@@ -1285,7 +1300,10 @@ export default {
       "Nakano Broadway, temple du manga d'occasion",
       "Module de choix pour un client fan d'animation ou de vintage"
     ],
-    "photo": "alley"
+    "photos": [
+      "alley",
+      "chidorigafuchi"
+    ]
   },
   "CT-07": {
     "titre": "Yokohama, la Porte du Large",
@@ -1301,7 +1319,10 @@ export default {
       "Le plus grand quartier chinois du Japon",
       "Excursion sûre, adaptée à une journée moins dense"
     ],
-    "photo": "tokyo-night"
+    "photos": [
+      "tokyo-night",
+      "alley"
+    ]
   },
   "CT-08": {
     "titre": "Enoshima et Kamakura, la Mer et les Bouddhas",
@@ -1317,7 +1338,10 @@ export default {
       "Le temple Hasedera et sa vue sur la mer",
       "Journée physique, à adapter pour une mobilité réduite"
     ],
-    "photo": "kamakura"
+    "photos": [
+      "kamakura",
+      "torii-walkway"
+    ]
   },
   "CT-09": {
     "titre": "Takaosan, la Montagne des Tengu",
@@ -1333,7 +1357,10 @@ export default {
       "La cérémonie de marche sur les braises, mi-mars",
       "Une vraie respiration naturelle dans un séjour urbain"
     ],
-    "photo": "fuji-city"
+    "photos": [
+      "fuji-city",
+      "chureito-fuji"
+    ]
   },
   "CT-10": {
     "titre": "Nikko, le Sanctuaire dans les Cèdres",
@@ -1349,7 +1376,10 @@ export default {
       "La randonnée du lac Chuzenji à Yumoto Onsen, en version deux jours",
       "Saturé en octobre et novembre pour les érables"
     ],
-    "photo": "torii-walkway"
+    "photos": [
+      "torii-walkway",
+      "alley"
+    ]
   },
   "CT-11": {
     "titre": "Kyoto Centre, la Ville des Marchands et des Geiko",
@@ -1365,7 +1395,10 @@ export default {
       "Module conçu pour fonctionner aussi en simple escale d'une journée",
       "Terrasses sur la rivière à Pontocho de mai à septembre"
     ],
-    "photo": "kiyomizu-street"
+    "photos": [
+      "kiyomizu-street",
+      "fushimi-inari"
+    ]
   },
   "CT-12": {
     "titre": "Kyoto Est, le Chemin des Philosophes",
@@ -1381,7 +1414,10 @@ export default {
       "La terrasse de Kiyomizudera en fin d'après-midi, hors de la foule de midi",
       "À réserver aux clients bons marcheurs"
     ],
-    "photo": "kiyomizu-street"
+    "photos": [
+      "kiyomizu-street",
+      "fushimi-inari"
+    ]
   },
   "CT-13": {
     "titre": "Kyoto Nord, Bambous, Rivière et Pavillon d'Or",
@@ -1397,7 +1433,10 @@ export default {
       "Le pavillon d'or, reconstruit en 1955",
       "Module à très forte valeur photographique"
     ],
-    "photo": "kinkakuji"
+    "photos": [
+      "kinkakuji",
+      "torii-walkway"
+    ]
   },
   "CT-14": {
     "titre": "Kyoto, les Dix Mille Torii",
@@ -1413,7 +1452,10 @@ export default {
       "La terrasse de Kiyomizudera",
       "Complémentaire du module Kyoto Est, à ne jamais vendre les deux ensemble"
     ],
-    "photo": "fushimi-inari"
+    "photos": [
+      "fushimi-inari",
+      "kiyomizu-street"
+    ]
   },
   "CT-15": {
     "titre": "Osaka, la Ville qui Mange",
@@ -1429,7 +1471,10 @@ export default {
       "Le château d'Osaka et son parc",
       "Module conçu aussi pour une escale d'une journée, consigne à bagages en gare"
     ],
-    "photo": "osaka-castle"
+    "photos": [
+      "osaka-castle",
+      "alley"
+    ]
   },
   "CT-16": {
     "titre": "Osaka Populaire, du Shitamachi aux Néons",
@@ -1445,7 +1490,10 @@ export default {
       "L'observatoire Harukas 300, le plus haut gratte-ciel du Japon",
       "Se complète naturellement avec le module Osaka nord, à vendre en deux jours"
     ],
-    "photo": "osaka-castle"
+    "photos": [
+      "osaka-castle",
+      "torii-walkway"
+    ]
   },
   "EX-01": {
     "titre": "L'Été des Ryukyu",
@@ -1461,7 +1509,7 @@ export default {
       "Compatible avec la plupart des circuits signatures",
       "La plus exposée aux typhons de juin à octobre, prévoir un plan de repli"
     ],
-    "photo": null
+    "photos": []
   }
 },
   finalisation: {
