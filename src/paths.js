@@ -18,19 +18,19 @@ export const SLUGS_MOD_L = {
     'CT-11': 'kyoto-centre', 'CT-12': 'kyoto-est', 'CT-13': 'kyoto-nord', 'CT-14': 'kyoto-fushimi-inari',
     'CT-15': 'osaka-nord', 'CT-16': 'osaka-sud', 'EX-01': 'l-ete-des-ryukyu',
   },
-  // Traduction des fiches pas encore branchee sur le site : slugs neutres en
-  // attendant, la fiche s'affiche alors en repli (voir ModulePage.jsx).
   en: {
-    'CT-01': 'ct-01', 'CT-02': 'ct-02', 'CT-03': 'ct-03', 'CT-04': 'ct-04', 'CT-05': 'ct-05',
-    'CT-06': 'ct-06', 'CT-07': 'ct-07', 'CT-08': 'ct-08', 'CT-09': 'ct-09', 'CT-10': 'ct-10',
-    'CT-11': 'ct-11', 'CT-12': 'ct-12', 'CT-13': 'ct-13', 'CT-14': 'ct-14', 'CT-15': 'ct-15',
-    'CT-16': 'ct-16', 'EX-01': 'ex-01',
+    'CT-01': 'neon-tokyo', 'CT-02': 'edo-tokyo', 'CT-03': 'tokyo-of-heights-and-bay',
+    'CT-04': 'literary-tokyo', 'CT-05': 'tokyo-of-panoramas', 'CT-06': 'tokyo-of-the-imagination',
+    'CT-07': 'yokohama', 'CT-08': 'enoshima-and-kamakura', 'CT-09': 'takaosan', 'CT-10': 'nikko',
+    'CT-11': 'central-kyoto', 'CT-12': 'eastern-kyoto', 'CT-13': 'northern-kyoto', 'CT-14': 'kyoto-ten-thousand-torii',
+    'CT-15': 'osaka-the-city-that-eats', 'CT-16': 'popular-osaka', 'EX-01': 'ryukyu-summer',
   },
   es: {
-    'CT-01': 'ct-01', 'CT-02': 'ct-02', 'CT-03': 'ct-03', 'CT-04': 'ct-04', 'CT-05': 'ct-05',
-    'CT-06': 'ct-06', 'CT-07': 'ct-07', 'CT-08': 'ct-08', 'CT-09': 'ct-09', 'CT-10': 'ct-10',
-    'CT-11': 'ct-11', 'CT-12': 'ct-12', 'CT-13': 'ct-13', 'CT-14': 'ct-14', 'CT-15': 'ct-15',
-    'CT-16': 'ct-16', 'EX-01': 'ex-01',
+    'CT-01': 'el-tokio-de-los-neones', 'CT-02': 'el-tokio-de-edo', 'CT-03': 'tokio-alturas-y-bahia',
+    'CT-04': 'el-tokio-letrado', 'CT-05': 'el-tokio-de-los-panoramas', 'CT-06': 'el-tokio-de-lo-imaginario',
+    'CT-07': 'yokohama', 'CT-08': 'enoshima-y-kamakura', 'CT-09': 'takaosan', 'CT-10': 'nikko',
+    'CT-11': 'kioto-centro', 'CT-12': 'kioto-este', 'CT-13': 'kioto-norte', 'CT-14': 'kioto-diez-mil-torii',
+    'CT-15': 'osaka-la-ciudad-que-come', 'CT-16': 'osaka-popular', 'EX-01': 'el-verano-de-las-ryukyu',
   },
 };
 
