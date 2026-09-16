@@ -1,6 +1,23 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import { useT } from './i18n.js'
 import { COMMON } from './content/index.js'
+
+// Places restantes en direct, alimentees par le back-office reservations
+// (voir public/api/reservations-*.php). Simple amelioration progressive :
+// si l'appel echoue ou n'a pas encore repondu, la liste des dates continue
+// de fonctionner exactement comme avant, sans aucune mention de places.
+function useEtatReservations() {
+  const [etat, setEtat] = useState(null);
+  useEffect(() => {
+    let vivant = true;
+    fetch('/api/reservations-etat.php')
+      .then(r => (r.ok ? r.json() : null))
+      .then(d => { if (vivant && d) setEtat(d); })
+      .catch(() => {});
+    return () => { vivant = false; };
+  }, []);
+  return etat;
+}
 
 // Reservation dans le panneau de droite des pages itineraire.
 // Depart en groupe (dates du calendrier) ou voyage prive (calendrier libre).
@@ -87,6 +104,7 @@ export function RailBooking({ circuitRef, go }) {
   const circuit = DEPARTS[circuitRef] || { jours: 14, prix: null, dates: [] };
   const dates = circuit.dates.map(parseD);
   const jours = circuit.jours;
+  const etat = useEtatReservations();
 
   const [mode, setMode] = useState(dates.length ? 'groupe' : 'prive');
   const [pick, setPick] = useState(null);
@@ -118,13 +136,25 @@ export function RailBooking({ circuitRef, go }) {
       {mode === 'groupe' ? (
         dates.length ? (
           <div className="resa-list">
-            {dates.map((d, i) => (
-              <button type="button" key={i} className={`resa-line${pick === i ? ' on' : ''}`} onClick={() => setPick(i)}>
-                <span className="dot" aria-hidden="true"></span>
-                <span className="d">{fmtCourt(d)}<small>{b.retourLe} {fmtCourt(addDays(d, jours - 1))}</small></span>
-                {circuit.prix ? <span className="p">{fmtEuro(circuit.prix)}</span> : null}
-              </button>
-            ))}
+            {dates.map((d, i) => {
+              const infos = etat ? etat[`${circuitRef}|${circuit.dates[i]}`] : null;
+              const restantes = infos ? infos.restantes : null;
+              const complet = restantes !== null && restantes <= 0;
+              return (
+                <button type="button" key={i} className={`resa-line${pick === i ? ' on' : ''}${complet ? ' complet' : ''}`} disabled={complet} onClick={() => setPick(i)}>
+                  <span className="dot" aria-hidden="true"></span>
+                  <span className="d">
+                    {fmtCourt(d)}<small>{b.retourLe} {fmtCourt(addDays(d, jours - 1))}</small>
+                    {restantes !== null ? (
+                      <small className={restantes <= 2 ? 'resa-places bas' : 'resa-places'}>
+                        {complet ? b.complet : `${restantes} ${restantes > 1 ? b.placesRestantes : b.placeRestante}`}
+                      </small>
+                    ) : null}
+                  </span>
+                  {circuit.prix ? <span className="p">{fmtEuro(circuit.prix)}</span> : null}
+                </button>
+              );
+            })}
           </div>
         ) : (
           <div className="resa-vide">{b.aucuneDate}</div>
