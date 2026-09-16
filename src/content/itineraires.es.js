@@ -141,4 +141,17 @@ export default {
       { n: 12, title: 'Vuelo de regreso', body: "Traslado al aeropuerto y vuelo de regreso a Francia.", tags: ['Vuelo'] },
     ],
   },
+
+  finalisation: {
+    lede: 'Un itinerario a medida, construido junto a usted antes de la salida.',
+    prixSub: 'Tarifa personalizada según sus fechas y el número de viajeros.',
+    factDureeLbl: 'Duración',
+    factVoyageursLbl: 'Viajeros',
+    factVoyageursVal: 'De uno a ocho viajeros en privado, de cuatro a ocho en pequeño grupo',
+    factDepartsLbl: 'Salidas',
+    factDepartsVal: 'En la fecha que usted elija, o en las fechas de grupo propuestas',
+    joursTitre: 'El día a día',
+    joursMessage: 'El día a día de este itinerario está en fase de redacción. Se lo enviamos en detalle en cuanto hablemos, y lo construimos juntos según sus fechas y sus deseos.',
+    joursCta: 'Solicitar el día a día completo',
+  },
 };

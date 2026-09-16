@@ -141,4 +141,17 @@ export default {
       { n: 12, title: 'Return flight', body: "Transfer to the airport and return flight to France.", tags: ['Flight'] },
     ],
   },
+
+  finalisation: {
+    lede: 'A tailor-made itinerary, built together with you before departure.',
+    prixSub: 'Personalised rate based on your dates and number of travellers.',
+    factDureeLbl: 'Duration',
+    factVoyageursLbl: 'Travellers',
+    factVoyageursVal: 'From one to eight travellers in private, four to eight in small group',
+    factDepartsLbl: 'Departures',
+    factDepartsVal: 'On the date of your choice, or on the proposed group dates',
+    joursTitre: 'The day by day',
+    joursMessage: "The day by day of this itinerary is being finalised. We send it to you in full detail as soon as we speak, and build it together around your dates and your wishes.",
+    joursCta: 'Request the full day by day',
+  },
 };

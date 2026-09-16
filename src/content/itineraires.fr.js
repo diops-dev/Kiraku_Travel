@@ -141,4 +141,17 @@ export default {
       { n: 12, title: 'Vol de retour', body: "Transfert vers l'aéroport et vol de retour vers la France.", tags: ['Vol'] },
     ],
   },
+
+  finalisation: {
+    lede: 'Un itinéraire sur mesure, construit avec vous avant le départ.',
+    prixSub: 'Tarif personnalisé selon vos dates et le nombre de voyageurs.',
+    factDureeLbl: 'Durée',
+    factVoyageursLbl: 'Voyageurs',
+    factVoyageursVal: 'De un à huit voyageurs en privé, de quatre à huit en petit groupe',
+    factDepartsLbl: 'Départs',
+    factDepartsVal: 'À la date de votre choix, ou aux dates de groupe proposées',
+    joursTitre: 'Le jour par jour',
+    joursMessage: "Le déroulé jour par jour de cet itinéraire est en cours de mise en ligne. Nous vous l'envoyons en détail dès le premier échange, et le construisons avec vous selon vos dates et vos envies.",
+    joursCta: 'Demander le déroulé complet',
+  },
 };
