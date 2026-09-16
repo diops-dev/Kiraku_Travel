@@ -36,7 +36,17 @@ RewriteRule ^ /index.html [L]
   ExpiresByType font/woff2 "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
-  ExpiresByType text/html "access plus 1 hour"
+  ExpiresByType application/json "access plus 1 month"
+  ExpiresByType text/html "access plus 0 seconds"
+</IfModule>
+
+<IfModule mod_headers.c>
+  # Chaque page HTML est revalidee a chaque visite : evite qu'une page
+  # laissee en cache pointe vers un manifest de donnees supprime par un
+  # deploiement plus recent (voir incident du 16/09/2026).
+  <FilesMatch "\.html$">
+    Header set Cache-Control "no-cache, must-revalidate"
+  </FilesMatch>
 </IfModule>
 
 ErrorDocument 404 /index.html
