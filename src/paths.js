@@ -142,17 +142,18 @@ export function segment(key, lang) {
 
 // rt('detail', 'CL-02', 'en') donne '/en/itineraries/a-thousand-steps-north'
 // rt('module', 'CT-01', 'en') donne '/en/freedom-stays/ct-01'
-export function rt(route, param, lang = DEFAULT_LANG) {
+export function rt(route, param, lang = DEFAULT_LANG, hash) {
   const l = LANGS.indexOf(lang) > -1 ? lang : DEFAULT_LANG;
+  const avecHash = (chemin) => hash ? chemin + '#' + hash : chemin;
   if (route === 'detail') {
     const slug = SLUGS_L[l][param] || SLUGS_L[l]['CL-01'];
-    return prefixe(l) + '/' + SEG_ITIN[l] + '/' + slug;
+    return avecHash(prefixe(l) + '/' + SEG_ITIN[l] + '/' + slug);
   }
   if (route === 'module') {
     const slug = SLUGS_MOD_L[l][param];
-    return slug ? prefixe(l) + '/' + SEG_MOD[l] + '/' + slug : rt('itineraries', null, l);
+    return avecHash(slug ? prefixe(l) + '/' + SEG_MOD[l] + '/' + slug : rt('itineraries', null, l));
   }
-  return (PATHS_L[l] && PATHS_L[l][route]) || (prefixe(l) || '/');
+  return avecHash((PATHS_L[l] && PATHS_L[l][route]) || (prefixe(l) || '/'));
 }
 
 // Chemin d'URL vers { lang, key, ref } , pour l'etat actif du menu et le hreflang.

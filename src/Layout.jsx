@@ -13,7 +13,7 @@ import { pick } from './i18n.js'
 export function useGo() {
   const navigate = useNavigate();
   const lang = useLang();
-  return (route, param) => navigate(rt(route, param, lang));
+  return (route, param, hash) => navigate(rt(route, param, lang, hash));
 }
 
 export default function Layout() {
@@ -21,7 +21,14 @@ export default function Layout() {
   const { lang, key } = analyser(pathname);
 
   useEffect(() => {
-    if (hash) return;
+    if (hash) {
+      // Laisse la page se rendre avant de chercher l'ancre.
+      const id = hash.slice(1);
+      const t = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }, 60);
+      return () => clearTimeout(t);
+    }
     window.scrollTo({ top: 0, behavior: 'instant' });
   }, [pathname, hash]);
 

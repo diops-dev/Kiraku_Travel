@@ -48,7 +48,7 @@ export function Nav({ route, go, pathname }) {
     document.body.style.overflow = drawer ? 'hidden' : '';
     return () => { document.body.style.overflow = ''; };
   }, [drawer]);
-  const allerA = (r, p) => { setDrawer(false); go(r, p); };
+  const allerA = (r, p, h) => { setDrawer(false); go(r, p, h); };
   const overHero = route === 'home' && !scrolled;
   const showBg = scrolled || route !== 'home';
   const items = ['home', 'itineraries', 'japon', 'guide', 'about', 'journal']
@@ -91,14 +91,14 @@ export function Nav({ route, go, pathname }) {
         <div className="mega-inner">
           {c.mega.map(col => (
             <div className="mega-col" key={col.key}>
-              <a className="mega-title" href={rt(col.target[0], col.target[1], lang)} onClick={(e)=>{e.preventDefault(); setOpen(false); go(...col.target);}}>{col.label}<span aria-hidden="true"> →</span></a>
+              <a className="mega-title" href={rt(col.target[0], col.target[1], lang, col.target[2])} onClick={(e)=>{e.preventDefault(); setOpen(false); go(...col.target);}}>{col.label}<span aria-hidden="true"> →</span></a>
               <p className="mega-note">{col.note}</p>
               <ul>
                 {col.links.map(l => (
                   <li key={l.label}><a href={rt(l.go[0], l.go[1], lang)} onClick={(e)=>{e.preventDefault(); setOpen(false); go(...l.go);}}>{l.label}</a></li>
                 ))}
               </ul>
-              <a className="mega-more" href={rt(col.more.go[0], col.more.go[1], lang)} onClick={(e)=>{e.preventDefault(); setOpen(false); go(...col.more.go);}}>{col.more.label}</a>
+              <a className="mega-more" href={rt(col.more.go[0], col.more.go[1], lang, col.more.go[2])} onClick={(e)=>{e.preventDefault(); setOpen(false); go(...col.more.go);}}>{col.more.label}</a>
             </div>
           ))}
         </div>
@@ -113,7 +113,7 @@ export function Nav({ route, go, pathname }) {
           <div className="nav-drawer-sub">
             <h6>{c.nav.sousTitre}</h6>
             {c.mega.map(col => (
-              <a key={col.key} href={rt(col.target[0], col.target[1], lang)} onClick={(e)=>{e.preventDefault(); allerA(...col.target);}}>{col.label}</a>
+              <a key={col.key} href={rt(col.target[0], col.target[1], lang, col.target[2])} onClick={(e)=>{e.preventDefault(); allerA(...col.target);}}>{col.label}</a>
             ))}
           </div>
           <div className="nav-drawer-lang">
@@ -134,8 +134,8 @@ export function Footer({ go }) {
   const lang = useLang();
   const c = useT(COMMON);
   const f = c.footer;
-  const lien = (route, label) => (
-    <li><a href={rt(route, null, lang)} onClick={(e)=>{e.preventDefault();go(route)}}>{label}</a></li>
+  const lien = (route, label, param, hash) => (
+    <li><a href={rt(route, param, lang, hash)} onClick={(e)=>{e.preventDefault();go(route, param, hash)}}>{label}</a></li>
   );
   return (
     <footer className="footer">
@@ -151,8 +151,8 @@ export function Footer({ go }) {
             <h5>{f.colItin}</h5>
             <ul>
               {lien('itineraries', f.signatures)}
-              {lien('itineraries', f.libertes)}
-              {lien('itineraries', f.groupe)}
+              {lien('itineraries', f.libertes, null, 'courts')}
+              {lien('detail', f.groupe, 'CL-09')}
               {lien('contact', f.surMesure)}
             </ul>
           </div>

@@ -187,7 +187,7 @@ export function ItinerariesPage({ go }) {
         {circuitsLong(t).map(it => <ItineraryCard key={it.ref} it={it} go={go} />)}
       </div>
 
-      <div className="section-head" style={{marginTop:100}}>
+      <div className="section-head" id="courts" style={{marginTop:100, scrollMarginTop:100}}>
         <div className="left">
           <div className="section-eyebrow">{x.courtsEyebrow}</div>
           <h2>{x.courtsTitre}</h2>
