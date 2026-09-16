@@ -1,0 +1,14 @@
+<?php
+// COPIER ce fichier en "reservations-users.local.php" (même dossier), sur le
+// serveur uniquement, jamais dans Git. C'est là que vivent les comptes du
+// back-office réservations.
+//
+// Pour générer le hash d'un mot de passe, dans un terminal avec PHP :
+//   php -r "echo password_hash('le-mot-de-passe-choisi', PASSWORD_DEFAULT), \"\n\";"
+// Ou demander à l'assistant de le générer.
+//
+// Format : 'identifiant' => 'hash du mot de passe' (jamais le mot de passe en clair).
+return [
+    'frederic' => '$2y$10$REMPLACER_PAR_UN_VRAI_HASH',
+    'olivier'  => '$2y$10$REMPLACER_PAR_UN_VRAI_HASH',
+];
