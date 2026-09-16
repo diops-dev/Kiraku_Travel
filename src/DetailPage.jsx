@@ -207,7 +207,7 @@ export function ItinerariesPage({ go }) {
         </thead>
         <tbody>
           {rows.map(c => (
-            <tr key={c.ref}>
+            <tr key={c.ref} className="row-click" onClick={()=>go('module', c.ref)} style={{cursor:'pointer'}}>
               <td style={tdRef}>{c.ref}</td>
               <td style={tdName}>{c.title}</td>
               <td style={td}>{c.zone}</td>

@@ -6,6 +6,38 @@ import { DEFAULT_LANG, LANGS, prefixe } from './langs.js'
 // Segment de tete des fiches circuit, par langue.
 export const SEG_ITIN = { fr: 'itineraires', en: 'itineraries', es: 'itinerarios' };
 
+// Segment de tete des fiches "sejour liberte" (modules CT et extension EX),
+// par langue.
+export const SEG_MOD = { fr: 'sejours-libertes', en: 'freedom-stays', es: 'estancias-libres' };
+
+export const SLUGS_MOD_L = {
+  fr: {
+    'CT-01': 'le-tokyo-des-neons', 'CT-02': 'le-tokyo-d-edo', 'CT-03': 'tokyo-hauteurs-et-baie',
+    'CT-04': 'le-tokyo-lettre', 'CT-05': 'le-tokyo-des-panoramas', 'CT-06': 'le-tokyo-de-l-imaginaire',
+    'CT-07': 'yokohama', 'CT-08': 'enoshima-et-kamakura', 'CT-09': 'takaosan', 'CT-10': 'nikko',
+    'CT-11': 'kyoto-centre', 'CT-12': 'kyoto-est', 'CT-13': 'kyoto-nord', 'CT-14': 'kyoto-fushimi-inari',
+    'CT-15': 'osaka-nord', 'CT-16': 'osaka-sud', 'EX-01': 'l-ete-des-ryukyu',
+  },
+  // Traduction des fiches pas encore branchee sur le site : slugs neutres en
+  // attendant, la fiche s'affiche alors en repli (voir ModulePage.jsx).
+  en: {
+    'CT-01': 'ct-01', 'CT-02': 'ct-02', 'CT-03': 'ct-03', 'CT-04': 'ct-04', 'CT-05': 'ct-05',
+    'CT-06': 'ct-06', 'CT-07': 'ct-07', 'CT-08': 'ct-08', 'CT-09': 'ct-09', 'CT-10': 'ct-10',
+    'CT-11': 'ct-11', 'CT-12': 'ct-12', 'CT-13': 'ct-13', 'CT-14': 'ct-14', 'CT-15': 'ct-15',
+    'CT-16': 'ct-16', 'EX-01': 'ex-01',
+  },
+  es: {
+    'CT-01': 'ct-01', 'CT-02': 'ct-02', 'CT-03': 'ct-03', 'CT-04': 'ct-04', 'CT-05': 'ct-05',
+    'CT-06': 'ct-06', 'CT-07': 'ct-07', 'CT-08': 'ct-08', 'CT-09': 'ct-09', 'CT-10': 'ct-10',
+    'CT-11': 'ct-11', 'CT-12': 'ct-12', 'CT-13': 'ct-13', 'CT-14': 'ct-14', 'CT-15': 'ct-15',
+    'CT-16': 'ct-16', 'EX-01': 'ex-01',
+  },
+};
+
+export const REFS_MOD_L = Object.fromEntries(
+  LANGS.map(l => [l, Object.fromEntries(Object.entries(SLUGS_MOD_L[l]).map(([r, s]) => [s, r]))])
+);
+
 export const SLUGS_L = {
   fr: {
     'CL-01': 'du-neon-au-silence',
@@ -109,11 +141,16 @@ export function segment(key, lang) {
 }
 
 // rt('detail', 'CL-02', 'en') donne '/en/itineraries/a-thousand-steps-north'
+// rt('module', 'CT-01', 'en') donne '/en/freedom-stays/ct-01'
 export function rt(route, param, lang = DEFAULT_LANG) {
   const l = LANGS.indexOf(lang) > -1 ? lang : DEFAULT_LANG;
   if (route === 'detail') {
     const slug = SLUGS_L[l][param] || SLUGS_L[l]['CL-01'];
     return prefixe(l) + '/' + SEG_ITIN[l] + '/' + slug;
+  }
+  if (route === 'module') {
+    const slug = SLUGS_MOD_L[l][param];
+    return slug ? prefixe(l) + '/' + SEG_MOD[l] + '/' + slug : rt('itineraries', null, l);
   }
   return (PATHS_L[l] && PATHS_L[l][route]) || (prefixe(l) || '/');
 }
@@ -128,6 +165,11 @@ export function analyser(pathname) {
   if (reste.indexOf(debutItin) === 0) {
     const slug = reste.slice(debutItin.length);
     return { lang, key: 'detail', ref: REFS_L[lang][slug] || null };
+  }
+  const debutMod = '/' + SEG_MOD[lang] + '/';
+  if (reste.indexOf(debutMod) === 0) {
+    const slug = reste.slice(debutMod.length);
+    return { lang, key: 'module', ref: REFS_MOD_L[lang][slug] || null };
   }
   const trouve = Object.entries(BRUT[lang]).find(([, v]) => v === reste);
   return { lang, key: trouve ? trouve[0] : 'home', ref: null };

@@ -1190,6 +1190,280 @@ export default {
     ]
   }
 },
+  modules: {
+  "CT-01": {
+    "titre": "Le Tokyo des Néons",
+    "fil": "Shinjuku · Harajuku · Shibuya",
+    "zone": "Tokyo ouest",
+    "duree": "1 jour",
+    "rythme": "Soutenue, environ 8 à 9 km de marche",
+    "lede": "Une journée qui condense trois visages du Tokyo contemporain : la respiration du jardin Shinjuku Gyoen, la forêt sacrée du Meiji Jingu et l'effervescence de Takeshita dori, puis le carrefour de Shibuya.",
+    "programme": "La journée commence au jardin Shinjuku Gyoen, ancien jardin impérial qui réunit un jardin japonais, un jardin français et un jardin anglais, avant une traversée de jour du Golden Gai et de Kabukicho. Le milieu de journée bascule au sanctuaire Meiji Jingu et à son allée de torii en bois de cyprès, puis à Takeshita dori et à l'avenue Omotesando. La fin de journée se joue au carrefour de Shibuya, avec vue depuis le Shibuya Hikarie, avant un temps de shopping libre.",
+    "plus": [
+      "Le panorama gratuit depuis l'observatoire de la mairie de Tokyo",
+      "L'allée de torii du sanctuaire Meiji Jingu",
+      "Le carrefour de Shibuya vu depuis les hauteurs",
+      "Complément naturel : Shibuya Sky au coucher du soleil"
+    ],
+    "photo": "alley"
+  },
+  "CT-02": {
+    "titre": "Le Tokyo d'Edo",
+    "fil": "Asakusa · Ueno · Akihabara",
+    "zone": "Tokyo est, quartiers du Shitamachi",
+    "duree": "1 jour",
+    "rythme": "Modérée, environ 7 km de marche",
+    "lede": "La journée remonte le temps : le Tokyo populaire d'Edo autour du temple Sensoji, le grand parc de Ueno, puis le Tokyo électronique d'Akihabara. Le contraste le plus parlant que Tokyo puisse offrir en une journée.",
+    "programme": "Le matin se passe à Asakusa, au temple Sensoji, le plus ancien de Tokyo, puis le long de la rivière Sumida et dans la rue Kappabashi, celle des ustensiles de cuisine. Le parc de Ueno occupe le milieu de journée, avec ses musées et le sanctuaire Yushima Tenjin, puis la rue commerçante Ameyoko. La fin de journée se joue à Akihabara, entre magasins d'électronique et culture manga, avec une pause au petit temple Yanagimori, dédié aux tanuki.",
+    "plus": [
+      "Le temple Sensoji, le plus ancien de Tokyo",
+      "La rue Kappabashi et ses ustensiles de cuisine",
+      "Ameyoko, ancien marché noir devenu marché populaire",
+      "Extension possible : atelier de cuisine ou achat d'un couteau japonais"
+    ],
+    "photo": "torii-walkway"
+  },
+  "CT-03": {
+    "titre": "Le Tokyo des Hauteurs et de la Baie",
+    "fil": "Asakusa · Tokyo Skytree · Odaiba",
+    "zone": "Tokyo est et front de mer",
+    "duree": "1 jour",
+    "rythme": "Modérée, forte part de transport, croisière incluse",
+    "lede": "Une journée verticale puis horizontale : la Tokyo Skytree pour une lecture d'ensemble de la mégapole, puis une descente de la rivière Sumida en bateau jusqu'à l'île artificielle d'Odaiba.",
+    "programme": "Après une matinée à Asakusa, la montée à la Tokyo Skytree, 634 mètres et deux niveaux d'observatoire, offre par temps clair une vue jusqu'au mont Fuji. L'après-midi se poursuit par la croisière sur la Sumida jusqu'à la baie de Tokyo, avec arrivée à Odaiba : plage face au Rainbow Bridge, statue Gundam grandeur nature à DiverCity, ou observatoire suspendu du bâtiment Fuji TV. Possible arrêt retour à Shiodome pour l'horloge animée conçue par Hayao Miyazaki.",
+    "plus": [
+      "Les deux niveaux d'observatoire de la Tokyo Skytree, 350 et 450 mètres",
+      "La croisière sur la Sumida jusqu'à la baie",
+      "La statue Gundam grandeur nature de DiverCity",
+      "Le module qui plaît le plus aux familles"
+    ],
+    "photo": "tokyo-night"
+  },
+  "CT-04": {
+    "titre": "Le Tokyo Lettré",
+    "fil": "Ueno · Akihabara · Kanda · Jimbocho",
+    "zone": "Tokyo centre est",
+    "duree": "1 jour",
+    "rythme": "Modérée, environ 6 km de marche",
+    "lede": "Variante savante du Tokyo d'Edo : Ueno et Akihabara le matin, puis le Tokyo des étudiants, des luthiers et des libraires, jusqu'au quartier des bouquinistes de Jimbocho.",
+    "programme": "Après la séquence Ueno puis Akihabara, la marche se poursuit jusqu'au sanctuaire Kanda Myojin, protecteur des affaires et de la technologie, dont les plaquettes votives sont souvent illustrées de personnages de manga. La rue des magasins de musique d'Ochanomizu, l'une des plus fortes concentrations de luthiers du Japon, mène au quartier de Jimbocho, capitale japonaise du livre ancien. En fin de journée, une marche calme jusqu'au sanctuaire Yasukuni et aux douves du palais impérial.",
+    "plus": [
+      "Le sanctuaire Kanda Myojin, lié à la culture d'Akihabara",
+      "La rue des luthiers d'Ochanomizu",
+      "Jimbocho, capitale japonaise du livre ancien",
+      "Module recommandé pour un client curieux de littérature ou de musique"
+    ],
+    "photo": "alley"
+  },
+  "CT-05": {
+    "titre": "Le Tokyo des Panoramas",
+    "fil": "Shinjuku · Roppongi · Daimon",
+    "zone": "Tokyo centre ouest et sud",
+    "duree": "1 jour",
+    "rythme": "Modérée, alternance de marche et de métro",
+    "lede": "Le Tokyo de l'architecture contemporaine et des points de vue : Shinjuku, Roppongi et ses institutions culturelles, puis la tour de Tokyo au pied du temple Zojoji.",
+    "programme": "Après la séquence Shinjuku du matin, l'après-midi monte à la Mori Tower de Roppongi pour la vue sur la ville depuis la Tokyo City View, avec le Mori Art Museum au même niveau. La fin de journée se joue à Daimon et Shiba : vue depuis la tour de Tokyo, puis le temple Zojoji, temple funéraire des shoguns Tokugawa, et la montée au sanctuaire Atago Jinja par son escalier de la réussite, 86 marches sur la plus haute colline naturelle du centre de Tokyo.",
+    "plus": [
+      "La vue sur Tokyo depuis la Mori Tower et son musée d'art contemporain",
+      "Le temple Zojoji avec la tour de Tokyo en arrière-plan",
+      "L'escalier de la réussite du sanctuaire Atago Jinja",
+      "Module recommandé pour un client sensible au design et à l'architecture"
+    ],
+    "photo": "tokyo-night"
+  },
+  "CT-06": {
+    "titre": "Le Tokyo de l'Imaginaire",
+    "fil": "Musée Ghibli · Kichijoji · Koenji · Nakano",
+    "zone": "Tokyo ouest, ligne JR Chuo",
+    "duree": "1 jour",
+    "rythme": "Douce, ambiance de quartier",
+    "lede": "Le Tokyo des Tokyoïtes : le parc Inokashira et le musée Ghibli, les rues commerçantes de Kichijoji, puis Koenji et ses friperies, et Nakano Broadway, cathédrale de la culture otaku d'occasion.",
+    "programme": "La matinée se passe au parc Inokashira et au musée Ghibli à Mitaka, dont les billets horodatés et nominatifs doivent être réservés longtemps à l'avance. Kichijoji, régulièrement classé quartier où les Tokyoïtes préfèrent vivre, occupe le milieu de journée avec ses rues commerçantes et Harmonica Yokocho. L'après-midi remonte la ligne JR Chuo vers Koenji, quartier des friperies et de la scène musicale indépendante, puis Nakano Broadway et son concentré de figurines et d'objets de collection.",
+    "plus": [
+      "Le musée Ghibli, réservation obligatoire très en amont",
+      "Le parc Inokashira, l'un des plus beaux sites de cerisiers de l'ouest de Tokyo",
+      "Nakano Broadway, temple du manga d'occasion",
+      "Module de choix pour un client fan d'animation ou de vintage"
+    ],
+    "photo": "alley"
+  },
+  "CT-07": {
+    "titre": "Yokohama, la Porte du Large",
+    "fil": "Tokyo · Yokohama",
+    "zone": "Préfecture de Kanagawa, front de mer",
+    "duree": "1 jour",
+    "rythme": "Douce, promenade urbaine et bord de mer",
+    "lede": "La ville par laquelle le Japon s'est rouvert au monde en 1859 : la modernité du quartier Minato Mirai, la mémoire portuaire des entrepôts de brique rouge, et le plus grand quartier chinois du Japon.",
+    "programme": "Depuis Tokyo, environ 35 minutes suffisent pour rejoindre la Landmark Tower et son observatoire Sky Garden, avec le musée Cup Noodles où l'on compose sa propre boîte de nouilles instantanées. Le port et les entrepôts de brique rouge, anciens bâtiments douaniers de la fin du XIXe siècle transformés en galeries, précèdent une promenade jusqu'au parc Yamashita, face à la baie. La journée se termine dans le quartier chinois, le plus grand du Japon, ses portes cérémonielles et ses centaines de restaurants.",
+    "plus": [
+      "La vue sur la baie depuis l'observatoire de la Landmark Tower",
+      "Les entrepôts de brique rouge, anciens bâtiments douaniers",
+      "Le plus grand quartier chinois du Japon",
+      "Excursion sûre, adaptée à une journée moins dense"
+    ],
+    "photo": "tokyo-night"
+  },
+  "CT-08": {
+    "titre": "Enoshima et Kamakura, la Mer et les Bouddhas",
+    "fil": "Tokyo · Enoshima · Kamakura",
+    "zone": "Préfecture de Kanagawa, littoral du Shonan",
+    "duree": "1 jour",
+    "rythme": "Soutenue, marche et escaliers",
+    "lede": "Deux visages du Japon côtier reliés par un petit train qui longe la mer : l'île sacrée d'Enoshima le matin, la capitale shogunale de Kamakura et son grand bouddha de bronze l'après-midi.",
+    "programme": "La matinée se passe sur l'île d'Enoshima, reliée par un pont, avec ses sanctuaires accrochés à la pente et sa tour d'observation Sea Candle, vue sur la baie de Sagami et, par temps clair, sur le mont Fuji. La ligne Enoden, séquence mémorable en elle-même, mène ensuite à Kamakura : le grand bouddha du Kotokuin, bronze de 1252 en plein air depuis qu'un tsunami a emporté son pavillon au XVe siècle, puis le temple Hasedera et ses jardins en terrasses, et enfin le sanctuaire Tsurugaoka Hachimangu, cœur du shogunat de Kamakura.",
+    "plus": [
+      "Le grand bouddha du Kotokuin, bronze de plus de 11 mètres",
+      "La traversée en petit train Enoden le long de la côte",
+      "Le temple Hasedera et sa vue sur la mer",
+      "Journée physique, à adapter pour une mobilité réduite"
+    ],
+    "photo": "kamakura"
+  },
+  "CT-09": {
+    "titre": "Takaosan, la Montagne des Tengu",
+    "fil": "Tokyo · Takaosan",
+    "zone": "Ouest de la préfecture de Tokyo",
+    "duree": "1 jour",
+    "rythme": "Sportive à pied, douce en télésiège",
+    "lede": "La montagne la plus accessible depuis Tokyo, à 50 minutes de Shinjuku : le temple Yakuoin, haut lieu du shugendo, et par temps clair une vue qui porte jusqu'au mont Fuji.",
+    "programme": "Le Takaosan culmine à 599 mètres et se monte à pied, en funiculaire ou en télésiège selon le profil du client. Le temple Yakuoin, fondé au VIIIe siècle, est jalonné de statues de tengu, ces créatures ailées gardiennes de la montagne. Au sommet, la vue porte sur la mégapole de Tokyo et, en décembre, sur le diamond Fuji, coucher de soleil dans l'axe exact du mont Fuji. Une auberge de montagne sert les spécialités locales, tororo soba et dango.",
+    "plus": [
+      "La vue sur le mont Fuji depuis le sommet, par temps clair",
+      "Le temple Yakuoin et ses statues de tengu",
+      "La cérémonie de marche sur les braises, mi-mars",
+      "Une vraie respiration naturelle dans un séjour urbain"
+    ],
+    "photo": "fuji-city"
+  },
+  "CT-10": {
+    "titre": "Nikko, le Sanctuaire dans les Cèdres",
+    "fil": "Tokyo · Nikko",
+    "zone": "Préfecture de Tochigi, parc national de Nikko",
+    "duree": "1 à 2 jours",
+    "rythme": "Modérée en version courte, sportive avec la randonnée",
+    "lede": "Le sommet de l'art décoratif japonais et une nature de haute montagne réunis en un lieu : le mausolée du shogun Tokugawa Ieyasu, classé au patrimoine mondial, et le lac Chuzenji à trente minutes de bus.",
+    "programme": "Le sanctuaire Toshogu, mausolée de Tokugawa Ieyasu au milieu d'une cryptomeraie séculaire, réunit la porte Yomeimon, les trois singes de la sagesse et le chat endormi. Le chemin des 70 bouddhas de Kanmangafuchi longe ensuite la gorge. En version deux jours, la route en lacets d'Irohazaka mène au lac Chuzenji et à la chute de Kegon, 97 mètres, puis une randonnée de 9 kilomètres jusqu'à Yumoto Onsen et ses eaux sulfureuses conclut le séjour.",
+    "plus": [
+      "Le sanctuaire Toshogu, classé au patrimoine mondial",
+      "La chute de Kegon, 97 mètres",
+      "La randonnée du lac Chuzenji à Yumoto Onsen, en version deux jours",
+      "Saturé en octobre et novembre pour les érables"
+    ],
+    "photo": "torii-walkway"
+  },
+  "CT-11": {
+    "titre": "Kyoto Centre, la Ville des Marchands et des Geiko",
+    "fil": "Gare de Kyoto · Palais impérial · Nishiki · Gion · Pontocho",
+    "zone": "Centre de Kyoto",
+    "duree": "1 jour",
+    "rythme": "Douce, essentiellement à pied et à plat",
+    "lede": "Le circuit d'entrée dans Kyoto, qui privilégie la ville habitée : le palais impérial, le marché Nishiki que les Kyotoïtes appellent la cuisine de Kyoto, et les ruelles de Gion et de Pontocho à la tombée du jour.",
+    "programme": "La matinée commence au palais impérial de Kyoto et à son vaste parc, puis descend le long de la rivière Kamogawa vers le marché Nishiki, environ 400 mètres de galerie couverte et plus d'une centaine d'échoppes. L'après-midi traverse le quartier traditionnel de Gion, ses maisons de thé et la ruelle de Hanamikoji, avant de rejoindre Pontocho à la tombée du jour, quand la lumière des lanternes en fait le meilleur moment de la journée.",
+    "plus": [
+      "Le marché Nishiki, la cuisine de Kyoto",
+      "Les ruelles de Gion et de Pontocho à la tombée du jour",
+      "Module conçu pour fonctionner aussi en simple escale d'une journée",
+      "Terrasses sur la rivière à Pontocho de mai à septembre"
+    ],
+    "photo": "kiyomizu-street"
+  },
+  "CT-12": {
+    "titre": "Kyoto Est, le Chemin des Philosophes",
+    "fil": "Ginkakuji · Chemin des philosophes · Heian Jingu · Nanzenji · Gion · Kiyomizudera",
+    "zone": "Higashiyama, flanc est de Kyoto",
+    "duree": "1 jour",
+    "rythme": "Soutenue, environ 9 km de marche",
+    "lede": "Le grand axe nord-sud des collines de l'est, le module le plus riche en patrimoine du catalogue : du pavillon d'argent au chemin des philosophes, jusqu'à la terrasse de Kiyomizudera.",
+    "programme": "Le pavillon d'argent, Ginkakuji, construit en 1482, ouvre la journée avec son jardin de mousses et sa mer de sable argenté. Le chemin des philosophes, deux kilomètres le long du canal, mène au sanctuaire Heian Jingu et à son torii de 24 mètres, puis au temple Nanzenji et à son aqueduc de brique. La descente vers le sud se termine au temple Kiyomizudera, dont la terrasse sur pilotis domine la ville, accessible par les ruelles préservées de Sannenzaka et Ninenzaka.",
+    "plus": [
+      "Le jardin de mousses du Ginkakuji, un des jardins fondateurs du wabi-sabi",
+      "Le chemin des philosophes le long du canal",
+      "La terrasse de Kiyomizudera en fin d'après-midi, hors de la foule de midi",
+      "À réserver aux clients bons marcheurs"
+    ],
+    "photo": "kiyomizu-street"
+  },
+  "CT-13": {
+    "titre": "Kyoto Nord, Bambous, Rivière et Pavillon d'Or",
+    "fil": "Arashiyama · Hozugawa · Kinkakuji",
+    "zone": "Nord-ouest de Kyoto, vallée de la Hozugawa",
+    "duree": "1 jour",
+    "rythme": "Modérée, montée raide au parc à singes",
+    "lede": "La journée la plus paysagère de Kyoto : la bambouseraie d'Arashiyama, une descente de rivière en barque ou en petit train panoramique, puis le pavillon d'or.",
+    "programme": "L'arrivée matinale à Arashiyama, condition impérative pour profiter de la forêt de bambous avec peu de monde, précède la visite du temple Tenryuji, classé au patrimoine mondial, et la montée au parc à singes d'Iwatayama pour le panorama sur Kyoto. L'après-midi, la descente de la rivière Hozugawa en barque à fond plat, ou le petit train Sagano aux wagons ouverts, traverse les gorges. La journée se termine au Kinkakuji, le pavillon d'or recouvert de feuille d'or.",
+    "plus": [
+      "La forêt de bambous d'Arashiyama, à voir tôt le matin",
+      "La descente de la Hozugawa en barque à travers les gorges",
+      "Le pavillon d'or, reconstruit en 1955",
+      "Module à très forte valeur photographique"
+    ],
+    "photo": "kinkakuji"
+  },
+  "CT-14": {
+    "titre": "Kyoto, les Dix Mille Torii",
+    "fil": "Fushimi Inari Taisha · Kiyomizudera · Gion · Yasaka · Heian · Nanzenji",
+    "zone": "Sud-est puis est de Kyoto",
+    "duree": "1 jour",
+    "rythme": "Sportive le matin, soutenue ensuite",
+    "lede": "La variante sud du circuit est, construite autour du sanctuaire le plus photographié du Japon : des milliers de torii vermillon du Fushimi Inari, puis la remontée vers le nord à travers Higashiyama.",
+    "programme": "Arriver au Fushimi Inari Taisha dès le lever du soleil est le seul moyen d'en avoir une expérience paisible : les torii, offerts par des entreprises et des particuliers, montent jusqu'au sommet du mont Inari, une marche de trois heures aller-retour ou une version courte jusqu'au belvédère de Yotsutsuji. Le reste de la journée remonte vers le nord, au temple Kiyomizudera par les ruelles de Sannenzaka et Ninenzaka, puis à Gion et au sanctuaire Yasaka, jusqu'au Heian Jingu et au temple Nanzenji.",
+    "plus": [
+      "Les milliers de torii du Fushimi Inari, à vivre au lever du soleil",
+      "L'ascension du mont Inari, entre trois heures et une heure trente selon la version",
+      "La terrasse de Kiyomizudera",
+      "Complémentaire du module Kyoto Est, à ne jamais vendre les deux ensemble"
+    ],
+    "photo": "fushimi-inari"
+  },
+  "CT-15": {
+    "titre": "Osaka, la Ville qui Mange",
+    "fil": "Umeda Sky Building · Gare d'Osaka et Grand Front · Château d'Osaka · NHK BK Plaza",
+    "zone": "Nord d'Osaka, quartier de Kita",
+    "duree": "1 jour",
+    "rythme": "Douce, dominante urbaine et commerçante",
+    "lede": "Osaka par sa moitié nord : le panorama à ciel ouvert de l'Umeda Sky Building, les rues marchandes couvertes qui gardent le tempérament populaire de la ville, puis le château d'Osaka.",
+    "programme": "La montée à l'Umeda Sky Building, deux tours reliées par un observatoire flottant suspendu dans le vide, ouvre la journée sur une vue à 360 degrés. Les rues commerçantes couvertes de Tenjinbashisuji, la plus longue galerie marchande du Japon, sont l'endroit où goûter takoyaki et kushikatsu. L'après-midi se termine au château d'Osaka et à son parc, puis au NHK BK Plaza, où l'on découvre les coulisses de la télévision publique japonaise.",
+    "plus": [
+      "L'observatoire flottant de l'Umeda Sky Building",
+      "Tenjinbashisuji, la plus longue galerie marchande du Japon",
+      "Le château d'Osaka et son parc",
+      "Module conçu aussi pour une escale d'une journée, consigne à bagages en gare"
+    ],
+    "photo": "osaka-castle"
+  },
+  "CT-16": {
+    "titre": "Osaka Populaire, du Shitamachi aux Néons",
+    "fil": "Shinsekai · Shitennoji · Abeno Harukas · Namba · Dotonbori",
+    "zone": "Sud d'Osaka, quartiers de Shinsekai, Tennoji et Minami",
+    "duree": "1 jour",
+    "rythme": "Modérée, journée qui se prolonge en soirée",
+    "lede": "Le pendant sud du circuit précédent, celui qui donne son caractère à Osaka : Shinsekai et son quartier figé dans les années 1950, le plus ancien temple bouddhique du Japon, puis Namba et Dotonbori jusque tard dans la soirée.",
+    "programme": "Shinsekai, bâti en 1912 en s'inspirant de Paris et de Coney Island, se découvre autour de la tour Tsutenkaku et de ses brochettes de kushikatsu. Le temple Shitennoji, fondé en 593, considéré comme le plus ancien temple bouddhique officiel du Japon, précède la montée à l'Abeno Harukas, le plus haut gratte-ciel du Japon. La soirée se joue à Namba et Dotonbori, au bord du canal, sous les enseignes lumineuses et le coureur Glico.",
+    "plus": [
+      "La tour Tsutenkaku et l'ambiance rétro de Shinsekai",
+      "Le temple Shitennoji, le plus ancien temple bouddhique du Japon",
+      "L'observatoire Harukas 300, le plus haut gratte-ciel du Japon",
+      "Se complète naturellement avec le module Osaka nord, à vendre en deux jours"
+    ],
+    "photo": "osaka-castle"
+  },
+  "EX-01": {
+    "titre": "L'Été des Ryukyu",
+    "fil": "Naha · Îles Kerama",
+    "zone": "Archipel d'Okinawa, mer de Chine orientale",
+    "duree": "5 jours / 4 nuits",
+    "rythme": "Douce, dominante balnéaire et nautique",
+    "lede": "L'extension mer du catalogue, à ajouter à la fin d'un circuit principal : un archipel subtropical à la culture ryukyu, et la mer la plus claire du Japon.",
+    "programme": "Après un vol vers Naha et une première approche des rues commerçantes couvertes du centre-ville, trois nuits sur les îles Kerama, à trente-cinq minutes en bateau rapide, ouvrent sur Zamami et Tokashiki et leur mer turquoise dite Kerama Blue. Baignade, snorkeling et plongée se pratiquent directement depuis la plage. Cette extension se greffe à la suite de la plupart des circuits signatures se terminant à Tokyo ou dans le Kansai, à l'exception de Des Temples aux Coraux, qui contient déjà cette séquence.",
+    "plus": [
+      "La mer turquoise des îles Kerama, dite Kerama Blue",
+      "Snorkeling accessible directement depuis la plage",
+      "Compatible avec la plupart des circuits signatures",
+      "La plus exposée aux typhons de juin à octobre, prévoir un plan de repli"
+    ],
+    "photo": null
+  }
+},
   finalisation: {
     lede: 'Un itinéraire sur mesure, construit avec vous avant le départ.',
     prixSub: 'Tarif personnalisé selon vos dates et le nombre de voyageurs.',

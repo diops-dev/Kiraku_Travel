@@ -3,12 +3,13 @@ import Layout, { useGo } from './Layout.jsx'
 import Seo from './Seo.jsx'
 import { HomePage } from './HomePage.jsx'
 import { DetailPage, ItinerariesPage } from './DetailPage.jsx'
+import { ModulePage } from './ModulePage.jsx'
 import { JaponPage, HistoirePage, GastronomiePage, GuidePage } from './JaponPages.jsx'
 import { AboutPage, ContactPage, JournalPage } from './Pages.jsx'
 import { CSEPage } from './CSEPage.jsx'
 import { CGVPage } from './Legal.jsx'
 import { LANGS, prefixe } from './i18n.js'
-import { rt, segment, SEG_ITIN, SLUGS_L } from './paths.js'
+import { rt, segment, SEG_ITIN, SEG_MOD, SLUGS_L, SLUGS_MOD_L } from './paths.js'
 import { COMMON, ITIN } from './content/index.js'
 
 // Une page = son SEO + le composant du design, alimente par go().
@@ -53,6 +54,21 @@ function seoCircuit(lang, ref) {
   };
 }
 
+function seoModule(lang, ref) {
+  const s = COMMON[lang].seo;
+  const mod = ITIN[lang].modules && ITIN[lang].modules[ref];
+  const court = ITIN[lang].circuitsCourts[ref];
+  const titre = mod ? mod.titre : (court ? court.title : ref);
+  return {
+    titre: s.circuitTitre ? s.circuitTitre(titre, mod ? mod.duree : '1 jour') : titre,
+    description: mod ? mod.lede : s.circuitDefautDescription,
+    path: rt('module', ref, lang),
+    lang,
+    routeKey: 'module',
+    circuitRef: ref,
+  };
+}
+
 function arbre(lang) {
   const enfants = [
     { index: true, element: <Page Comp={HomePage} seo={seoPage(lang, 'home')} /> },
@@ -63,6 +79,10 @@ function arbre(lang) {
     ...Object.entries(SLUGS_L[lang]).map(([ref, slug]) => ({
       path: SEG_ITIN[lang] + '/' + slug,
       element: <Page Comp={DetailPage} param={ref} seo={seoCircuit(lang, ref)} />,
+    })),
+    ...Object.entries(SLUGS_MOD_L[lang]).map(([ref, slug]) => ({
+      path: SEG_MOD[lang] + '/' + slug,
+      element: <Page Comp={ModulePage} param={ref} seo={seoModule(lang, ref)} />,
     })),
   ];
   return { path: prefixe(lang) || '/', element: <Layout />, children: enfants };
