@@ -89,7 +89,7 @@ export function ModulePage({ go, param }) {
         <div className="detail-layout">
           <div>
             <DetailCarousel slides={slides} legendes={legendes} />
-            <SejourTabs circuit={param} plus={mod.plus} />
+            <SejourTabs circuit={param} plus={mod.plus} titre={mod.titre} />
 
             <div className="section-head" style={{marginTop:72, marginBottom:24}}>
               <div className="left">

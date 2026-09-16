@@ -7,13 +7,14 @@ import { COMMON, INCL } from './content/index.js'
 // Les donnees viennent du dictionnaire de la langue courante.
 
 function fiche(t, circuit) {
-  return t.circuits[circuit] || t.circuits.KUNISAKI;
+  return t.circuits[circuit] || null;
 }
 
 export function PriceInclusions({ circuit }) {
   const c = useT(COMMON);
   const t = useT(INCL);
   const data = fiche(t, circuit);
+  if (!data) return null;
   const inclus = [...data.inclus, ...t.inclusBase];
   const exclus = [...(data.exclus || []), ...t.exclusBase];
   const li = { fontFamily:'var(--font-serif)', fontSize:16, lineHeight:1.65, color:'var(--fg-2)', paddingLeft:22, position:'relative', textWrap:'pretty' };
@@ -54,13 +55,16 @@ export function PriceInclusions({ circuit }) {
 }
 
 // Les memes informations, en onglets, pour gagner de la place
-export function SejourTabs({ circuit, departs, note, plus }) {
+export function SejourTabs({ circuit, departs, note, plus, titre }) {
   const c = useT(COMMON);
   const t = useT(INCL);
   const data = fiche(t, circuit);
   const pratique = t.fiches[circuit] || {};
-  const inclus = [...data.inclus, ...t.inclusBase];
-  const exclus = [...(data.exclus || []), ...t.exclusBase];
+  // Sans fiche reelle pour ce circuit (cas des sejours libertes, qui n'ont
+  // pas d'inclus/exclus/options propres), on n'affiche jamais les listes
+  // d'un autre circuit : les onglets correspondants sont simplement absents.
+  const inclus = data ? [...data.inclus, ...t.inclusBase] : [];
+  const exclus = data ? [...(data.exclus || []), ...t.exclusBase] : [];
   const th = { textAlign:'left', fontFamily:'var(--font-sans)', fontSize:11, letterSpacing:'0.2em', textTransform:'uppercase', color:'var(--fg-muted)', fontWeight:500, padding:'0 16px 12px 0', borderBottom:'1px solid var(--border-strong)' };
   const td = { fontFamily:'var(--font-serif)', fontSize:17, color:'var(--fg-2)', padding:'14px 16px 14px 0', borderBottom:'1px solid var(--hairline)' };
   const list = (items) => <ul>{items.map(x => <li key={x}>{x}</li>)}</ul>;
@@ -72,23 +76,27 @@ export function SejourTabs({ circuit, departs, note, plus }) {
   if (pratique.transports) tabs.push({ id: 'tr', lbl: L.tr, render: () => list(pratique.transports) });
   if (pratique.guide) tabs.push({ id: 'guide', lbl: L.guide, render: () => list(pratique.guide) });
   if (pratique.equipement) tabs.push({ id: 'equip', lbl: L.equip, render: () => list(pratique.equipement) });
-  tabs.push({ id: 'options', lbl: L.options, render: () => list(data.options || []) });
+  if (data && data.options && data.options.length) tabs.push({ id: 'options', lbl: L.options, render: () => list(data.options) });
   if (note) tabs.push({ id: 'savoir', lbl: L.savoir, render: () => (
     <p style={{fontFamily:'var(--font-serif)', fontSize:17, lineHeight:1.7, color:'var(--fg-2)', margin:0, maxWidth:760, textWrap:'pretty'}}>{note}</p>
   ) });
-  tabs.push({ id: 'inclus', lbl: L.inclus, render: () => (
-    <>
-      {t.visuels[circuit] ? <InclusionsVisuelles items={t.visuels[circuit]} /> : null}
-      <div style={{margin:'26px 0 0', paddingTop:26, borderTop:'1px solid var(--hairline)'}}>{list(inclus)}</div>
-    </>
-  ) });
-  tabs.push({ id: 'exclus', lbl: L.exclus, render: () => (
-    <>
-      {list(exclus)}
-      <p style={{fontFamily:'var(--font-serif)', fontSize:15, lineHeight:1.6, color:'var(--fg-muted)', margin:'18px 0 0'}}>{t.notePourboire}.</p>
-    </>
-  ) });
-  if (departs && departs.length) tabs.splice(tabs.length - 2, 0, { id: 'departs', lbl: L.departs, render: () => (
+  if (data) {
+    tabs.push({ id: 'inclus', lbl: L.inclus, render: () => (
+      <>
+        {t.visuels[circuit] ? <InclusionsVisuelles items={t.visuels[circuit]} /> : null}
+        <div style={{margin:'26px 0 0', paddingTop:26, borderTop:'1px solid var(--hairline)'}}>{list(inclus)}</div>
+      </>
+    ) });
+    tabs.push({ id: 'exclus', lbl: L.exclus, render: () => (
+      <>
+        {list(exclus)}
+        <p style={{fontFamily:'var(--font-serif)', fontSize:15, lineHeight:1.6, color:'var(--fg-muted)', margin:'18px 0 0'}}>{t.notePourboire}.</p>
+      </>
+    ) });
+  }
+  if (departs && departs.length) {
+    const avant = tabs.findIndex(x => x.id === 'inclus');
+    tabs.splice(avant > -1 ? avant : tabs.length, 0, { id: 'departs', lbl: L.departs, render: () => (
     <table style={{width:'100%', borderCollapse:'collapse', maxWidth:720}}>
       <thead><tr><th style={th}>{c.detail.thDepart}</th><th style={th}>{c.detail.thRetour}</th><th style={{...th, width:160}}>{c.detail.thAdulte}</th></tr></thead>
       <tbody>
@@ -102,6 +110,7 @@ export function SejourTabs({ circuit, departs, note, plus }) {
       </tbody>
     </table>
   ) });
+  }
 
   const [active, setActive] = useState(tabs[0].id);
   const cur = tabs.find(x => x.id === active) || tabs[0];
@@ -111,7 +120,7 @@ export function SejourTabs({ circuit, departs, note, plus }) {
         <div className="left">
           <div className="section-eyebrow">{c.detail.sejourEyebrow}</div>
           <h2>{c.detail.sejourTitre}</h2>
-          <div className="kicker">· {data.titre}</div>
+          <div className="kicker">· {titre || (data && data.titre)}</div>
         </div>
       </div>
       <div className="tabbar">
