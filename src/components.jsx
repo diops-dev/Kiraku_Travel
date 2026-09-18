@@ -5,6 +5,7 @@ import { alternatives, analyser, rt } from './paths.js'
 import { LANG_LABELS, LANG_NAMES, LANGS, useLang } from './i18n.js'
 import { COMMON } from './content/index.js'
 import { useT } from './i18n.js'
+import { openCookieSettings } from './CookieConsent.jsx'
 
 // Composants partages : navigation, selecteur de langue, pied de page, primitives
 
@@ -191,6 +192,8 @@ export function Footer({ go }) {
             <a href={rt('cgv', null, lang)} onClick={(e)=>{e.preventDefault();go('cgv')}}>{f.cgv}</a>
             {' · '}
             <a href={rt('cgv', null, lang)} onClick={(e)=>{e.preventDefault();go('cgv')}}>{f.confidentialite}</a>
+            {' · '}
+            <a href="#" onClick={(e)=>{e.preventDefault();openCookieSettings()}}>{f.gererCookies}</a>
           </span>
           <span>{f.realise} <a href="https://www.shorai-group.com" target="_blank" rel="noopener" style={{color:'var(--kiraku-shu-soft)', textDecoration:'none'}}>ShorAI Consulting</a></span>
         </div>

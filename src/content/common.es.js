@@ -64,6 +64,14 @@ export default {
       more: { label: 'Solicitar una propuesta', go: ['contact'] } },
   ],
 
+  cookies: {
+    aria: 'Preferencias de cookies',
+    texte: 'Este sitio utiliza Google Analytics para comprender mejor cómo nuestros futuros viajeros lo descubren, y mejorar su experiencia. Sus datos permanecen anonimizados.',
+    enSavoirPlus: 'Saber más',
+    refuser: 'Rechazar',
+    accepter: 'Aceptar',
+  },
+
   footer: {
     baseline: 'Viajes por Japón tejidos de nuevo en torno a usted, al ritmo de las estaciones. De uno a ocho viajeros en privado, de cuatro a ocho en grupo reducido.',
     colItin: 'Itinerarios',
@@ -86,6 +94,7 @@ export default {
     mentions: 'Aviso legal',
     cgv: 'Condiciones generales',
     confidentialite: 'Privacidad',
+    gererCookies: 'Gestionar cookies',
     realise: 'Sitio realizado por',
   },
 

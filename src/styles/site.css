@@ -760,3 +760,52 @@ main.page-home, main.page-cse { padding-top: 0; }
 @media (max-width: 1024px) {
   .nav-actions > .nav-lang { display: none; }
 }
+
+
+/* ------------------------------------------------------------ COOKIE BANNER
+   Bandeau de consentement, discret mais visible, aux couleurs de marque.
+   Le bouton "Accepter" est plein (accent), "Refuser" reste cliquable mais
+   en retrait visuel, sans pour autant être caché ou minuscule. */
+.cookie-banner {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 60;
+  background: var(--kiraku-sumi);
+  border-top: 1px solid rgba(246,241,232,0.12);
+  box-shadow: 0 -8px 28px rgba(20,17,15,0.28);
+  animation: cookie-rise 420ms ease-out;
+}
+@keyframes cookie-rise {
+  from { transform: translateY(100%); }
+  to { transform: translateY(0); }
+}
+.cookie-banner-inner {
+  max-width: 1240px; margin: 0 auto;
+  padding: 18px 28px; padding-bottom: calc(18px + env(safe-area-inset-bottom));
+  display: flex; align-items: center; gap: 20px;
+}
+.cookie-banner-seal { width: 30px; height: 30px; flex: none; opacity: 0.92; }
+.cookie-banner-text {
+  flex: 1; margin: 0; min-width: 220px;
+  font-family: var(--font-sans); font-size: 13.5px; line-height: 1.55;
+  color: rgba(246,241,232,0.86);
+}
+.cookie-banner-text a { color: var(--kiraku-shu-soft); text-decoration: underline; text-underline-offset: 2px; }
+.cookie-banner-text a:hover { color: var(--kiraku-washi); }
+.cookie-banner-actions { display: flex; align-items: center; gap: 10px; flex: none; }
+.cookie-btn {
+  font-family: var(--font-sans); font-size: 13px; font-weight: 600;
+  letter-spacing: 0.02em; line-height: 1; border-radius: var(--r-pill);
+  padding: 11px 20px; cursor: pointer; border: 1px solid transparent;
+  transition: background 160ms, color 160ms, border-color 160ms;
+  white-space: nowrap;
+}
+.cookie-btn-accent { background: var(--kiraku-shu); color: var(--kiraku-washi); }
+.cookie-btn-accent:hover { background: var(--kiraku-shu-deep); }
+.cookie-btn-ghost { background: transparent; color: rgba(246,241,232,0.72); border-color: rgba(246,241,232,0.28); }
+.cookie-btn-ghost:hover { color: var(--kiraku-washi); border-color: rgba(246,241,232,0.5); }
+
+@media (max-width: 720px) {
+  .cookie-banner-inner { flex-wrap: wrap; padding: 16px 20px; padding-bottom: calc(16px + env(safe-area-inset-bottom)); }
+  .cookie-banner-seal { display: none; }
+  .cookie-banner-text { flex-basis: 100%; }
+  .cookie-banner-actions { flex-basis: 100%; justify-content: flex-end; }
+}

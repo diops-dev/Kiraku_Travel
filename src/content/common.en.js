@@ -64,6 +64,14 @@ export default {
       more: { label: 'Request a proposal', go: ['contact'] } },
   ],
 
+  cookies: {
+    aria: 'Cookie preferences',
+    texte: 'This site uses Google Analytics to better understand how future travellers discover it, and to improve your experience. Your data stays anonymised.',
+    enSavoirPlus: 'Learn more',
+    refuser: 'Decline',
+    accepter: 'Accept',
+  },
+
   footer: {
     baseline: 'Journeys through Japan rewoven around you, in step with the seasons. One to eight travellers in private, four to eight in a small group.',
     colItin: 'Itineraries',
@@ -86,6 +94,7 @@ export default {
     mentions: 'Legal notice',
     cgv: 'Terms of sale',
     confidentialite: 'Privacy',
+    gererCookies: 'Manage cookies',
     realise: 'Site built by',
   },
 

@@ -64,6 +64,14 @@ export default {
       more: { label: 'Demander une proposition', go: ['contact'] } },
   ],
 
+  cookies: {
+    aria: 'Préférences de cookies',
+    texte: "Ce site utilise Google Analytics pour mieux comprendre comment nos futurs voyageurs le découvrent, et améliorer votre expérience. Vos données restent anonymisées.",
+    enSavoirPlus: 'En savoir plus',
+    refuser: 'Refuser',
+    accepter: 'Accepter',
+  },
+
   footer: {
     baseline: 'Des voyages au Japon retissés autour de vous, au rythme des saisons. De un à huit voyageurs en privé, de quatre à huit en petit groupe.',
     colItin: 'Itinéraires',
@@ -86,6 +94,7 @@ export default {
     mentions: 'Mentions légales',
     cgv: 'CGV',
     confidentialite: 'Confidentialité',
+    gererCookies: 'Gérer les cookies',
     realise: 'Site réalisé par',
   },
 
