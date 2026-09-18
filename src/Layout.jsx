@@ -1,10 +1,12 @@
 import React, { useEffect } from 'react'
 import { Outlet, useLocation, useNavigate } from 'react-router-dom'
 import { Nav, Footer } from './components.jsx'
+import CookieConsent from './CookieConsent.jsx'
 import { analyser, rt } from './paths.js'
 import { LangContext, useLang } from './i18n.js'
 import { COMMON } from './content/index.js'
 import { pick } from './i18n.js'
+import { initAnalyticsFromStoredConsent } from './analytics.js'
 
 // Coquille du site : navigation, page courante, pied de page.
 // Les pages issues du design appellent go('route', 'param'), on le traduit
@@ -19,6 +21,8 @@ export function useGo() {
 export default function Layout() {
   const { pathname, hash } = useLocation();
   const { lang, key } = analyser(pathname);
+
+  useEffect(() => { initAnalyticsFromStoredConsent(); }, []);
 
   useEffect(() => {
     if (hash) {
@@ -50,6 +54,7 @@ function Coquille({ route, pathname, lang }) {
         <Outlet context={{ go }} />
       </main>
       <Footer go={go} />
+      <CookieConsent />
     </>
   );
 }
