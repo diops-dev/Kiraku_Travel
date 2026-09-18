@@ -183,5 +183,5 @@ export function routeKey(pathname) {
 
 // Les trois URL equivalentes d'une page, pour les balises hreflang.
 export function alternatives(key, ref) {
-  return LANGS.map(l => ({ lang: l, path: key === 'detail' ? rt('detail', ref, l) : rt(key, null, l) }));
+  return LANGS.map(l => ({ lang: l, path: key === 'detail' || key === 'module' ? rt(key, ref, l) : rt(key, null, l) }));
 }
