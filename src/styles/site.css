@@ -331,6 +331,7 @@ body {
 
 /* colonne principale + rail de prix collant */
 .detail-layout { display: grid; grid-template-columns: minmax(0, 1fr) 360px; gap: 44px; align-items: start; padding-bottom: 80px; }
+.detail-layout > * { min-width: 0; }
 .detail-rail { position: sticky; top: 96px; max-height: calc(100vh - 120px); overflow-y: auto; overscroll-behavior: contain; scrollbar-width: thin; }
 .detail-layout .detail-carousel { margin: 0; aspect-ratio: 16/9; }
 .detail-layout .detail-thumbs { margin: 10px 0 0; }
@@ -345,6 +346,7 @@ body {
 .facts .head .price { font-family: var(--font-display); font-weight: 600; font-size: 30px; line-height: 1; color: var(--fg); }
 .facts .head .sub { font-size: 12px; color: var(--fg-muted); flex-basis: 100%; line-height: 1.45; }
 .facts .grid { display: grid; grid-template-columns: 1fr 1fr; border-top: 1px solid var(--hairline); }
+.facts .grid > * { min-width: 0; }
 .facts .cell.span .val { font-family: var(--font-serif); font-weight: 400; font-size: 15px; line-height: 1.5; }
 .facts .badge { display: inline-flex; align-items: center; gap: 7px; font-family: var(--font-sans); font-size: 11px; letter-spacing: 0.16em; text-transform: uppercase; color: var(--kiraku-shu); background: var(--kiraku-washi-2); border-radius: 999px; padding: 6px 12px; }
 .facts .badge::before { content: ""; width: 5px; height: 5px; border-radius: 50%; background: var(--kiraku-shu); }
@@ -379,6 +381,7 @@ body {
 /* les + de cet itinéraire */
 .plus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(380px, 1fr)); gap: 12px; }
 .plus-grid .item { background: var(--kiraku-paper); border: 1px solid var(--hairline); border-radius: 12px; padding: 18px 20px; display: flex; gap: 14px; align-items: flex-start; }
+.plus-grid .item p { min-width: 0; }
 .plus-grid .item .n { font-family: var(--font-display); font-weight: 600; font-size: 15px; color: var(--kiraku-shu); line-height: 1.5; flex: none; }
 .plus-grid .item p { font-family: var(--font-serif); font-size: 16px; line-height: 1.55; color: var(--fg-2); margin: 0; text-wrap: pretty; }
 
@@ -400,6 +403,7 @@ body {
 .detail-sticky .features li::before { content: "·"; color: var(--kiraku-shu); }
 
 .day { display: grid; grid-template-columns: 80px 1fr; gap: 32px; padding: 32px 0; border-top: 1px solid var(--hairline); }
+.day > * { min-width: 0; }
 .day:first-child { border-top: 0; padding-top: 0; }
 .day .num { font-family: var(--font-display); font-weight: 600; font-size: 36px; color: var(--kiraku-shu); line-height: 1; }
 .day .num small { display: block; font-size: 11px; letter-spacing: 0.2em; text-transform: uppercase; color: var(--fg-muted); font-weight: 500; margin-top: 6px; font-family: var(--font-sans); }
@@ -693,6 +697,12 @@ img { max-width: 100%; }
   .tabs .panel { padding: 22px 18px 24px; }
   table { display: block; width: 100%; overflow-x: auto; }
   .atout-france { flex-wrap: wrap; }
+  .plus-grid { grid-template-columns: 1fr; }
+  .day, .days-flow .day { grid-template-columns: 44px 1fr; gap: 16px; max-width: none; }
+  .day .num, .days-flow .day .num { font-size: 24px; }
+  .day h3 { font-size: 21px; }
+  .day p { font-size: 15.5px; }
+  .facts .head .price { font-size: 24px; }
 }
 
 /* Décorations (grands kanji en filigrane) : sur petits écrans elles
