@@ -125,8 +125,8 @@ export function DetailFacts({ price, priceSub, cells, recap, formule, go, circui
   const c = useT(COMMON);
   return (
     <div className="facts">
-      <div className="head">
-        {formule ? <span className="badge" style={{flexBasis:'100%', marginBottom:6}}>{formule}</span> : null}
+      {formule ? <div style={{padding:'18px 20px 0'}}><span className="badge">{formule}</span></div> : null}
+      <div className="head" style={formule ? {paddingTop:10} : null}>
         <span className="from">{c.detail.aPartirDe}</span>
         <span className="price">{price}</span>
         <span className="sub">{priceSub}</span>
