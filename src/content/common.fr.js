@@ -34,7 +34,7 @@ export default {
         { label: "Jusqu'aux Cèdres Millénaires · 22 j", go: ['detail', 'CL-08'] },
       ],
       more: { label: 'Tous nos itinéraires signatures', go: ['itineraries'] } },
-    { key: 'libertes', label: 'Séjours libertés', target: ['itineraries', null, 'courts'],
+    { key: 'libertes', label: 'Séjours courts', target: ['itineraries', null, 'courts'],
       note: 'Journées prêtes à vivre, sans guide, à votre rythme',
       links: [
         { label: 'Le Tokyo des Néons', go: ['module', 'CT-01'] },
@@ -46,7 +46,7 @@ export default {
         { label: 'Enoshima et Kamakura', go: ['module', 'CT-08'] },
         { label: "L'Été des Ryukyu", go: ['module', 'EX-01'] },
       ],
-      more: { label: 'Les seize séjours libertés', go: ['itineraries', null, 'courts'] } },
+      more: { label: 'Les seize séjours courts', go: ['itineraries', null, 'courts'] } },
     { key: 'groupe', label: 'Séjours en groupe', target: ['detail', 'CL-09'],
       note: 'Quatre à huit voyageurs, accompagnés du départ au retour',
       links: [
@@ -78,7 +78,7 @@ export default {
     colMaison: 'Maison',
     colSuivre: 'Suivre',
     signatures: 'Signatures',
-    libertes: 'Séjours libertés',
+    libertes: 'Séjours courts',
     groupe: 'Séjours en groupe',
     surMesure: 'Sur-mesure',
     japon: 'Le Japon',

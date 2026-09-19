@@ -34,7 +34,7 @@ export default {
         { label: 'Hasta los Cedros Milenarios · 22 días', go: ['detail', 'CL-08'] },
       ],
       more: { label: 'Todos nuestros itinerarios firma', go: ['itineraries'] } },
-    { key: 'libertes', label: 'Estancias libres', target: ['itineraries', null, 'courts'],
+    { key: 'libertes', label: 'Estancias cortas', target: ['itineraries', null, 'courts'],
       note: 'Jornadas listas para vivir, sin guía, a su ritmo',
       links: [
         { label: 'El Tokio de los Neones', go: ['module', 'CT-01'] },
@@ -46,7 +46,7 @@ export default {
         { label: 'Enoshima y Kamakura', go: ['module', 'CT-08'] },
         { label: 'El Verano de las Ryukyu', go: ['module', 'EX-01'] },
       ],
-      more: { label: 'Las dieciséis estancias libres', go: ['itineraries', null, 'courts'] } },
+      more: { label: 'Las dieciséis estancias cortas', go: ['itineraries', null, 'courts'] } },
     { key: 'groupe', label: 'Estancias en grupo', target: ['detail', 'CL-09'],
       note: 'De cuatro a ocho viajeros, acompañados de la salida al regreso',
       links: [
@@ -78,7 +78,7 @@ export default {
     colMaison: 'La casa',
     colSuivre: 'Seguir',
     signatures: 'Firmas',
-    libertes: 'Estancias libres',
+    libertes: 'Estancias cortas',
     groupe: 'Estancias en grupo',
     surMesure: 'A medida',
     japon: 'Japón',

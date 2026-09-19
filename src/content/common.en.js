@@ -34,7 +34,7 @@ export default {
         { label: 'To the Thousand Year Cedars · 22 days', go: ['detail', 'CL-08'] },
       ],
       more: { label: 'All our signature itineraries', go: ['itineraries'] } },
-    { key: 'libertes', label: 'Freedom stays', target: ['itineraries', null, 'courts'],
+    { key: 'libertes', label: 'Short stays', target: ['itineraries', null, 'courts'],
       note: 'Days ready to be lived, without a guide, at your own pace',
       links: [
         { label: 'Neon Tokyo', go: ['module', 'CT-01'] },
@@ -46,7 +46,7 @@ export default {
         { label: 'Enoshima and Kamakura', go: ['module', 'CT-08'] },
         { label: 'A Ryukyu Summer', go: ['module', 'EX-01'] },
       ],
-      more: { label: 'The sixteen freedom stays', go: ['itineraries', null, 'courts'] } },
+      more: { label: 'The sixteen short stays', go: ['itineraries', null, 'courts'] } },
     { key: 'groupe', label: 'Group trips', target: ['detail', 'CL-09'],
       note: 'Four to eight travellers, accompanied from departure to return',
       links: [
@@ -78,7 +78,7 @@ export default {
     colMaison: 'The house',
     colSuivre: 'Follow',
     signatures: 'Signatures',
-    libertes: 'Freedom stays',
+    libertes: 'Short stays',
     groupe: 'Group trips',
     surMesure: 'Bespoke',
     japon: 'Japan',
