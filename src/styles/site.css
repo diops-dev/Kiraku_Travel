@@ -704,9 +704,8 @@ img { max-width: 100%; }
   .section-head .right { text-align: left; max-width: none; }
   .hero-stamp { display: none; }
   .k-photo-kanji { font-size: 88px; }
-  .tabs .tabbar { overflow-x: auto; flex-wrap: nowrap; -webkit-mask-image: linear-gradient(to right, black calc(100% - 36px), transparent 100%); mask-image: linear-gradient(to right, black calc(100% - 36px), transparent 100%); scrollbar-width: none; padding-right: 36px; }
-  .tabs .tabbar::-webkit-scrollbar { display: none; }
-  .tabs .tabbar button { white-space: nowrap; }
+  .tabs .tabbar { flex-wrap: wrap; gap: 4px 2px; }
+  .tabs .tabbar button { padding: 11px 14px; font-size: 13.5px; }
   .tabs .panel { padding: 22px 18px 24px; }
   table { display: block; width: 100%; overflow-x: auto; }
   .atout-france { flex-wrap: wrap; }
