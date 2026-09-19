@@ -3,6 +3,7 @@ import { rt } from './paths.js'
 import { GRADIENTS, ImageSlot } from './components.jsx'
 import { useLang, useT } from './i18n.js'
 import { COMMON, HOME, ITIN } from './content/index.js'
+import { ApprocheIcon } from './components/ApprocheIcons.jsx'
 
 // Accueil : hero, itineraires en vedette, approche, regles, formules, premier contact
 
@@ -101,10 +102,28 @@ function HeroCarousel({ go }) {
   );
 }
 
+function ApprocheRow({ row, accent, isLast }) {
+  return (
+    <div style={{
+      display: 'flex', gap: 18, alignItems: 'flex-start',
+      padding: isLast ? '18px 0 0' : '18px 0',
+      borderBottom: isLast ? 'none' : '1px solid var(--hairline)',
+    }}>
+      <ApprocheIcon id={row.icone} size={22} style={{ color: accent, marginTop: 3 }} />
+      <div>
+        <div className="section-eyebrow" style={{ fontSize: 12, letterSpacing: '0.08em', color: 'var(--fg-muted)', marginBottom: 6 }}>
+          {row.titre}
+        </div>
+        <p style={{ fontFamily: 'var(--font-serif)', fontSize: 17, lineHeight: 1.65, color: 'var(--fg-2)', margin: 0, textWrap: 'pretty' }}>
+          {row.texte}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 function ApprocheSection() {
   const h = useT(HOME);
-  const col = { display:'flex', flexDirection:'column', gap:18 };
-  const item = { fontFamily:'var(--font-serif)', fontSize:18, lineHeight:1.7, color:'var(--fg-2)', margin:0, textWrap:'pretty' };
   return (
     <section className="wrap" style={{padding:'20px 48px 40px'}}>
       <div className="section-head">
@@ -116,14 +135,18 @@ function ApprocheSection() {
       <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0 56px', alignItems:'stretch', marginTop:12}}>
         <div style={{background:'var(--kiraku-washi-2)', borderRadius:14, padding:'34px 36px', borderTop:'3px solid transparent'}}>
           <div className="section-eyebrow" style={{marginBottom:20, color:'var(--fg-muted)'}}>{h.approche.colonneNon}</div>
-          <div style={col}>
-            {h.approche.neFaitPas.map((t,i) => <p key={i} style={item}>{t}</p>)}
+          <div>
+            {h.approche.neFaitPas.map((row, i) => (
+              <ApprocheRow key={row.icone} row={row} accent="var(--fg-muted)" isLast={i === h.approche.neFaitPas.length - 1} />
+            ))}
           </div>
         </div>
         <div style={{background:'var(--kiraku-paper)', border:'1px solid var(--hairline)', borderTop:'3px solid var(--kiraku-shu)', borderRadius:14, padding:'34px 36px'}}>
           <div className="section-eyebrow" style={{marginBottom:20, color:'var(--kiraku-shu)'}}>{h.approche.colonneOui}</div>
-          <div style={col}>
-            {h.approche.fait.map((t,i) => <p key={i} style={item}>{t}</p>)}
+          <div>
+            {h.approche.fait.map((row, i) => (
+              <ApprocheRow key={row.icone} row={row} accent="var(--kiraku-shu)" isLast={i === h.approche.fait.length - 1} />
+            ))}
           </div>
         </div>
       </div>
