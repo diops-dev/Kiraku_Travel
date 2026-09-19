@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { DetailPlus, InclusionsVisuelles } from './DetailParts.jsx'
+import { DetailPlus, InclusionsVisuelles, ExclusionsVisuelles } from './DetailParts.jsx'
 import { useT } from './i18n.js'
 import { COMMON, INCL } from './content/index.js'
 
@@ -82,14 +82,11 @@ export function SejourTabs({ circuit, departs, note, plus, titre }) {
   ) });
   if (data) {
     tabs.push({ id: 'inclus', lbl: L.inclus, render: () => (
-      <>
-        {t.visuels[circuit] ? <InclusionsVisuelles items={t.visuels[circuit]} /> : null}
-        <div style={{margin:'26px 0 0', paddingTop:26, borderTop:'1px solid var(--hairline)'}}>{list(inclus)}</div>
-      </>
+      t.visuels[circuit] ? <InclusionsVisuelles items={t.visuels[circuit]} /> : list(inclus)
     ) });
     tabs.push({ id: 'exclus', lbl: L.exclus, render: () => (
       <>
-        {list(exclus)}
+        {t.exclusVisuels ? <ExclusionsVisuelles items={t.exclusVisuels} /> : list(exclus)}
         <p style={{fontFamily:'var(--font-serif)', fontSize:15, lineHeight:1.6, color:'var(--fg-muted)', margin:'18px 0 0'}}>{t.notePourboire}.</p>
       </>
     ) });

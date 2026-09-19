@@ -75,11 +75,16 @@ const ICONS = {
   flag: 'M6 3v18M6 4h11l-2 4 2 4H6',
   temple: 'M3 8h18L12 3 3 8zM5 8v11m14-11v11M9 19v-6h6v6M3 21h18',
   market: 'M4 8h16l-1 12H5L4 8zM8 8V5a4 4 0 0 1 8 0v3',
+  plane: 'M2 16l20-7-7 20-3-8-8-3z M12 12l7-7',
+  shield: 'M12 3l7 3v6c0 5-3 8-7 9-4-1-7-4-7-9V6l7-3zM9 12l2 2 4-4',
+  wallet: 'M3 7h15a3 3 0 0 1 3 3v8a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V7zM16 13h4M3 7l3-3h10',
+  passport: 'M6 3h9a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2zM12 9a2 2 0 1 0 0 4 2 2 0 0 0 0-4zM9 17h6',
 };
 
-export function Ico({ name }) {
+export function Ico({ name, tone = 'shu' }) {
+  const color = tone === 'muted' ? 'var(--fg-muted)' : 'var(--kiraku-shu)';
   return (
-    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" style={{color:'var(--kiraku-shu)'}} aria-hidden="true"><path d={ICONS[name] || ICONS.flag}></path></svg>
+    <svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" strokeWidth="1.4" strokeLinecap="round" strokeLinejoin="round" style={{color}} aria-hidden="true"><path d={ICONS[name] || ICONS.flag}></path></svg>
   );
 }
 
@@ -88,6 +93,17 @@ export function InclusionsVisuelles({ items }) {
     <div className="incl-grid">
       {items.map(it => (
         <div className="row" key={it.lbl}><Ico name={it.ico} /><span>{it.lbl}</span></div>
+      ))}
+    </div>
+  );
+}
+
+// Meme grille, en teinte encre plutot que sceau vermillon, pour "ce qui n'est pas inclus"
+export function ExclusionsVisuelles({ items }) {
+  return (
+    <div className="incl-grid">
+      {items.map(it => (
+        <div className="row" key={it.lbl}><Ico name={it.ico} tone="muted" /><span>{it.lbl}</span></div>
       ))}
     </div>
   );
