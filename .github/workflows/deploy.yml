@@ -1,0 +1,45 @@
+name: Compiler et publier le site (branche deploy)
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch: {}
+
+permissions:
+  contents: write
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Recuperer le code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Installer Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+
+      - name: Installer les dependances
+        run: npm ci
+
+      - name: Compiler le site (npm run build)
+        run: npm run build
+
+      - name: Conserver .htaccess et LISEZ-MOI.txt de la branche deploy
+        run: |
+          git fetch origin deploy || true
+          git show origin/deploy:.htaccess > dist/.htaccess 2>/dev/null || true
+          git show origin/deploy:LISEZ-MOI.txt > dist/LISEZ-MOI.txt 2>/dev/null || true
+
+      - name: Publier dist/ sur la branche deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./dist
+          publish_branch: deploy
+          user_name: 'github-actions[bot]'
+          user_email: 'github-actions[bot]@users.noreply.github.com'
+          commit_message: 'Publication automatique depuis main'
