@@ -132,8 +132,8 @@ function ApprocheSection() {
           <h2>{h.approche.titre}</h2>
         </div>
       </div>
-      <div style={{display:'grid', gridTemplateColumns:'1fr 1fr', gap:'0 56px', alignItems:'stretch', marginTop:12}}>
-        <div style={{background:'var(--kiraku-washi-2)', borderRadius:14, padding:'34px 36px', borderTop:'3px solid transparent'}}>
+      <div className="approche-grid">
+        <div className="approche-card" style={{background:'var(--kiraku-washi-2)', borderTop:'3px solid transparent'}}>
           <div className="section-eyebrow" style={{marginBottom:20, color:'var(--fg-muted)'}}>{h.approche.colonneNon}</div>
           <div>
             {h.approche.neFaitPas.map((row, i) => (
@@ -141,7 +141,7 @@ function ApprocheSection() {
             ))}
           </div>
         </div>
-        <div style={{background:'var(--kiraku-paper)', border:'1px solid var(--hairline)', borderTop:'3px solid var(--kiraku-shu)', borderRadius:14, padding:'34px 36px'}}>
+        <div className="approche-card" style={{background:'var(--kiraku-paper)', border:'1px solid var(--hairline)', borderTop:'3px solid var(--kiraku-shu)'}}>
           <div className="section-eyebrow" style={{marginBottom:20, color:'var(--kiraku-shu)'}}>{h.approche.colonneOui}</div>
           <div>
             {h.approche.fait.map((row, i) => (
@@ -187,7 +187,6 @@ function ReglesSection() {
 
 function FormulesSection() {
   const h = useT(HOME);
-  const card = { background:'var(--kiraku-paper)', border:'1px solid var(--hairline)', borderRadius:14, padding:'36px 38px' };
   const ht = { fontFamily:'var(--font-display)', fontWeight:600, fontSize:30, lineHeight:1.15, letterSpacing:'-0.02em', margin:'0 0 16px' };
   const p = { fontFamily:'var(--font-serif)', fontSize:18, lineHeight:1.75, color:'var(--fg-2)', margin:0, textWrap:'pretty' };
   const tag = { fontFamily:'var(--font-sans)', fontSize:12, letterSpacing:'0.18em', textTransform:'uppercase', color:'var(--kiraku-shu)', marginTop:22, display:'block' };
@@ -199,13 +198,13 @@ function FormulesSection() {
           <h2>{h.formules.titre}</h2>
         </div>
       </div>
-      <div style={{display:'grid', gridTemplateColumns:'1.2fr 1fr', gap:32, alignItems:'start'}}>
-        <div style={card}>
+      <div className="formules-grid">
+        <div className="formules-card">
           <h3 style={ht}>{h.formules.prive.titre}</h3>
           <p style={p}>{h.formules.prive.texte}</p>
           <span style={tag}>{h.formules.prive.tag}</span>
         </div>
-        <div style={card}>
+        <div className="formules-card">
           <h3 style={ht}>{h.formules.groupe.titre}</h3>
           <p style={p}>{h.formules.groupe.texte}</p>
           <span style={tag}>{h.formules.groupe.tag}</span>
