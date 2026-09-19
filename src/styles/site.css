@@ -480,10 +480,12 @@ body {
 /* ---------- Bloc réservation dans le rail · groupe ou privé ---------- */
 .facts .foot { padding: 0; }
 .resa-rail { display: flex; flex-direction: column; }
-.resa-tabs { display: grid; grid-template-columns: 1fr 1fr; background: var(--kiraku-washi-2); }
-.resa-tabs button { appearance: none; background: transparent; border: 0; border-bottom: 2px solid transparent; padding: 12px 10px; cursor: pointer; font-family: var(--font-sans); font-weight: 500; font-size: 13px; letter-spacing: 0.04em; color: var(--fg-muted); transition: all 150ms ease; }
+.resa-tabs { display: flex; background: var(--kiraku-washi-2); }
+.resa-tabs button { flex: 1; appearance: none; background: transparent; border: 0; border-bottom: 2px solid transparent; padding: 12px 10px; cursor: pointer; font-family: var(--font-sans); font-weight: 500; font-size: 13px; letter-spacing: 0.04em; color: var(--fg-muted); transition: all 150ms ease; }
 .resa-tabs button:hover { color: var(--fg-2); }
 .resa-tabs button.on { background: var(--kiraku-paper); color: var(--fg); border-bottom-color: var(--kiraku-shu); }
+.resa-liberte-note { padding: 14px 18px 4px; }
+.resa-liberte-note p { font-family: var(--font-serif); font-size: 13.5px; line-height: 1.55; color: var(--fg-2); margin: 0 0 8px; }
 .resa-list { display: flex; flex-direction: column; padding: 6px 0; max-height: 232px; overflow-y: auto; }
 .resa-line { display: flex; align-items: center; gap: 10px; width: 100%; text-align: left; appearance: none; background: transparent; border: 0; border-left: 2px solid transparent; padding: 9px 18px 9px 16px; cursor: pointer; transition: background 140ms ease; }
 .resa-line:hover { background: var(--kiraku-washi-2); }

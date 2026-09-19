@@ -31,6 +31,21 @@ export const DEPARTS = {
   'TR-01': { jours: 12, prix: 4250, dates: ['2027-09-26'] },
 };
 
+// Formule Liberte : sans guide ni accompagnateur, base 2 voyageurs.
+// Source : Cotation_Kiraku_Circuits_2026-2027_V2_Liberte.xlsx (Drive, 2026-09-07).
+// Absent de la liste = pas de formule Liberte pour ce circuit (le trek CL-09
+// impose un guide de haute montagne).
+export const LIBERTE = {
+  'CL-01': 2584,
+  'CL-02': 2474,
+  'CL-03': 2664,
+  'CL-04': 1171,
+  'CL-05': 1129,
+  'CL-06': 3631,
+  'CL-07': 3662,
+  'CL-08': 4575,
+};
+
 function parseD(s) { const [y,m,d] = s.split('-').map(Number); return new Date(y, m-1, d); }
 function addDays(dt, n) { const d = new Date(dt); d.setDate(d.getDate()+n); return d; }
 
@@ -104,6 +119,7 @@ export function RailBooking({ circuitRef, go }) {
   const circuit = DEPARTS[circuitRef] || { jours: 14, prix: null, dates: [] };
   const dates = circuit.dates.map(parseD);
   const jours = circuit.jours;
+  const prixLiberte = LIBERTE[circuitRef] || null;
   const etat = useEtatReservations();
 
   const [mode, setMode] = useState(dates.length ? 'groupe' : 'prive');
@@ -131,7 +147,15 @@ export function RailBooking({ circuitRef, go }) {
       <div className="resa-tabs">
         <button type="button" className={mode === 'groupe' ? 'on' : ''} onClick={() => choisirMode('groupe')}>{b.enGroupe}</button>
         <button type="button" className={mode === 'prive' ? 'on' : ''} onClick={() => choisirMode('prive')}>{b.enPrive}</button>
+        {prixLiberte ? <button type="button" className={mode === 'liberte' ? 'on' : ''} onClick={() => choisirMode('liberte')}>{b.enLiberte}</button> : null}
       </div>
+
+      {mode === 'liberte' ? (
+        <div className="resa-liberte-note">
+          <p>{b.liberteInclus}</p>
+          <p>{b.liberteExclus}</p>
+        </div>
+      ) : null}
 
       {mode === 'groupe' ? (
         dates.length ? (
@@ -178,11 +202,13 @@ export function RailBooking({ circuitRef, go }) {
       <div className="resa-cta">
         {mode === 'groupe' && circuit.prix ? (
           <div className="resa-tot"><span>{b.estimation}</span><b>{pick === null ? '·' : fmtEuro(payants * circuit.prix)}</b></div>
+        ) : mode === 'liberte' ? (
+          <div className="resa-tot"><span>{b.libertePrixSub}</span><b>{fmtEuro(prixLiberte)}</b></div>
         ) : (
           <div className="resa-tot"><span>{b.voyagePrive}</span><b>{b.surDevis}</b></div>
         )}
         <button className="btn btn-primary" style={{width: '100%', justifyContent: 'center'}} onClick={() => go('contact')}>
-          {mode === 'groupe' ? b.demanderDate : b.demanderDevis}
+          {mode === 'groupe' ? b.demanderDate : mode === 'liberte' ? b.demanderLiberte : b.demanderDevis}
         </button>
         <div className="resa-mini">
           {pret ? recap() : (mode === 'groupe' ? b.choisirDateListe : b.choisirDateCal)}

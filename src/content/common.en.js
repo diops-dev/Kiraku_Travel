@@ -152,6 +152,11 @@ export default {
   booking: {
     enGroupe: 'In a group',
     enPrive: 'In private',
+    enLiberte: 'Self-guided',
+    libertePrixSub: 'from, based on two travellers',
+    liberteInclus: "Accommodation, breakfasts, and all domestic transport in the programme (Shinkansen, buses, trains) are booked by us.",
+    liberteExclus: "Airport transfers, meals other than breakfast, and guided visits are not included. We give you our recommendations, you organise your own days.",
+    demanderLiberte: 'Ask about this option',
     retourLe: 'returning on',
     aucuneDate: 'No group date published. We open one from four travellers.',
     complet: 'Full',

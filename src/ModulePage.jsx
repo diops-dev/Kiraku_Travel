@@ -45,7 +45,7 @@ export function ModulePage({ go, param }) {
               <span>›</span>
               <span style={{color:'var(--fg)'}}>{court.title}</span>
             </div>
-            <div className="section-eyebrow">{['SÉJOUR LIBERTÉ', param].join(' · ')}</div>
+            <div className="section-eyebrow">{['SÉJOUR LIBERTÉ', court.zone].filter(Boolean).join(' · ')}</div>
             <h1>{court.title}</h1>
           </div>
         </section>
@@ -79,7 +79,7 @@ export function ModulePage({ go, param }) {
             <span>›</span>
             <span style={{color:'var(--fg)'}}>{mod.titre}</span>
           </div>
-          <div className="section-eyebrow">{['SÉJOUR LIBERTÉ', param].join(' · ')}</div>
+          <div className="section-eyebrow">{['SÉJOUR LIBERTÉ', court.zone].filter(Boolean).join(' · ')}</div>
           <h1>{mod.titre}</h1>
           <p className="lede">{mod.lede}</p>
         </div>

@@ -96,7 +96,7 @@ export default {
 
   alpes: {
     fil: 'Alpes japonaises, douze jours',
-    eyebrow: 'ITINÉRAIRE LONG · CL-09 · RANDONNÉE',
+    eyebrow: 'ITINÉRAIRE LONG · RANDONNÉE',
     titre: 'Tokyo, Kyoto et traversée méridionale des Alpes japonaises',
     lede: "Une traversée méridionale des Alpes du nord, en cinq étapes sur la voie Omote Ginza, avec l'ascension d'un sommet à plus de 3 000 mètres. Cinq jours de haute montagne au-delà de 2 500 mètres, encadrés par Tokyo au départ et Kyoto à l'arrivée.",
     detailTitre: 'Douze jours, dont six en montagne.',
@@ -145,7 +145,7 @@ export default {
   signatures: {
   "CL-01": {
     "fil": "Du Néon au Silence, 14 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-01 · CULTUREL",
+    "eyebrow": "ITINÉRAIRE LONG · CULTUREL",
     "titre": "Du Néon au Silence",
     "lede": "Tokyo, le mont Fuji, cinq nuits à Kyoto qui ne se ressemblent jamais, puis Osaka et le mont Shigi. Le circuit d'entrée dans l'archipel, dans sa version la plus complète.",
     "detailTitre": "Quatorze jours, treize nuits.",
@@ -315,7 +315,7 @@ export default {
   },
   "CL-02": {
     "fil": "Mille Marches vers le Nord, 14 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-02 · SPIRITUEL",
+    "eyebrow": "ITINÉRAIRE LONG · SPIRITUEL",
     "titre": "Mille Marches vers le Nord",
     "lede": "Tokyo, puis la remontée de l'archipel par le Tohoku et Hokkaido : Yamadera et ses mille marches, Hirosaki, Hakodate et sa baie, Sapporo. Le Japon loin du triangle classique.",
     "detailTitre": "Quatorze jours, treize nuits.",
@@ -443,7 +443,7 @@ export default {
   },
   "CL-03": {
     "fil": "Des Temples aux Coraux, 14 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-03 · BIEN ÊTRE",
+    "eyebrow": "ITINÉRAIRE LONG · BIEN ÊTRE",
     "titre": "Des Temples aux Coraux",
     "lede": "Tokyo, Kyoto, puis la rupture totale : Naha et les îles Kerama, leurs plages et leur mer turquoise. Le Japon des mégapoles et des temples, suivi de l'archipel subtropical.",
     "detailTitre": "Quatorze jours, treize nuits.",
@@ -556,7 +556,7 @@ export default {
   },
   "CL-04": {
     "fil": "Le Premier Souffle, 7 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-04 · CULTUREL",
+    "eyebrow": "ITINÉRAIRE LONG · CULTUREL",
     "titre": "Le Premier Souffle",
     "lede": "Tokyo puis Kyoto, en une semaine. Le format découverte pour un premier contact avec le Japon, concentré sur deux villes pour ne rien précipiter.",
     "detailTitre": "Sept jours, six nuits.",
@@ -647,7 +647,7 @@ export default {
   },
   "CL-05": {
     "fil": "Au Cœur du Vieux Japon, 7 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-05 · ARTS MARTIAUX",
+    "eyebrow": "ITINÉRAIRE LONG · ARTS MARTIAUX",
     "titre": "Au Cœur du Vieux Japon",
     "lede": "Une semaine en base unique à Kyoto ou à Osaka, avec Nara et Kobe en excursions. Le circuit le plus reposant du catalogue, sans jamais refaire ses valises.",
     "detailTitre": "Sept jours, six nuits.",
@@ -741,7 +741,7 @@ export default {
   },
   "CL-06": {
     "fil": "La Traversée sans Hâte, 21 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-06 · GASTRONOMIE",
+    "eyebrow": "ITINÉRAIRE LONG · GASTRONOMIE",
     "titre": "La Traversée sans Hâte",
     "lede": "Le grand circuit classique dans sa version la plus confortable : six nuits à Tokyo, huit nuits à Kyoto, puis Kurashiki, Hiroshima, Miyajima et Himeji. Sans jamais changer d'hôtel tous les deux jours.",
     "detailTitre": "Vingt-et-un jours, vingt nuits.",
@@ -891,7 +891,7 @@ export default {
   },
   "CL-07": {
     "fil": "Des Tours aux Toits de Chaume, 21 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-07 · ANIME & MANGA",
+    "eyebrow": "ITINÉRAIRE LONG · ANIME & MANGA",
     "titre": "Des Tours aux Toits de Chaume",
     "lede": "La grande boucle : Tokyo, puis tout l'ouest jusqu'à Hiroshima, remontée par Kyoto, et bascule vers les Alpes japonaises, Kanazawa, les toits de chaume de Shirakawa-go et Takayama.",
     "detailTitre": "Vingt-et-un jours, vingt nuits.",
@@ -1032,7 +1032,7 @@ export default {
   },
   "CL-08": {
     "fil": "Jusqu'aux Cèdres Millénaires, 22 jours",
-    "eyebrow": "ITINÉRAIRE LONG · CL-08 · MIYAZAKI",
+    "eyebrow": "ITINÉRAIRE LONG · MIYAZAKI",
     "titre": "Jusqu'aux Cèdres Millénaires",
     "lede": "Le circuit le plus aventureux du catalogue : Kyoto, Hiroshima, les onsen du Kyushu, les bains de sable d'Ibusuki, puis trois nuits de randonnée dans la forêt primaire de Yakushima.",
     "detailTitre": "Vingt-deux jours, vingt-et-une nuits.",

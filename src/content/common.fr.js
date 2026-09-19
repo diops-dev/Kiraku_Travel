@@ -152,6 +152,11 @@ export default {
   booking: {
     enGroupe: 'En groupe',
     enPrive: 'En privé',
+    enLiberte: 'En liberté',
+    libertePrixSub: 'à partir de, base deux voyageurs',
+    liberteInclus: "L'hébergement, les petits-déjeuners et tous les transports intérieurs prévus au programme (Shinkansen, bus, trains) sont réservés par nos soins.",
+    liberteExclus: "Les transferts aéroport-hôtel, les repas hors petit-déjeuner et les visites ne sont pas inclus. Nous vous donnons nos recommandations, vous vous organisez sur place.",
+    demanderLiberte: 'Demander cette formule',
     retourLe: 'retour le',
     aucuneDate: 'Aucune date de groupe publiée. Nous en ouvrons une à partir de quatre voyageurs.',
     complet: 'Complet',
