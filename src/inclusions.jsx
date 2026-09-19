@@ -127,12 +127,7 @@ export function InclusExclus({ circuit }) {
   const list = (items) => <ul>{items.map(x => <li key={x}>{x}</li>)}</ul>;
   return (
     <div style={{marginTop:72}}>
-      <div className="section-head" style={{marginBottom:24}}>
-        <div className="left">
-          <div className="section-eyebrow">{c.detail.inclusEyebrow}</div>
-          <h2>{c.detail.inclusTitre}</h2>
-        </div>
-      </div>
+      <h2 style={{fontFamily:'var(--font-display)', fontSize:20, fontWeight:600, margin:'0 0 16px'}}>{c.detail.inclusHeading}</h2>
       {t.visuels[circuit] ? <InclusionsVisuelles items={t.visuels[circuit]} /> : list(inclus)}
       <div style={{margin:'36px 0 20px', paddingTop:26, borderTop:'1px solid var(--hairline)'}}>
         <h3 style={{fontFamily:'var(--font-display)', fontSize:20, fontWeight:600, margin:'0 0 16px'}}>{c.detail.colExclus}</h3>

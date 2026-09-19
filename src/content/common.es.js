@@ -141,6 +141,7 @@ export default {
     thAdulte: 'Adulto',
     inclusEyebrow: 'LO QUE ESTÁ INCLUIDO',
     inclusTitre: 'Lo que comprende el precio y lo que no.',
+    inclusHeading: 'Incluido en el precio',
     colInclus: 'Incluido',
     colExclus: 'No incluido',
     optionsEyebrow: 'SUPLEMENTOS Y OPCIONES',
