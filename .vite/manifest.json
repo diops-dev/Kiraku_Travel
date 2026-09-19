@@ -1,6 +1,6 @@
 {
-  "_client-DndfhEzM.js": {
-    "file": "assets/client-DndfhEzM.js",
+  "_client-DM9DkuFt.js": {
+    "file": "assets/client-DM9DkuFt.js",
     "name": "client",
     "isDynamicEntry": true,
     "imports": [
@@ -8,15 +8,15 @@
     ]
   },
   "index.html": {
-    "file": "assets/app-t_k0hksS.js",
+    "file": "assets/app-BTK5tk2H.js",
     "name": "app",
     "src": "index.html",
     "isEntry": true,
     "dynamicImports": [
-      "_client-DndfhEzM.js"
+      "_client-DM9DkuFt.js"
     ],
     "css": [
-      "assets/app-dtkN64r-.css"
+      "assets/app-D7N0PE2T.css"
     ],
     "assets": [
       "assets/noto-sans-jp-latin-300-normal-BrDLRuE7.woff2",
