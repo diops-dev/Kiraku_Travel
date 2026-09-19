@@ -46,7 +46,7 @@ export default {
         { label: 'Enoshima and Kamakura', go: ['module', 'CT-08'] },
         { label: 'A Ryukyu Summer', go: ['module', 'EX-01'] },
       ],
-      more: { label: 'The sixteen short stays', go: ['itineraries', null, 'courts'] } },
+      more: { label: 'Short stays', go: ['itineraries', null, 'courts'] } },
     { key: 'groupe', label: 'Group trips', target: ['detail', 'CL-09'],
       note: 'Four to eight travellers, accompanied from departure to return',
       links: [

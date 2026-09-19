@@ -46,7 +46,7 @@ export default {
         { label: 'Enoshima et Kamakura', go: ['module', 'CT-08'] },
         { label: "L'Été des Ryukyu", go: ['module', 'EX-01'] },
       ],
-      more: { label: 'Les seize séjours courts', go: ['itineraries', null, 'courts'] } },
+      more: { label: 'Séjours courts', go: ['itineraries', null, 'courts'] } },
     { key: 'groupe', label: 'Séjours en groupe', target: ['detail', 'CL-09'],
       note: 'Quatre à huit voyageurs, accompagnés du départ au retour',
       links: [
