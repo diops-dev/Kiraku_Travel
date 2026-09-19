@@ -3,7 +3,7 @@ import { rt } from './paths.js'
 import { AlpesDetail } from './AlpesTrip.jsx'
 import { DetailCarousel, DetailDays, DetailFacts } from './DetailParts.jsx'
 import { CIRCUITS_META, circuitsLong, ItineraryCard, REFS_COURTS } from './HomePage.jsx'
-import { SejourTabs } from './inclusions.jsx'
+import { SejourTabs, InclusExclus } from './inclusions.jsx'
 import { useLang, useT } from './i18n.js'
 import { COMMON, ITIN } from './content/index.js'
 
@@ -73,6 +73,7 @@ function SignatureDetail({ go, param, meta, sig }) {
               </div>
             </div>
             <DetailDays days={sig.jours} />
+            <InclusExclus circuit={param} />
           </div>
           <aside className="detail-rail">
             <DetailFacts price={c.booking.surDevis} priceSub={t.finalisation.prixSub} cells={sig.facts} recap={sig.recap} formule={c.detail.formulePrive} go={go} circuitRef={param} />
@@ -142,6 +143,7 @@ function SignatureFallback({ go, param, meta, infos }) {
               <p style={{fontFamily:'var(--font-serif)', fontSize:17, lineHeight:1.7, color:'var(--fg-2)', margin:'0 0 20px', maxWidth:640, textWrap:'pretty'}}>{f.joursMessage}</p>
               <button className="btn btn-primary" onClick={()=>go('contact')}>{f.joursCta}</button>
             </div>
+            <InclusExclus circuit={param} />
           </div>
           <aside className="detail-rail">
             <DetailFacts

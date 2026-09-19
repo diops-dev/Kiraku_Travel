@@ -1,7 +1,7 @@
 import React from 'react'
 import { rt } from './paths.js'
 import { CAROUSELS, DetailCarousel, DetailDays, DetailFacts } from './DetailParts.jsx'
-import { SejourTabs } from './inclusions.jsx'
+import { SejourTabs, InclusExclus } from './inclusions.jsx'
 import { useLang, useT } from './i18n.js'
 import { COMMON, ITIN } from './content/index.js'
 
@@ -43,6 +43,7 @@ export function AlpesDetail({ go }) {
               </div>
             </div>
             <DetailDays days={a.jours} />
+            <InclusExclus circuit="CL-09" />
           </div>
           <aside className="detail-rail">
             <DetailFacts price={a.prix} priceSub={a.prixSub} cells={a.facts} recap={a.recap} formule={c.detail.formuleGroupe} go={go} circuitRef="CL-09" />

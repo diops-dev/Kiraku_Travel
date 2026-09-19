@@ -1,7 +1,7 @@
 import React from 'react'
 import { rt } from './paths.js'
 import { DetailCarousel, DetailDays, DetailFacts } from './DetailParts.jsx'
-import { SejourTabs } from './inclusions.jsx'
+import { SejourTabs, InclusExclus } from './inclusions.jsx'
 import { useLang, useT } from './i18n.js'
 import { COMMON, ITIN } from './content/index.js'
 
@@ -99,6 +99,7 @@ export function ModulePage({ go, param }) {
               </div>
             </div>
             <DetailDays days={[{ n: 1, title: mod.titre, body: mod.programme, tags: [] }]} />
+            <InclusExclus circuit={param} />
           </div>
           <aside className="detail-rail">
             <DetailFacts

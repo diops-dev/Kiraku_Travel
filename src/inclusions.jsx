@@ -60,11 +60,6 @@ export function SejourTabs({ circuit, departs, note, plus, titre }) {
   const t = useT(INCL);
   const data = fiche(t, circuit);
   const pratique = t.fiches[circuit] || {};
-  // Sans fiche reelle pour ce circuit (cas des sejours libertes, qui n'ont
-  // pas d'inclus/exclus/options propres), on n'affiche jamais les listes
-  // d'un autre circuit : les onglets correspondants sont simplement absents.
-  const inclus = data ? [...data.inclus, ...t.inclusBase] : [];
-  const exclus = data ? [...(data.exclus || []), ...t.exclusBase] : [];
   const th = { textAlign:'left', fontFamily:'var(--font-sans)', fontSize:11, letterSpacing:'0.2em', textTransform:'uppercase', color:'var(--fg-muted)', fontWeight:500, padding:'0 16px 12px 0', borderBottom:'1px solid var(--border-strong)' };
   const td = { fontFamily:'var(--font-serif)', fontSize:17, color:'var(--fg-2)', padding:'14px 16px 14px 0', borderBottom:'1px solid var(--hairline)' };
   const list = (items) => <ul>{items.map(x => <li key={x}>{x}</li>)}</ul>;
@@ -80,17 +75,6 @@ export function SejourTabs({ circuit, departs, note, plus, titre }) {
   if (note) tabs.push({ id: 'savoir', lbl: L.savoir, render: () => (
     <p style={{fontFamily:'var(--font-serif)', fontSize:17, lineHeight:1.7, color:'var(--fg-2)', margin:0, maxWidth:760, textWrap:'pretty'}}>{note}</p>
   ) });
-  if (data) {
-    tabs.push({ id: 'inclus', lbl: L.inclus, render: () => (
-      t.visuels[circuit] ? <InclusionsVisuelles items={t.visuels[circuit]} /> : list(inclus)
-    ) });
-    tabs.push({ id: 'exclus', lbl: L.exclus, render: () => (
-      <>
-        {t.exclusVisuels ? <ExclusionsVisuelles items={t.exclusVisuels} /> : list(exclus)}
-        <p style={{fontFamily:'var(--font-serif)', fontSize:15, lineHeight:1.6, color:'var(--fg-muted)', margin:'18px 0 0'}}>{t.notePourboire}.</p>
-      </>
-    ) });
-  }
   if (departs && departs.length) {
     const avant = tabs.findIndex(x => x.id === 'inclus');
     tabs.splice(avant > -1 ? avant : tabs.length, 0, { id: 'departs', lbl: L.departs, render: () => (
@@ -126,6 +110,35 @@ export function SejourTabs({ circuit, departs, note, plus, titre }) {
         ))}
       </div>
       <div className="panel">{cur.render()}</div>
+    </div>
+  );
+}
+
+// Ce qui est inclus / non inclus, detache des onglets et affiche juste apres
+// le jour par jour : c'est souvent la premiere chose qu'on cherche avant de
+// demander un devis, ca merite d'etre visible sans clic (Frederic, 2026-09-19).
+export function InclusExclus({ circuit }) {
+  const c = useT(COMMON);
+  const t = useT(INCL);
+  const data = fiche(t, circuit);
+  if (!data) return null;
+  const inclus = [...data.inclus, ...t.inclusBase];
+  const exclus = [...(data.exclus || []), ...t.exclusBase];
+  const list = (items) => <ul>{items.map(x => <li key={x}>{x}</li>)}</ul>;
+  return (
+    <div style={{marginTop:72}}>
+      <div className="section-head" style={{marginBottom:24}}>
+        <div className="left">
+          <div className="section-eyebrow">{c.detail.inclusEyebrow}</div>
+          <h2>{c.detail.inclusTitre}</h2>
+        </div>
+      </div>
+      {t.visuels[circuit] ? <InclusionsVisuelles items={t.visuels[circuit]} /> : list(inclus)}
+      <div style={{margin:'36px 0 20px', paddingTop:26, borderTop:'1px solid var(--hairline)'}}>
+        <h3 style={{fontFamily:'var(--font-display)', fontSize:20, fontWeight:600, margin:'0 0 16px'}}>{c.detail.colExclus}</h3>
+        {t.exclusVisuels ? <ExclusionsVisuelles items={t.exclusVisuels} /> : list(exclus)}
+        <p style={{fontFamily:'var(--font-serif)', fontSize:15, lineHeight:1.6, color:'var(--fg-muted)', margin:'18px 0 0'}}>{t.notePourboire}.</p>
+      </div>
     </div>
   );
 }
