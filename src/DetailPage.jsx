@@ -4,6 +4,7 @@ import { AlpesDetail } from './AlpesTrip.jsx'
 import { DetailCarousel, DetailDays, DetailFacts } from './DetailParts.jsx'
 import { CIRCUITS_META, circuitsLong, ItineraryCard, REFS_COURTS } from './HomePage.jsx'
 import { SejourTabs, InclusExclus } from './inclusions.jsx'
+import { DEPARTS } from './booking.jsx'
 import { useLang, useT } from './i18n.js'
 import { COMMON, ITIN } from './content/index.js'
 
@@ -76,7 +77,7 @@ function SignatureDetail({ go, param, meta, sig }) {
             <InclusExclus circuit={param} />
           </div>
           <aside className="detail-rail">
-            <DetailFacts price={c.booking.surDevis} priceSub={t.finalisation.prixSub} cells={sig.facts} recap={sig.recap} formule={c.detail.formulePrive} go={go} circuitRef={param} />
+            <DetailFacts price={c.booking.surDevis} priceSub={t.finalisation.prixSub} cells={sig.facts} recap={sig.recap} formule={DEPARTS[param]?.dates?.length ? c.detail.formuleGroupe : c.detail.formulePrive} go={go} circuitRef={param} />
           </aside>
         </div>
       </section>
@@ -123,7 +124,7 @@ function SignatureFallback({ go, param, meta, infos }) {
             <span>›</span>
             <span style={{color:'var(--fg)'}}>{infos.title}</span>
           </div>
-          <div className="section-eyebrow">{[infos.ribbon, param].filter(Boolean).join(' · ')}</div>
+          <div className="section-eyebrow">{infos.ribbon}</div>
           <h1>{infos.title}</h1>
           <p className="lede">{f.lede}</p>
         </div>
@@ -155,7 +156,7 @@ function SignatureFallback({ go, param, meta, infos }) {
                 { lbl: f.factDepartsLbl, val: f.factDepartsVal },
               ]}
               recap={null}
-              formule={c.detail.formulePrive}
+              formule={DEPARTS[param]?.dates?.length ? c.detail.formuleGroupe : c.detail.formulePrive}
               go={go}
               circuitRef={param}
             />
@@ -171,7 +172,6 @@ export function ItinerariesPage({ go }) {
   const x = t.index;
   const th = { textAlign:'left', fontFamily:'var(--font-sans)', fontSize:11, letterSpacing:'0.2em', textTransform:'uppercase', color:'var(--fg-muted)', fontWeight:500, padding:'0 16px 12px 0', borderBottom:'1px solid var(--border-strong)' };
   const td = { fontFamily:'var(--font-serif)', fontSize:17, color:'var(--fg-2)', padding:'16px 16px 16px 0', borderBottom:'1px solid var(--hairline)', verticalAlign:'top' };
-  const tdRef = { ...td, fontFamily:'var(--font-sans)', fontSize:13, letterSpacing:'0.08em', color:'var(--kiraku-shu)', whiteSpace:'nowrap' };
   const tdName = { ...td, color:'var(--fg)', fontFamily:'var(--font-display)', fontSize:19, fontWeight:600, letterSpacing:'-0.01em' };
   const rows = REFS_COURTS.map(ref => ({ ref, ...(t.circuitsCourts[ref] || {}) }));
   return (
@@ -201,7 +201,6 @@ export function ItinerariesPage({ go }) {
       <table style={{width:'100%', borderCollapse:'collapse', marginTop:8}}>
         <thead>
           <tr>
-            <th style={{...th, width:80}}>{x.thRef}</th>
             <th style={th}>{x.thNom}</th>
             <th style={{...th, width:'32%'}}>{x.thZone}</th>
             <th style={{...th, width:190}}>{x.thIntensite}</th>
@@ -210,7 +209,6 @@ export function ItinerariesPage({ go }) {
         <tbody>
           {rows.map(c => (
             <tr key={c.ref} className="row-click" onClick={()=>go('module', c.ref)} style={{cursor:'pointer'}}>
-              <td style={tdRef}>{c.ref}</td>
               <td style={tdName}>{c.title}</td>
               <td style={td}>{c.zone}</td>
               <td style={td}>{c.intensite}</td>

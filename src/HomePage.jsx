@@ -40,7 +40,7 @@ export function ItineraryCard({ it, go }) {
         {it.ribbon ? <div className="ribbon">{it.ribbon}</div> : null}
       </div>
       <div className="body">
-        <div className="eyebrow-sm">{h.carte.eyebrow} · {it.ref}</div>
+        <div className="eyebrow-sm">{h.carte.eyebrow}</div>
         <h3 className="title">{it.title}</h3>
         <div className="meta">
           <span>{it.duree}</span>

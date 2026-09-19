@@ -113,7 +113,7 @@ export function RailBooking({ circuitRef, go }) {
   const [enfants, setEnfants] = useState(0);
   const [bebes, setBebes] = useState(0);
   const [chambresManuel, setChambresManuel] = useState(null);
-  const choisirMode = (m) => { setMode(m); if (m === 'groupe' && adultes < 4) setAdultes(4); };
+  const choisirMode = (m) => { setMode(m); };
 
   const chambres = chambresManuel === null ? Math.max(1, Math.ceil((adultes + enfants) / 2)) : chambresManuel;
   const payants = adultes + enfants;
@@ -169,7 +169,7 @@ export function RailBooking({ circuitRef, go }) {
       )}
 
       <div className="resa-qui">
-        <LigneCompteur label={b.voyageurs} sub={mode === 'groupe' ? b.voyageursSubGroupe : b.voyageursSubPrive} value={adultes} min={mode === 'groupe' ? 4 : 1} max={8} onChange={setAdultes} />
+        <LigneCompteur label={b.voyageurs} sub={mode === 'groupe' ? b.voyageursSubGroupe : b.voyageursSubPrive} value={adultes} min={1} max={8} onChange={setAdultes} />
         <LigneCompteur label={b.enfants} sub={b.enfantsSub} value={enfants} max={8} onChange={setEnfants} />
         <LigneCompteur label={b.bebes} sub={b.bebesSub} value={bebes} max={4} onChange={setBebes} />
         <LigneCompteur label={b.chambres} sub={chambresManuel === null ? b.chambresAuto : b.chambresManuel} value={chambres} min={1} max={8} onChange={setChambresManuel} />

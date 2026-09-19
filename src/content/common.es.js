@@ -160,7 +160,7 @@ export default {
     departLe: 'Salida el',
     retourLePhrase: 'regreso el',
     voyageurs: 'Viajeros',
-    voyageursSubGroupe: 'cuatro como mínimo en grupo',
+    voyageursSubGroupe: 'salida garantizada a partir de cuatro',
     voyageursSubPrive: '13 años o más',
     enfants: 'Niños',
     enfantsSub: 'menos de 13 años',
