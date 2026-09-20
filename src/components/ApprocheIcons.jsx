@@ -85,11 +85,12 @@ export const APPROCHE_ICONS = {
   ),
 };
 
-export function ApprocheIcon({ id, size = 22, ...rest }) {
+export function ApprocheIcon({ id, size = 22, style, ...rest }) {
   const icon = APPROCHE_ICONS[id];
   if (!icon) return null;
   return (
     <span
+      {...rest}
       style={{
         width: size,
         height: size,
@@ -97,8 +98,8 @@ export function ApprocheIcon({ id, size = 22, ...rest }) {
         alignItems: 'center',
         justifyContent: 'center',
         flexShrink: 0,
-      }}
-      {...rest}>
+        ...style,
+      }}>
       {icon}
     </span>
   );
