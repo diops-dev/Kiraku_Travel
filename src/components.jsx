@@ -173,10 +173,10 @@ export function Footer({ go }) {
           <div>
             <h5>{f.colSuivre}</h5>
             <ul>
-              <li><a href="#">LinkedIn</a></li>
-              <li><a href="https://www.instagram.com/japonautrement/" target="_blank" rel="noopener">Instagram</a></li>
+              <li><a href="https://www.linkedin.com/company/kiraku-travel/" target="_blank" rel="noopener">LinkedIn</a></li>
+              <li><a href="https://www.instagram.com/voyagesjapon/" target="_blank" rel="noopener">Instagram</a></li>
               <li><a href="https://www.facebook.com/people/Kiraku-Travel/61594161231653/" target="_blank" rel="noopener">Facebook</a></li>
-              <li><a href="#">TikTok</a></li>
+              <li><a href="https://www.tiktok.com/@kiraku.travel" target="_blank" rel="noopener">TikTok</a></li>
             </ul>
           </div>
         </div>
