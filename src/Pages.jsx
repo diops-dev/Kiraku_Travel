@@ -278,7 +278,7 @@ export function ContactPage() {
           <div className="row" style={{borderBottom:0}}>
             <div>
               <b>{x.carnet}</b>
-              <span><a href="https://www.instagram.com/japonautrement/" target="_blank" rel="noopener" style={{color:'var(--kiraku-enji)'}}>@japonautrement</a> {x.carnetTexte}</span>
+              <span><a href="https://www.instagram.com/voyagesjapon/" target="_blank" rel="noopener" style={{color:'var(--kiraku-enji)'}}>@voyagesjapon</a> {x.carnetTexte}</span>
             </div>
           </div>
         </aside>
